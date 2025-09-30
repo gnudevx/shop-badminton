@@ -1,0 +1,600 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<log>
+<record>
+  <date>2025-09-30T05:17:14.879480Z</date>
+  <nanos>480000</nanos>
+  <logger>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</logger>
+  <level>INFO</level>
+  <class>oracle.dbtools.migration.datamove.online.DataMoveDrone</class>
+  <message>dbo.LoaiKhachHang: Data Move information:Rows : 5 Errors: 0</message>
+  <param>LoaiKhachHang, MD_TABLES, 103701DataMove</param>
+
+</record>
+<record>
+  <date>2025-09-30T05:17:14.911501800Z</date>
+  <nanos>501800</nanos>
+  <logger>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</logger>
+  <level>INFO</level>
+  <class>oracle.dbtools.migration.datamove.online.DataMoveDrone</class>
+  <message>dbo.ChiTietPhieuNhan: Data Move information:Rows : 0 Errors: 0</message>
+  <param>ChiTietPhieuNhan, MD_TABLES, 115401DataMove</param>
+
+</record>
+<record>
+  <date>2025-09-30T05:17:14.926652900Z</date>
+  <nanos>652900</nanos>
+  <logger>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</logger>
+  <level>INFO</level>
+  <class>oracle.dbtools.migration.datamove.online.DataMoveDrone</class>
+  <message>dbo.ChucVu: Data Move information:Rows : 2 Errors: 0</message>
+  <param>ChucVu, MD_TABLES, 105101DataMove</param>
+
+</record>
+<record>
+  <date>2025-09-30T05:17:14.956652700Z</date>
+  <nanos>652700</nanos>
+  <logger>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</logger>
+  <level>INFO</level>
+  <class>oracle.dbtools.migration.datamove.online.DataMoveDrone</class>
+  <message>dbo.NhanVien: Data Move information:Rows : 5 Errors: 0</message>
+  <param>NhanVien, MD_TABLES, 105551DataMove</param>
+
+</record>
+<record>
+  <date>2025-09-30T05:17:14.982643600Z</date>
+  <nanos>643600</nanos>
+  <logger>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</logger>
+  <level>INFO</level>
+  <class>oracle.dbtools.migration.datamove.online.DataMoveDrone</class>
+  <message>dbo.ThuongHieu: Data Move information:Rows : 21 Errors: 0</message>
+  <param>ThuongHieu, MD_TABLES, 106501DataMove</param>
+
+</record>
+<record>
+  <date>2025-09-30T05:17:15.037201300Z</date>
+  <nanos>201300</nanos>
+  <logger>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</logger>
+  <level>INFO</level>
+  <class>oracle.dbtools.migration.datamove.online.DataMoveDrone</class>
+  <message>dbo.KhuyenMai: Data Move information:Rows : 0 Errors: 0</message>
+  <param>KhuyenMai, MD_TABLES, 108201DataMove</param>
+
+</record>
+<record>
+  <date>2025-09-30T05:17:15.054201700Z</date>
+  <nanos>201700</nanos>
+  <logger>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</logger>
+  <level>INFO</level>
+  <class>oracle.dbtools.migration.datamove.online.DataMoveDrone</class>
+  <message>dbo.KhachHang_KhuyenMai: Data Move information:Rows : 0 Errors: 0</message>
+  <param>KhachHang_KhuyenMai, MD_TABLES, 109101DataMove</param>
+
+</record>
+<record>
+  <date>2025-09-30T05:17:15.082207500Z</date>
+  <nanos>207500</nanos>
+  <logger>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</logger>
+  <level>INFO</level>
+  <class>oracle.dbtools.migration.datamove.online.DataMoveDrone</class>
+  <message>dbo.ChiTiet_HoaDonDichVu: Data Move information:Rows : 0 Errors: 0</message>
+  <param>ChiTiet_HoaDonDichVu, MD_TABLES, 112351DataMove</param>
+
+</record>
+<record>
+  <date>2025-09-30T05:17:15.124208900Z</date>
+  <nanos>208900</nanos>
+  <logger>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</logger>
+  <level>INFO</level>
+  <class>oracle.dbtools.migration.datamove.online.DataMoveDrone</class>
+  <message>dbo.HoaDon: Data Move information:Rows : 10 Errors: 0</message>
+  <param>HoaDon, MD_TABLES, 109501DataMove</param>
+
+</record>
+<record>
+  <date>2025-09-30T05:17:15.163743300Z</date>
+  <nanos>743300</nanos>
+  <logger>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</logger>
+  <level>INFO</level>
+  <class>oracle.dbtools.migration.datamove.online.DataMoveDrone</class>
+  <message>dbo.ChiTietHD_SanPham: Data Move information:Rows : 15 Errors: 0</message>
+  <param>ChiTietHD_SanPham, MD_TABLES, 110451DataMove</param>
+
+</record>
+<record>
+  <date>2025-09-30T05:17:15.195749500Z</date>
+  <nanos>749500</nanos>
+  <logger>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</logger>
+  <level>INFO</level>
+  <class>oracle.dbtools.migration.datamove.online.DataMoveDrone</class>
+  <message>dbo.HoaDonDichVu: Data Move information:Rows : 5 Errors: 0</message>
+  <param>HoaDonDichVu, MD_TABLES, 111301DataMove</param>
+
+</record>
+<record>
+  <date>2025-09-30T05:17:15.221753900Z</date>
+  <nanos>753900</nanos>
+  <logger>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</logger>
+  <level>INFO</level>
+  <class>oracle.dbtools.migration.datamove.online.DataMoveDrone</class>
+  <message>dbo.HoaDonLuong: Data Move information:Rows : 5 Errors: 0</message>
+  <param>HoaDonLuong, MD_TABLES, 113151DataMove</param>
+
+</record>
+<record>
+  <date>2025-09-30T05:17:15.236831800Z</date>
+  <nanos>831800</nanos>
+  <logger>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</logger>
+  <level>INFO</level>
+  <class>oracle.dbtools.migration.datamove.online.DataMoveDrone</class>
+  <message>dbo.PhieuNhapHang: Data Move information:Rows : 0 Errors: 0</message>
+  <param>PhieuNhapHang, MD_TABLES, 113901DataMove</param>
+
+</record>
+<record>
+  <date>2025-09-30T05:17:15.264830800Z</date>
+  <nanos>830800</nanos>
+  <logger>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</logger>
+  <level>INFO</level>
+  <class>oracle.dbtools.migration.datamove.online.DataMoveDrone</class>
+  <message>dbo.ChiTietPhieuNhapHang: Data Move information:Rows : 0 Errors: 0</message>
+  <param>ChiTietPhieuNhapHang, MD_TABLES, 114401DataMove</param>
+
+</record>
+<record>
+  <date>2025-09-30T05:17:15.279836600Z</date>
+  <nanos>836600</nanos>
+  <logger>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</logger>
+  <level>INFO</level>
+  <class>oracle.dbtools.migration.datamove.online.DataMoveDrone</class>
+  <message>dbo.PhieuNhan: Data Move information:Rows : 0 Errors: 0</message>
+  <param>PhieuNhan, MD_TABLES, 115001DataMove</param>
+
+</record>
+<record>
+  <date>2025-09-30T05:17:15.312847800Z</date>
+  <nanos>847800</nanos>
+  <logger>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</logger>
+  <level>INFO</level>
+  <class>oracle.dbtools.migration.datamove.online.DataMoveDrone</class>
+  <message>dbo.KhachHang: Data Move information:Rows : 5 Errors: 0</message>
+  <param>KhachHang, MD_TABLES, 104351DataMove</param>
+
+</record>
+<record>
+  <date>2025-09-30T05:17:15.786530600Z</date>
+  <nanos>530600</nanos>
+  <logger>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</logger>
+  <level>WARNING</level>
+  <class>oracle.dbtools.migration.datamove.online.DataMoveDrone</class>
+  <message>ShopBadminton.dbo.SanPham</message>
+  <param>oracle.dbtools.migration.workbench.core.logging.LogInfo@11604977</param>
+
+<record>
+  <date>2025-09-30T05:17:15.786530600Z</date>
+  <nanos>530600</nanos>
+  <logger>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</logger>
+  <level>WARNING</level>
+  <class>oracle.dbtools.migration.datamove.online.DataMoveDrone</class>
+  <message>Inserting ' ' into column ShopBadminton.SanPham.MoTa (Row number 38)</message>
+  <param>SanPham, MD_TABLES, 106951DataMove</param>
+
+</record>
+<record>
+  <date>2025-09-30T05:17:15.786530600Z</date>
+  <nanos>530600</nanos>
+  <logger>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</logger>
+  <level>INFO</level>
+  <class>oracle.dbtools.migration.datamove.online.DataMoveDrone</class>
+  <message>Data Move information:Rows : 400 Errors: 0</message>
+  <param>SanPham, MD_TABLES, 106951DataMove</param>
+
+</record>
+</record>
+<record>
+  <date>2025-09-30T05:17:15.859538800Z</date>
+  <nanos>538800</nanos>
+  <logger>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</logger>
+  <level>SEVERE</level>
+  <class>oracle.dbtools.migration.datamove.online.ConstraintHandler</class>
+  <message>Failed to enable constraint: ORA-02437: cannot validate (SHOPBADMINTON.PK__KHACHHAN__2725CF1EAA50650A) - primary key violated
+
+https://docs.oracle.com/error-help/db/ora-02437/</message>
+  <key>DataMove.ENABLE_CONSTRAINT_FAILED</key>
+  <catalog>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</catalog>
+  <param>ORA-02437: cannot validate (SHOPBADMINTON.PK__KHACHHAN__2725CF1EAA50650A) - primary key violated
+
+https://docs.oracle.com/error-help/db/ora-02437/</param>
+  <param>oracle.dbtools.migration.workbench.core.logging.LogInfo@796e3a4d</param>
+
+</record>
+<record>
+  <date>2025-09-30T05:17:15.864570Z</date>
+  <nanos>570000</nanos>
+  <logger>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</logger>
+  <level>SEVERE</level>
+  <class>oracle.dbtools.migration.datamove.online.ConstraintHandler</class>
+  <message>Failed to enable constraint: ORA-02437: cannot validate (SHOPBADMINTON.PK__LOAIKHAC__12250B7EC2B4ACD0) - primary key violated
+
+https://docs.oracle.com/error-help/db/ora-02437/</message>
+  <key>DataMove.ENABLE_CONSTRAINT_FAILED</key>
+  <catalog>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</catalog>
+  <param>ORA-02437: cannot validate (SHOPBADMINTON.PK__LOAIKHAC__12250B7EC2B4ACD0) - primary key violated
+
+https://docs.oracle.com/error-help/db/ora-02437/</param>
+  <param>oracle.dbtools.migration.workbench.core.logging.LogInfo@2458af03</param>
+
+</record>
+<record>
+  <date>2025-09-30T05:17:15.870556Z</date>
+  <nanos>556000</nanos>
+  <logger>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</logger>
+  <level>SEVERE</level>
+  <class>oracle.dbtools.migration.datamove.online.ConstraintHandler</class>
+  <message>Failed to enable constraint: ORA-02437: cannot validate (SHOPBADMINTON.PK__CHUCVU__D4639533F135762C) - primary key violated
+
+https://docs.oracle.com/error-help/db/ora-02437/</message>
+  <key>DataMove.ENABLE_CONSTRAINT_FAILED</key>
+  <catalog>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</catalog>
+  <param>ORA-02437: cannot validate (SHOPBADMINTON.PK__CHUCVU__D4639533F135762C) - primary key violated
+
+https://docs.oracle.com/error-help/db/ora-02437/</param>
+  <param>oracle.dbtools.migration.workbench.core.logging.LogInfo@74125975</param>
+
+</record>
+<record>
+  <date>2025-09-30T05:17:15.875672200Z</date>
+  <nanos>672200</nanos>
+  <logger>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</logger>
+  <level>SEVERE</level>
+  <class>oracle.dbtools.migration.datamove.online.ConstraintHandler</class>
+  <message>Failed to enable constraint: ORA-02437: cannot validate (SHOPBADMINTON.PK__NHANVIEN__2725D70AD2298E77) - primary key violated
+
+https://docs.oracle.com/error-help/db/ora-02437/</message>
+  <key>DataMove.ENABLE_CONSTRAINT_FAILED</key>
+  <catalog>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</catalog>
+  <param>ORA-02437: cannot validate (SHOPBADMINTON.PK__NHANVIEN__2725D70AD2298E77) - primary key violated
+
+https://docs.oracle.com/error-help/db/ora-02437/</param>
+  <param>oracle.dbtools.migration.workbench.core.logging.LogInfo@231aef60</param>
+
+</record>
+<record>
+  <date>2025-09-30T05:17:15.881550400Z</date>
+  <nanos>550400</nanos>
+  <logger>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</logger>
+  <level>SEVERE</level>
+  <class>oracle.dbtools.migration.datamove.online.ConstraintHandler</class>
+  <message>Failed to enable constraint: ORA-02437: cannot validate (SHOPBADMINTON.PK__HOADON__2725A6E06CAE1782) - primary key violated
+
+https://docs.oracle.com/error-help/db/ora-02437/</message>
+  <key>DataMove.ENABLE_CONSTRAINT_FAILED</key>
+  <catalog>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</catalog>
+  <param>ORA-02437: cannot validate (SHOPBADMINTON.PK__HOADON__2725A6E06CAE1782) - primary key violated
+
+https://docs.oracle.com/error-help/db/ora-02437/</param>
+  <param>oracle.dbtools.migration.workbench.core.logging.LogInfo@647fee15</param>
+
+</record>
+<record>
+  <date>2025-09-30T05:17:15.887552900Z</date>
+  <nanos>552900</nanos>
+  <logger>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</logger>
+  <level>SEVERE</level>
+  <class>oracle.dbtools.migration.datamove.online.ConstraintHandler</class>
+  <message>Failed to enable constraint: ORA-02437: cannot validate (SHOPBADMINTON.PK__THUONGHI__27250075070F4BB7) - primary key violated
+
+https://docs.oracle.com/error-help/db/ora-02437/</message>
+  <key>DataMove.ENABLE_CONSTRAINT_FAILED</key>
+  <catalog>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</catalog>
+  <param>ORA-02437: cannot validate (SHOPBADMINTON.PK__THUONGHI__27250075070F4BB7) - primary key violated
+
+https://docs.oracle.com/error-help/db/ora-02437/</param>
+  <param>oracle.dbtools.migration.workbench.core.logging.LogInfo@49442c6b</param>
+
+</record>
+<record>
+  <date>2025-09-30T05:17:15.893550300Z</date>
+  <nanos>550300</nanos>
+  <logger>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</logger>
+  <level>SEVERE</level>
+  <class>oracle.dbtools.migration.datamove.online.ConstraintHandler</class>
+  <message>Failed to enable constraint: ORA-02437: cannot validate (SHOPBADMINTON.PK__SANPHAM__2725081CE5DE8ED7) - primary key violated
+
+https://docs.oracle.com/error-help/db/ora-02437/</message>
+  <key>DataMove.ENABLE_CONSTRAINT_FAILED</key>
+  <catalog>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</catalog>
+  <param>ORA-02437: cannot validate (SHOPBADMINTON.PK__SANPHAM__2725081CE5DE8ED7) - primary key violated
+
+https://docs.oracle.com/error-help/db/ora-02437/</param>
+  <param>oracle.dbtools.migration.workbench.core.logging.LogInfo@6a20f3ca</param>
+
+</record>
+<record>
+  <date>2025-09-30T05:17:15.912913500Z</date>
+  <nanos>913500</nanos>
+  <logger>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</logger>
+  <level>SEVERE</level>
+  <class>oracle.dbtools.migration.datamove.online.ConstraintHandler</class>
+  <message>Failed to enable constraint: ORA-02437: cannot validate (SHOPBADMINTON.PK__CHITIETH__1E4FA771C5FA7332) - primary key violated
+
+https://docs.oracle.com/error-help/db/ora-02437/</message>
+  <key>DataMove.ENABLE_CONSTRAINT_FAILED</key>
+  <catalog>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</catalog>
+  <param>ORA-02437: cannot validate (SHOPBADMINTON.PK__CHITIETH__1E4FA771C5FA7332) - primary key violated
+
+https://docs.oracle.com/error-help/db/ora-02437/</param>
+  <param>oracle.dbtools.migration.workbench.core.logging.LogInfo@7de0c72b</param>
+
+</record>
+<record>
+  <date>2025-09-30T05:17:15.918913400Z</date>
+  <nanos>913400</nanos>
+  <logger>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</logger>
+  <level>SEVERE</level>
+  <class>oracle.dbtools.migration.datamove.online.ConstraintHandler</class>
+  <message>Failed to enable constraint: ORA-02437: cannot validate (SHOPBADMINTON.PK__HOADONDI__1419AAC9AAB5C039) - primary key violated
+
+https://docs.oracle.com/error-help/db/ora-02437/</message>
+  <key>DataMove.ENABLE_CONSTRAINT_FAILED</key>
+  <catalog>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</catalog>
+  <param>ORA-02437: cannot validate (SHOPBADMINTON.PK__HOADONDI__1419AAC9AAB5C039) - primary key violated
+
+https://docs.oracle.com/error-help/db/ora-02437/</param>
+  <param>oracle.dbtools.migration.workbench.core.logging.LogInfo@6949a299</param>
+
+</record>
+<record>
+  <date>2025-09-30T05:17:15.931457900Z</date>
+  <nanos>457900</nanos>
+  <logger>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</logger>
+  <level>SEVERE</level>
+  <class>oracle.dbtools.migration.datamove.online.ConstraintHandler</class>
+  <message>Failed to enable constraint: ORA-02437: cannot validate (SHOPBADMINTON.PK__HOADONLU__020B5288D102DA7D) - primary key violated
+
+https://docs.oracle.com/error-help/db/ora-02437/</message>
+  <key>DataMove.ENABLE_CONSTRAINT_FAILED</key>
+  <catalog>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</catalog>
+  <param>ORA-02437: cannot validate (SHOPBADMINTON.PK__HOADONLU__020B5288D102DA7D) - primary key violated
+
+https://docs.oracle.com/error-help/db/ora-02437/</param>
+  <param>oracle.dbtools.migration.workbench.core.logging.LogInfo@73f13d7f</param>
+
+</record>
+<record>
+  <date>2025-09-30T05:17:15.965478900Z</date>
+  <nanos>478900</nanos>
+  <logger>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</logger>
+  <level>SEVERE</level>
+  <class>oracle.dbtools.migration.datamove.online.ConstraintHandler</class>
+  <message>Failed to enable constraint: ORA-02270: no matching unique or primary key for this column-list
+
+https://docs.oracle.com/error-help/db/ora-02270/</message>
+  <key>DataMove.ENABLE_CONSTRAINT_FAILED</key>
+  <catalog>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</catalog>
+  <param>ORA-02270: no matching unique or primary key for this column-list
+
+https://docs.oracle.com/error-help/db/ora-02270/</param>
+  <param>oracle.dbtools.migration.workbench.core.logging.LogInfo@5a3b1a60</param>
+
+</record>
+<record>
+  <date>2025-09-30T05:17:15.970753900Z</date>
+  <nanos>753900</nanos>
+  <logger>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</logger>
+  <level>SEVERE</level>
+  <class>oracle.dbtools.migration.datamove.online.ConstraintHandler</class>
+  <message>Failed to enable constraint: ORA-02270: no matching unique or primary key for this column-list
+
+https://docs.oracle.com/error-help/db/ora-02270/</message>
+  <key>DataMove.ENABLE_CONSTRAINT_FAILED</key>
+  <catalog>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</catalog>
+  <param>ORA-02270: no matching unique or primary key for this column-list
+
+https://docs.oracle.com/error-help/db/ora-02270/</param>
+  <param>oracle.dbtools.migration.workbench.core.logging.LogInfo@3e15f710</param>
+
+</record>
+<record>
+  <date>2025-09-30T05:17:15.975812100Z</date>
+  <nanos>812100</nanos>
+  <logger>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</logger>
+  <level>SEVERE</level>
+  <class>oracle.dbtools.migration.datamove.online.ConstraintHandler</class>
+  <message>Failed to enable constraint: ORA-02270: no matching unique or primary key for this column-list
+
+https://docs.oracle.com/error-help/db/ora-02270/</message>
+  <key>DataMove.ENABLE_CONSTRAINT_FAILED</key>
+  <catalog>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</catalog>
+  <param>ORA-02270: no matching unique or primary key for this column-list
+
+https://docs.oracle.com/error-help/db/ora-02270/</param>
+  <param>oracle.dbtools.migration.workbench.core.logging.LogInfo@4911c58c</param>
+
+</record>
+<record>
+  <date>2025-09-30T05:17:15.980770700Z</date>
+  <nanos>770700</nanos>
+  <logger>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</logger>
+  <level>SEVERE</level>
+  <class>oracle.dbtools.migration.datamove.online.ConstraintHandler</class>
+  <message>Failed to enable constraint: ORA-02270: no matching unique or primary key for this column-list
+
+https://docs.oracle.com/error-help/db/ora-02270/</message>
+  <key>DataMove.ENABLE_CONSTRAINT_FAILED</key>
+  <catalog>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</catalog>
+  <param>ORA-02270: no matching unique or primary key for this column-list
+
+https://docs.oracle.com/error-help/db/ora-02270/</param>
+  <param>oracle.dbtools.migration.workbench.core.logging.LogInfo@5f6991ee</param>
+
+</record>
+<record>
+  <date>2025-09-30T05:17:15.984780Z</date>
+  <nanos>780000</nanos>
+  <logger>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</logger>
+  <level>SEVERE</level>
+  <class>oracle.dbtools.migration.datamove.online.ConstraintHandler</class>
+  <message>Failed to enable constraint: ORA-02270: no matching unique or primary key for this column-list
+
+https://docs.oracle.com/error-help/db/ora-02270/</message>
+  <key>DataMove.ENABLE_CONSTRAINT_FAILED</key>
+  <catalog>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</catalog>
+  <param>ORA-02270: no matching unique or primary key for this column-list
+
+https://docs.oracle.com/error-help/db/ora-02270/</param>
+  <param>oracle.dbtools.migration.workbench.core.logging.LogInfo@10807ee9</param>
+
+</record>
+<record>
+  <date>2025-09-30T05:17:15.988781900Z</date>
+  <nanos>781900</nanos>
+  <logger>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</logger>
+  <level>SEVERE</level>
+  <class>oracle.dbtools.migration.datamove.online.ConstraintHandler</class>
+  <message>Failed to enable constraint: ORA-02270: no matching unique or primary key for this column-list
+
+https://docs.oracle.com/error-help/db/ora-02270/</message>
+  <key>DataMove.ENABLE_CONSTRAINT_FAILED</key>
+  <catalog>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</catalog>
+  <param>ORA-02270: no matching unique or primary key for this column-list
+
+https://docs.oracle.com/error-help/db/ora-02270/</param>
+  <param>oracle.dbtools.migration.workbench.core.logging.LogInfo@4fadc4e2</param>
+
+</record>
+<record>
+  <date>2025-09-30T05:17:15.992771100Z</date>
+  <nanos>771100</nanos>
+  <logger>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</logger>
+  <level>SEVERE</level>
+  <class>oracle.dbtools.migration.datamove.online.ConstraintHandler</class>
+  <message>Failed to enable constraint: ORA-02270: no matching unique or primary key for this column-list
+
+https://docs.oracle.com/error-help/db/ora-02270/</message>
+  <key>DataMove.ENABLE_CONSTRAINT_FAILED</key>
+  <catalog>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</catalog>
+  <param>ORA-02270: no matching unique or primary key for this column-list
+
+https://docs.oracle.com/error-help/db/ora-02270/</param>
+  <param>oracle.dbtools.migration.workbench.core.logging.LogInfo@370c5b71</param>
+
+</record>
+<record>
+  <date>2025-09-30T05:17:16.007784600Z</date>
+  <nanos>784600</nanos>
+  <logger>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</logger>
+  <level>SEVERE</level>
+  <class>oracle.dbtools.migration.datamove.online.ConstraintHandler</class>
+  <message>Failed to enable constraint: ORA-02270: no matching unique or primary key for this column-list
+
+https://docs.oracle.com/error-help/db/ora-02270/</message>
+  <key>DataMove.ENABLE_CONSTRAINT_FAILED</key>
+  <catalog>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</catalog>
+  <param>ORA-02270: no matching unique or primary key for this column-list
+
+https://docs.oracle.com/error-help/db/ora-02270/</param>
+  <param>oracle.dbtools.migration.workbench.core.logging.LogInfo@37895450</param>
+
+</record>
+<record>
+  <date>2025-09-30T05:17:16.010780200Z</date>
+  <nanos>780200</nanos>
+  <logger>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</logger>
+  <level>SEVERE</level>
+  <class>oracle.dbtools.migration.datamove.online.ConstraintHandler</class>
+  <message>Failed to enable constraint: ORA-02270: no matching unique or primary key for this column-list
+
+https://docs.oracle.com/error-help/db/ora-02270/</message>
+  <key>DataMove.ENABLE_CONSTRAINT_FAILED</key>
+  <catalog>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</catalog>
+  <param>ORA-02270: no matching unique or primary key for this column-list
+
+https://docs.oracle.com/error-help/db/ora-02270/</param>
+  <param>oracle.dbtools.migration.workbench.core.logging.LogInfo@6f9c4b8</param>
+
+</record>
+<record>
+  <date>2025-09-30T05:17:16.015807600Z</date>
+  <nanos>807600</nanos>
+  <logger>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</logger>
+  <level>SEVERE</level>
+  <class>oracle.dbtools.migration.datamove.online.ConstraintHandler</class>
+  <message>Failed to enable constraint: ORA-02270: no matching unique or primary key for this column-list
+
+https://docs.oracle.com/error-help/db/ora-02270/</message>
+  <key>DataMove.ENABLE_CONSTRAINT_FAILED</key>
+  <catalog>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</catalog>
+  <param>ORA-02270: no matching unique or primary key for this column-list
+
+https://docs.oracle.com/error-help/db/ora-02270/</param>
+  <param>oracle.dbtools.migration.workbench.core.logging.LogInfo@31eaed06</param>
+
+</record>
+<record>
+  <date>2025-09-30T05:17:16.019807700Z</date>
+  <nanos>807700</nanos>
+  <logger>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</logger>
+  <level>SEVERE</level>
+  <class>oracle.dbtools.migration.datamove.online.ConstraintHandler</class>
+  <message>Failed to enable constraint: ORA-02270: no matching unique or primary key for this column-list
+
+https://docs.oracle.com/error-help/db/ora-02270/</message>
+  <key>DataMove.ENABLE_CONSTRAINT_FAILED</key>
+  <catalog>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</catalog>
+  <param>ORA-02270: no matching unique or primary key for this column-list
+
+https://docs.oracle.com/error-help/db/ora-02270/</param>
+  <param>oracle.dbtools.migration.workbench.core.logging.LogInfo@82d9a95</param>
+
+</record>
+<record>
+  <date>2025-09-30T05:17:16.024796400Z</date>
+  <nanos>796400</nanos>
+  <logger>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</logger>
+  <level>SEVERE</level>
+  <class>oracle.dbtools.migration.datamove.online.ConstraintHandler</class>
+  <message>Failed to enable constraint: ORA-02270: no matching unique or primary key for this column-list
+
+https://docs.oracle.com/error-help/db/ora-02270/</message>
+  <key>DataMove.ENABLE_CONSTRAINT_FAILED</key>
+  <catalog>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</catalog>
+  <param>ORA-02270: no matching unique or primary key for this column-list
+
+https://docs.oracle.com/error-help/db/ora-02270/</param>
+  <param>oracle.dbtools.migration.workbench.core.logging.LogInfo@2fb8a433</param>
+
+</record>
+<record>
+  <date>2025-09-30T05:17:16.028339100Z</date>
+  <nanos>339100</nanos>
+  <logger>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</logger>
+  <level>SEVERE</level>
+  <class>oracle.dbtools.migration.datamove.online.ConstraintHandler</class>
+  <message>Failed to enable constraint: ORA-02270: no matching unique or primary key for this column-list
+
+https://docs.oracle.com/error-help/db/ora-02270/</message>
+  <key>DataMove.ENABLE_CONSTRAINT_FAILED</key>
+  <catalog>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</catalog>
+  <param>ORA-02270: no matching unique or primary key for this column-list
+
+https://docs.oracle.com/error-help/db/ora-02270/</param>
+  <param>oracle.dbtools.migration.workbench.core.logging.LogInfo@20780747</param>
+
+</record>
+<record>
+  <date>2025-09-30T05:17:16.032339100Z</date>
+  <nanos>339100</nanos>
+  <logger>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</logger>
+  <level>SEVERE</level>
+  <class>oracle.dbtools.migration.datamove.online.ConstraintHandler</class>
+  <message>Failed to enable constraint: ORA-02270: no matching unique or primary key for this column-list
+
+https://docs.oracle.com/error-help/db/ora-02270/</message>
+  <key>DataMove.ENABLE_CONSTRAINT_FAILED</key>
+  <catalog>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</catalog>
+  <param>ORA-02270: no matching unique or primary key for this column-list
+
+https://docs.oracle.com/error-help/db/ora-02270/</param>
+  <param>oracle.dbtools.migration.workbench.core.logging.LogInfo@7b7bc667</param>
+
+</record>

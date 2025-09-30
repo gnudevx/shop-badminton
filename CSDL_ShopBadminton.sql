@@ -1,0 +1,190 @@
+
+
+-- Tạo DB mới
+CREATE DATABASE ShopBadminton;
+GO
+USE ShopBadminton;
+GO
+
+-- Bảng LOAI_KHACH_HANG
+CREATE TABLE LoaiKhachHang (
+    MaLoaiKH INT PRIMARY KEY IDENTITY(1,1),
+    TenLoai NVARCHAR(50),
+    ChiTieuToiThieu DECIMAL(18,2),
+    GiamGiaToiDa FLOAT CHECK (GiamGiaToiDa BETWEEN 0 AND 100)
+);
+
+-- Bảng KHACH_HANG
+CREATE TABLE KhachHang (
+    MaKH INT PRIMARY KEY IDENTITY(1,1),
+    HoTen NVARCHAR(50) NOT NULL,
+    SoDienThoai VARCHAR(15) NOT NULL,
+    TongChiTieu DECIMAL(18,2) DEFAULT 0,
+    MaLoaiKH INT,
+    FOREIGN KEY (MaLoaiKH) REFERENCES LoaiKhachHang(MaLoaiKH)
+);
+
+-- Bảng CHUC_VU
+CREATE TABLE ChucVu (
+    MaChucVu INT PRIMARY KEY IDENTITY(1,1),
+    TenChucVu NVARCHAR(50) NOT NULL
+);
+
+-- Bảng NHAN_VIEN
+CREATE TABLE NhanVien (
+    MaNV INT PRIMARY KEY IDENTITY(1,1),
+    HoTen NVARCHAR(100) NOT NULL,
+    NgaySinh DATE NOT NULL,
+    GioiTinh NVARCHAR(10) NOT NULL,
+    Email VARCHAR(100) NOT NULL,
+    MaChucVu INT,
+    LuongCoBan DECIMAL(18,2) NOT NULL,
+    FOREIGN KEY (MaChucVu) REFERENCES ChucVu(MaChucVu)
+);
+
+-- Bảng THUONG_HIEU
+CREATE TABLE ThuongHieu (
+    MaTH INT PRIMARY KEY IDENTITY(1,1),
+    TenTH NVARCHAR(100) NOT NULL
+);
+
+-- Bảng SAN_PHAM
+CREATE TABLE SanPham (
+    MaSP INT PRIMARY KEY IDENTITY(1,1),
+    TenSP NVARCHAR(MAX) NOT NULL,
+    LoaiSP NVARCHAR(50) NOT NULL,
+    GiaBan DECIMAL(18,2) NOT NULL,
+    SoLuongTon INT DEFAULT 0,
+    NgayNhapKho DATE NOT NULL,
+    ThoiGianBaoHanh INT,
+    MaTH INT,
+    GiaGoc DECIMAL(18,2) NOT NULL,
+    MoTa NVARCHAR(MAX),
+    FOREIGN KEY (MaTH) REFERENCES ThuongHieu(MaTH)
+);
+
+-- Bảng KHUYEN_MAI
+CREATE TABLE KhuyenMai (
+    MaKM INT PRIMARY KEY IDENTITY(1,1),
+    TenChuongTrinh NVARCHAR(100) NOT NULL,
+    GiaTriKhuyenMai FLOAT NOT NULL,
+    DieuKienKhuyenMai NVARCHAR(255),
+    NgayBatDau DATE NOT NULL,
+    NgayKetThuc DATE NOT NULL,
+    SoLuong INT NOT NULL
+);
+
+-- Liên kết KhachHang - KhuyenMai
+CREATE TABLE KhachHang_KhuyenMai (
+    MaKH INT NOT NULL,
+    MaKM INT NOT NULL,
+    NgaySuDung DATETIME NOT NULL DEFAULT GETDATE(),
+    CONSTRAINT PK_KH_KM PRIMARY KEY (MaKH, MaKM),
+    CONSTRAINT FK_KHKM_KH FOREIGN KEY (MaKH) REFERENCES KhachHang(MaKH),
+    CONSTRAINT FK_KHKM_KM FOREIGN KEY (MaKM) REFERENCES KhuyenMai(MaKM)
+);
+
+-- Bảng HOA_DON (MaHD là VARCHAR ngay từ đầu)
+CREATE TABLE HoaDon (
+    MaHD INT PRIMARY KEY IDENTITY(1,1), -- tự tăng
+    NgayGioTao DATETIME NOT NULL,
+    MaKH INT,
+    MaNV INT,
+    TongTien DECIMAL(18,2) NOT NULL,
+    MaKM INT NULL,
+    LoaiHoaDon VARCHAR(10) NOT NULL CHECK (LoaiHoaDon IN ('SP','SP+DV')),
+    FOREIGN KEY (MaKH) REFERENCES KhachHang(MaKH),
+    FOREIGN KEY (MaNV) REFERENCES NhanVien(MaNV),
+    FOREIGN KEY (MaKM) REFERENCES KhuyenMai(MaKM)
+);
+
+
+-- Bảng CHI_TIET_HOA_DON_SAN_PHAM
+CREATE TABLE ChiTietHD_SanPham (
+    MaCTHD INT PRIMARY KEY IDENTITY(1,1),
+    MaHD INT NOT NULL,
+    MaSP INT NOT NULL,
+    SoLuong INT NOT NULL,
+    DonGia DECIMAL(18,2) NOT NULL,
+    ThanhTien AS (SoLuong * DonGia) PERSISTED,
+    FOREIGN KEY (MaHD) REFERENCES HoaDon(MaHD),
+    FOREIGN KEY (MaSP) REFERENCES SanPham(MaSP)
+);
+
+-- Bảng HOA_DON_DICH_VU (không còn TenVot, LoaiDay, SoKG)
+CREATE TABLE HoaDonDichVu (
+    MaHDDV INT PRIMARY KEY IDENTITY(1,1),
+    NgayGioTao DATETIME NOT NULL,
+    MaKH INT,
+    SoDienThoai VARCHAR(15),
+    MaNV INT NOT NULL,
+    NgayGioLayVot DATETIME,
+    ThanhTien DECIMAL(18,2) NULL,
+    LoaiPhieu VARCHAR(10) NOT NULL CHECK (LoaiPhieu IN ('DV','NOTE')),
+    FOREIGN KEY (MaKH) REFERENCES KhachHang(MaKH),
+    FOREIGN KEY (MaNV) REFERENCES NhanVien(MaNV)
+);
+
+-- Bảng CHI_TIET_HOA_DON_DICH_VU
+CREATE TABLE ChiTiet_HoaDonDichVu (
+    MaCTHDDV INT PRIMARY KEY IDENTITY(1,1),
+    MaHDDV INT NOT NULL,
+    TenVot NVARCHAR(100),
+    LoaiDay NVARCHAR(100),
+    SoKG INT,
+    ThanhTien DECIMAL(18,2),
+    FOREIGN KEY (MaHDDV) REFERENCES HoaDonDichVu(MaHDDV)
+);
+
+-- Bảng HOA_DON_LUONG
+CREATE TABLE HoaDonLuong (
+    MaHDLuong INT PRIMARY KEY IDENTITY(1,1),
+    MaNV INT,
+    SoGioLam INT,
+    NgayXuat DATE,
+    TongTien DECIMAL(18,2),
+    FOREIGN KEY (MaNV) REFERENCES NhanVien(MaNV)
+);
+
+-- Bảng PHIEU_NHAP_HANG
+CREATE TABLE PhieuNhapHang (
+    MaPhieuNhap INT PRIMARY KEY IDENTITY(1,1),
+    NgayTao DATE,
+    TinhTrangPhieuNhap NVARCHAR(50) NULL
+);
+
+-- Bảng CHI_TIET_PHIEU_NHAP
+CREATE TABLE ChiTietPhieuNhapHang (
+    MaPhieuNhap INT,
+    MaSP INT,
+    TenSP NVARCHAR(MAX) NULL,
+    SoLuongNhap INT NOT NULL,
+    SoLuongThieu INT NOT NULL,
+    PRIMARY KEY (MaPhieuNhap, MaSP),
+    FOREIGN KEY (MaPhieuNhap) REFERENCES PhieuNhapHang(MaPhieuNhap),
+    FOREIGN KEY (MaSP) REFERENCES SanPham(MaSP)
+);
+
+-- Bảng PHIEU_NHAN
+CREATE TABLE PhieuNhan (
+    MaPhieuNhan INT PRIMARY KEY IDENTITY(1,1),
+    NgayTao DATE
+);
+
+-- Bảng CHI_TIET_PHIEU_NHAN
+CREATE TABLE ChiTietPhieuNhan (
+    MaPhieuNhan INT,
+    MaSP INT,
+    TenSP NVARCHAR(MAX) NULL,
+    LoaiSP NVARCHAR(50) NULL,
+    SoLuongNhap INT NOT NULL,
+    DonGiaNhap DECIMAL(18,2) NULL,
+    ThuongHieu NVARCHAR(100) NULL,
+    ThoiGianBaoHanh INT NULL,
+    MoTa NVARCHAR(MAX) NULL,
+    TongTien DECIMAL(18,2) NULL,
+    NgayNhan DATE NULL,
+    PRIMARY KEY (MaPhieuNhan, MaSP),
+    FOREIGN KEY (MaPhieuNhan) REFERENCES PhieuNhan(MaPhieuNhan),
+    FOREIGN KEY (MaSP) REFERENCES SanPham(MaSP)
+);
