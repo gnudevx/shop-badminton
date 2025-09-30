@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
+using Oracle.ManagedDataAccess.Client;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,14 +11,14 @@ namespace FinalProject_IS.DAOs
     {
         public static string GetTenThuongHieuByID(int? id)
         {
-            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
             {
                 conn.Open();
 
-                string query = "Select TenTH From ThuongHieu where MaTH = @productID;";
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                string query = "Select TenTH From ThuongHieu where MaTH = :productID;";
+                using (OracleCommand cmd = new OracleCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@productID", id);
+                    cmd.Parameters.Add("productID", id);
                     object result = cmd.ExecuteScalar();
                     string name = result.ToString();
                     return name;

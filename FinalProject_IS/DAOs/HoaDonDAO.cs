@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Data.SqlClient;
+using Oracle.ManagedDataAccess.Client;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -15,11 +15,11 @@ namespace FinalProject_IS.DAOs
         {
             List<HoaDon> dsHoaDon = new List<HoaDon>();
 
-            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
             {
                 string query = "SELECT * FROM HoaDon";
 
-                SqlDataAdapter dataAdapter = new SqlDataAdapter(query, conn);
+                OracleDataAdapter dataAdapter = new OracleDataAdapter(query, conn);
                 DataTable dataTable = new DataTable();
 
                 dataAdapter.Fill(dataTable);
@@ -28,13 +28,13 @@ namespace FinalProject_IS.DAOs
                 {
                     HoaDon hd = new HoaDon
                     {
-                        MaHD = row["MaHD"].ToString(),
-                        NgayGioTao = Convert.ToDateTime(row["NgayGioTao"]),
-                        MaKH = Convert.ToInt32(row["MaKH"]),
-                        MaNV = Convert.ToInt32(row["MaNV"]),
-                        TongTien = Convert.ToInt32(row["TongTien"]),
-                        MaKM = row["MaKM"] != DBNull.Value ? Convert.ToInt32(row["MaKM"]) : (int?)null,
-                        LoaiHoaDon = row["LoaiHoaDon"].ToString()
+                        MaHD = row["MAHD"].ToString(),
+                        NgayGioTao = Convert.ToDateTime(row["NGAYGIOTAO"]),
+                        MaKH = Convert.ToInt32(row["MAKH"]),
+                        MaNV = Convert.ToInt32(row["MANV"]),
+                        TongTien = Convert.ToInt32(row["TONGTIEN"]),
+                        MaKM = row["MAKM"] != DBNull.Value ? Convert.ToInt32(row["MAKM"]) : (int?)null,
+                        LoaiHoaDon = row["LOAIHOADON"].ToString()
                     };
                     dsHoaDon.Add(hd);
                 }
@@ -42,17 +42,22 @@ namespace FinalProject_IS.DAOs
 
             return dsHoaDon;
         }
+
         public static List<ChiTietHD_SanPham> LayChiTietTheoMaHD(string id)
         {
             List<ChiTietHD_SanPham> ChiTietHD_SanPham = new List<ChiTietHD_SanPham>();
 
-            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
             {
-                string query = @"SELECT MaSP, SoLuongSP, DonGia, ThanhTien FROM ChiTietHD_SanPham where MaHD = @id";
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                string query = @"SELECT MASP, SOLUONGSP, DONGIA, THANHTIEN 
+                                 FROM CHITIETHD_SANPHAM 
+                                 WHERE MAHD = :id";
+
+                using (OracleCommand cmd = new OracleCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@id", id);
-                    SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
+                    cmd.Parameters.Add(new OracleParameter("id", id));
+
+                    OracleDataAdapter dataAdapter = new OracleDataAdapter(cmd);
                     DataTable dataTable = new DataTable();
 
                     dataAdapter.Fill(dataTable);
@@ -61,15 +66,16 @@ namespace FinalProject_IS.DAOs
                     {
                         ChiTietHD_SanPham chitiet = new ChiTietHD_SanPham();
                         chitiet.MaHD = id;
-                        chitiet.MaSP = Convert.ToInt32(row["MaSP"]);
-                        chitiet.SoLuongSP = Convert.ToInt32(row["SoLuongSP"]);
-                        chitiet.DonGia = Convert.ToDecimal(row["DonGia"]);
-                        chitiet.ThanhTien = Convert.ToDecimal(row["ThanhTien"]);
+                        chitiet.MaSP = Convert.ToInt32(row["MASP"]);
+                        chitiet.SoLuongSP = Convert.ToInt32(row["SOLUONGSP"]);
+                        chitiet.DonGia = Convert.ToDecimal(row["DONGIA"]);
+                        chitiet.ThanhTien = Convert.ToDecimal(row["THANHTIEN"]);
                         ChiTietHD_SanPham.Add(chitiet);
                     }
-                    return ChiTietHD_SanPham;
                 }
             }
+
+            return ChiTietHD_SanPham;
         }
     }
 }

@@ -261,7 +261,7 @@ public class CodeStringGenerator
             _typeMapper.GetTypeName(_typeMapper.GetReturnType(edmFunction), modelNamespace),
             edmFunction.NamespaceName,
             edmFunction.Name,
-            string.Join(", ", parameters.Select(p => "@" + p.EsqlParameterName).ToArray()),
+            string.Join(", ", parameters.Select(p => "" + p.EsqlParameterName).ToArray()),
             _code.StringBefore(", ", string.Join(", ", parameters.Select(p => p.ExecuteParameterName).ToArray())));
     }
     

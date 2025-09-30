@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
+using Oracle.ManagedDataAccess.Client;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Linq;
@@ -312,17 +312,17 @@ namespace FinalProject_IS
             string soHD;
             Random rnd = new Random();
 
-            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
             {
                 conn.Open();
                 while (true)
                 {
                     soHD = "HD" + DateTime.Now.ToString("yyyyMMddHHmm") + rnd.Next(10, 99);
 
-                    string sql = "SELECT COUNT(*) FROM HoaDon WHERE MaHD = @soHD";
-                    using (SqlCommand cmd = new SqlCommand(sql, conn))
+                    string sql = "SELECT COUNT(*) FROM HoaDon WHERE MaHD = :soHD";
+                    using (OracleCommand cmd = new OracleCommand(sql, conn))
                     {
-                        cmd.Parameters.AddWithValue("@soHD", soHD);
+                        cmd.Parameters.Add("soHD", soHD);
                         int count = (int)cmd.ExecuteScalar();
                         if (count == 0) break;
                     }
@@ -330,63 +330,66 @@ namespace FinalProject_IS
             }
             return soHD;
         }
-        private void LuuHoaDon()
-        {
-            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+    private void LuuHoaDon()
             {
-                conn.Open();
-                SqlTransaction tran = conn.BeginTransaction();
-
-                try
+                using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
                 {
-                    string MaHD = lbl_SoHD.Text;
-                    int maKH = LayMaKH_TuSDT(txt_SDT.Text); // tự viết hàm này nếu chưa có
-                    int maNV = LayMaNV_TuTen(txt_TenNhanVien.Text); // hoặc lấy từ user đăng nhập
+                    conn.Open();
+                    OracleTransaction tran = conn.BeginTransaction();
 
-
-                    string sqlHD = @"INSERT INTO HoaDon (NgayGioTao, MaKH, MaNV, TongTien, LoaiHoaDon, MaHD)
-                             OUTPUT INSERTED.MaHD
-                             VALUES (@Ngay, @MaKH, @MaNV, @TongTien, @LoaiHD, @MaHD)";
-                    SqlCommand cmdHD = new SqlCommand(sqlHD, conn, tran);
-                    cmdHD.Parameters.AddWithValue("@Ngay", DateTime.Now);
-                    cmdHD.Parameters.AddWithValue("@MaKH", maKH);
-                    cmdHD.Parameters.AddWithValue("@MaNV", maNV);
-                    cmdHD.Parameters.AddWithValue("@TongTien", decimal.Parse(lbl_TongCuoi.Text));
-                    cmdHD.Parameters.AddWithValue("@LoaiHD", "SP");
-                    cmdHD.Parameters.AddWithValue("@MaHD", MaHD);
-
-                    string maHD_inserted = (string)cmdHD.ExecuteScalar();
-
-                    foreach (DataRow r in dtTemp.Rows)
+                    try
                     {
-                        string sqlCT = @"INSERT INTO ChiTietHD_SanPham (MaHD, MaSP, SoLuongSP, DonGia)
-                                 VALUES (@MaHD, @MaSP, @SL, @Gia)";
-                        SqlCommand cmdCT = new SqlCommand(sqlCT, conn, tran);
-                        cmdCT.Parameters.AddWithValue("@MaHD", MaHD);
-                        cmdCT.Parameters.AddWithValue("@MaSP", r["MaSP"]); // bạn cần viết
-                        cmdCT.Parameters.AddWithValue("@SL", r["SoLuong"]);
-                        cmdCT.Parameters.AddWithValue("@Gia", r["GiaBan"]);
-                        cmdCT.ExecuteNonQuery();
-                    }
+                        string MaHD = lbl_SoHD.Text;
+                        int maKH = LayMaKH_TuSDT(txt_SDT.Text);
+                        int maNV = LayMaNV_TuTen(txt_TenNhanVien.Text);
 
-                    tran.Commit();
-                    MessageBox.Show($"Hóa đơn {MaHD} đã được lưu thành công!", "Thông báo");
-                }
-                catch (Exception ex)
-                {
-                    tran.Rollback();
-                    MessageBox.Show("Lỗi khi lưu hóa đơn: " + ex.Message);
+                        string sqlHD = @"INSERT INTO HoaDon (NgayGioTao, MaKH, MaNV, TongTien, LoaiHoaDon, MaHD)
+                                 VALUES (:Ngay, :MaKH, :MaNV, :TongTien, :LoaiHD, :MaHD)";
+
+                        OracleCommand cmdHD = new OracleCommand(sqlHD, conn);
+                        cmdHD.Transaction = tran;
+
+                        cmdHD.Parameters.Add("Ngay", DateTime.Now);
+                        cmdHD.Parameters.Add("MaKH", maKH);
+                        cmdHD.Parameters.Add("MaNV", maNV);
+                        cmdHD.Parameters.Add("TongTien", decimal.Parse(lbl_TongCuoi.Text));
+                        cmdHD.Parameters.Add("LoaiHD", "SP");
+                        cmdHD.Parameters.Add("MaHD", MaHD);
+
+                        cmdHD.ExecuteNonQuery();
+
+                        foreach (DataRow r in dtTemp.Rows)
+                        {
+                            string sqlCT = @"INSERT INTO ChiTietHD_SanPham (MaHD, MaSP, SoLuongSP, DonGia)
+                                     VALUES (:MaHD, :MaSP, :SL, :Gia)";
+                            OracleCommand cmdCT = new OracleCommand(sqlCT, conn);
+                            cmdCT.Transaction = tran;
+
+                            cmdCT.Parameters.Add("MaHD", MaHD);
+                            cmdCT.Parameters.Add("MaSP", r["MaSP"]);
+                            cmdCT.Parameters.Add("SL", r["SoLuong"]);
+                            cmdCT.Parameters.Add("Gia", r["GiaBan"]);
+                            cmdCT.ExecuteNonQuery();
+                        }
+
+                        tran.Commit();
+                        MessageBox.Show($"Hóa đơn {MaHD} đã được lưu thành công!", "Thông báo");
+                    }
+                    catch (Exception ex)
+                    {
+                        tran.Rollback();
+                        MessageBox.Show("Lỗi khi lưu hóa đơn: " + ex.Message);
+                    }
                 }
             }
-        }
         private int LayMaKH_TuSDT(string sdt)
         {
-            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
             {
                 conn.Open();
-                string sql = "SELECT MaKH FROM KhachHang WHERE SoDienThoai = @sdt";
-                SqlCommand cmd = new SqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@sdt", sdt);
+                string sql = "SELECT MaKH FROM KhachHang WHERE SoDienThoai = :sdt";
+                OracleCommand cmd = new OracleCommand(sql, conn);
+                cmd.Parameters.Add("sdt", sdt);
                 object result = cmd.ExecuteScalar();
 
                 if (result != null && int.TryParse(result.ToString(), out int maKH))
@@ -401,12 +404,12 @@ namespace FinalProject_IS
         }
         private int LayMaNV_TuTen(string tenNV)
         {
-            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
             {
                 conn.Open();
-                string sql = "SELECT MaNV FROM NhanVien WHERE HoTen = @ten";
-                SqlCommand cmd = new SqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@ten", tenNV);
+                string sql = "SELECT MaNV FROM NhanVien WHERE HoTen = :ten";
+                OracleCommand cmd = new OracleCommand(sql, conn);
+                cmd.Parameters.Add("ten", tenNV);
                 object result = cmd.ExecuteScalar();
 
                 if (result != null && int.TryParse(result.ToString(), out int maNV))
@@ -586,6 +589,9 @@ namespace FinalProject_IS
 
         }
 
-       
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

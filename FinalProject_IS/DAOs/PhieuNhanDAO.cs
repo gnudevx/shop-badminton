@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Data.SqlClient;
+using Oracle.ManagedDataAccess.Client;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -16,11 +16,11 @@ namespace FinalProject_IS.DAOs
         {
             List<PhieuNhan> dsPhieuNhan = new List<PhieuNhan>();
 
-            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
             {
                 string query = "SELECT * FROM PhieuNhan";
 
-                SqlDataAdapter dataAdapter = new SqlDataAdapter(query, conn);
+                OracleDataAdapter dataAdapter = new OracleDataAdapter(query, conn);
                 DataTable dataTable = new DataTable();
 
                 dataAdapter.Fill(dataTable);
@@ -42,16 +42,16 @@ namespace FinalProject_IS.DAOs
         {
             List<PhieuNhan> dsPhieuNhan = new List<PhieuNhan>();
 
-            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
             {
                 string query = @"SELECT * FROM PhieuNhan
-                         WHERE MaPhieuNhan LIKE @maphieu";
+                         WHERE MaPhieuNhan LIKE :maphieu";
 
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                using (OracleCommand cmd = new OracleCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@maphieu", maphieu + "%");
+                    cmd.Parameters.Add("maphieu", maphieu + "%");
 
-                    SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
+                    OracleDataAdapter dataAdapter = new OracleDataAdapter(cmd);
                     DataTable dataTable = new DataTable();
 
                     dataAdapter.Fill(dataTable);
@@ -83,12 +83,12 @@ namespace FinalProject_IS.DAOs
             string order = ascending ? "ASC" : "DESC"; // Chọn thứ tự sắp xếp
             string query = $@"SELECT * FROM PhieuNhan ORDER BY {columnName} {order}";
 
-            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
-            using (SqlCommand cmd = new SqlCommand(query, conn))
+            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
+            using (OracleCommand cmd = new OracleCommand(query, conn))
             {
                 conn.Open();
 
-                using (SqlDataReader reader = cmd.ExecuteReader())
+                using (OracleDataReader reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
@@ -116,15 +116,15 @@ namespace FinalProject_IS.DAOs
 
         public static void InsertPhieu(PhieuNhan phieu)
         {
-            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
             {
-                string query = @"INSERT INTO PhieuNhan Values(@NgayTao)";
+                string query = @"INSERT INTO PhieuNhan Values(:NgayTao)";
 
 
 
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                using (OracleCommand cmd = new OracleCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@NgayTao", phieu.NgayTao);
+                    cmd.Parameters.Add("NgayTao", phieu.NgayTao);
 
                     conn.Open();
                     cmd.ExecuteNonQuery();
@@ -134,27 +134,27 @@ namespace FinalProject_IS.DAOs
 
         public static void InsertChiTietPhieu(ChiTietPhieuNhan chitiet)
         {
-            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
             {
-                string query = @"INSERT INTO ChiTietPhieuNhan Values(@MaPhieuNhan, @MaSP, @TenSP, @LoaiSP
-                                                                        ,@SoLuongNhap, @DonGiaNhap, @ThuongHieu
-                                                                        ,@ThoiGianBaoHanh, @MoTa, @TongTien, @NgayNhan)";
+                string query = @"INSERT INTO ChiTietPhieuNhan Values(:MaPhieuNhan, :MaSP, :TenSP, :LoaiSP
+                                                                        ,:SoLuongNhap, :DonGiaNhap, :ThuongHieu
+                                                                        ,:ThoiGianBaoHanh, :MoTa, :TongTien, :NgayNhan)";
 
 
 
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                using (OracleCommand cmd = new OracleCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@MaPhieuNhan", chitiet.MaPhieuNhan);
-                    cmd.Parameters.AddWithValue("@MaSP", chitiet.MaSP);
-                    cmd.Parameters.AddWithValue("@TenSP", chitiet.TenSP);
-                    cmd.Parameters.AddWithValue("@LoaiSP", chitiet.LoaiSP);
-                    cmd.Parameters.AddWithValue("@SoLuongNhap", chitiet.SoLuongNhap);
-                    cmd.Parameters.AddWithValue("@DonGiaNhap", chitiet.DonGiaNhap);
-                    cmd.Parameters.AddWithValue("@ThuongHieu", chitiet.ThuongHieu);
-                    cmd.Parameters.AddWithValue("@ThoiGianBaoHanh", chitiet.ThoiGianBaoHanh);
-                    cmd.Parameters.AddWithValue("@MoTa", chitiet.MoTa);
-                    cmd.Parameters.AddWithValue("@TongTien", chitiet.TongTien);
-                    cmd.Parameters.AddWithValue("@NgayNhan", chitiet.NgayNhan);
+                    cmd.Parameters.Add("MaPhieuNhan", chitiet.MaPhieuNhan);
+                    cmd.Parameters.Add("MaSP", chitiet.MaSP);
+                    cmd.Parameters.Add("TenSP", chitiet.TenSP);
+                    cmd.Parameters.Add("LoaiSP", chitiet.LoaiSP);
+                    cmd.Parameters.Add("SoLuongNhap", chitiet.SoLuongNhap);
+                    cmd.Parameters.Add("DonGiaNhap", chitiet.DonGiaNhap);
+                    cmd.Parameters.Add("ThuongHieu", chitiet.ThuongHieu);
+                    cmd.Parameters.Add("ThoiGianBaoHanh", chitiet.ThoiGianBaoHanh);
+                    cmd.Parameters.Add("MoTa", chitiet.MoTa);
+                    cmd.Parameters.Add("TongTien", chitiet.TongTien);
+                    cmd.Parameters.Add("NgayNhan", chitiet.NgayNhan);
 
                     conn.Open();
                     cmd.ExecuteNonQuery();
@@ -164,12 +164,12 @@ namespace FinalProject_IS.DAOs
 
         public static int GetNewPhieuNhanID()
         {
-            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
             {
                 conn.Open();
 
                 string query = "SELECT ISNULL(MAX(MaPhieuNhan), 0) FROM PhieuNhan";
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                using (OracleCommand cmd = new OracleCommand(query, conn))
                 {
                     object result = cmd.ExecuteScalar();
                     int maxID = Convert.ToInt32(result);
@@ -182,13 +182,13 @@ namespace FinalProject_IS.DAOs
         {
             List<ChiTietPhieuNhan> ChitietPhieuNhanHang = new List<ChiTietPhieuNhan>();
 
-            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
             {
-                string query = @"SELECT * FROM ChiTietPhieuNhan where MaPhieuNhan = @id";
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                string query = @"SELECT * FROM ChiTietPhieuNhan where MaPhieuNhan = :id";
+                using (OracleCommand cmd = new OracleCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@id", id);
-                    SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
+                    cmd.Parameters.Add("id", id);
+                    OracleDataAdapter dataAdapter = new OracleDataAdapter(cmd);
                     DataTable dataTable = new DataTable();
 
                     dataAdapter.Fill(dataTable);

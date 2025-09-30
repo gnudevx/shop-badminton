@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Data.SqlClient;
+using Oracle.ManagedDataAccess.Client;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -15,11 +15,11 @@ namespace FinalProject_IS.DAOs
         {
             List<PhieuNhapHang> dsPhieuNhapHang = new List<PhieuNhapHang>();
 
-            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
             {
                 string query = "SELECT MaPhieuNhap, NgayTao, TinhTrangPhieuNhap FROM PhieuNhapHang";
 
-                SqlDataAdapter dataAdapter = new SqlDataAdapter(query, conn);
+                OracleDataAdapter dataAdapter = new OracleDataAdapter(query, conn);
                 DataTable dataTable = new DataTable();
 
                 dataAdapter.Fill(dataTable);
@@ -43,16 +43,16 @@ namespace FinalProject_IS.DAOs
 
         public static void InsertPhieu(PhieuNhapHang phieu)
         {
-            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
             {
-                string query = @"INSERT INTO PhieuNhapHang Values(@NgayTao, @TinhTrangPhieuNhap)";
+                string query = @"INSERT INTO PhieuNhapHang Values(:NgayTao, :TinhTrangPhieuNhap)";
 
 
 
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                using (OracleCommand cmd = new OracleCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@NgayTao", phieu.NgayTao);
-                    cmd.Parameters.AddWithValue("@TinhTrangPhieuNhap", phieu.TinhTrangPhieuNhap);
+                    cmd.Parameters.Add("NgayTao", phieu.NgayTao);
+                    cmd.Parameters.Add("TinhTrangPhieuNhap", phieu.TinhTrangPhieuNhap);
 
                     conn.Open();
                     cmd.ExecuteNonQuery();
@@ -62,19 +62,19 @@ namespace FinalProject_IS.DAOs
 
         public static void InsertChiTietPhieu(ChiTietPhieuNhapHang chitiet)
         {
-            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
             {
-                string query = @"INSERT INTO ChiTietPhieuNhapHang Values(@MaPhieuNhap, @MaSP, @TenSP, @SoLuongNhap, @SoLuongThieu)";
+                string query = @"INSERT INTO ChiTietPhieuNhapHang Values(:MaPhieuNhap, :MaSP, :TenSP, :SoLuongNhap, :SoLuongThieu)";
 
 
 
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                using (OracleCommand cmd = new OracleCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@MaPhieuNhap", chitiet.MaPhieuNhap);
-                    cmd.Parameters.AddWithValue("@MaSP", chitiet.MaSP);
-                    cmd.Parameters.AddWithValue("@TenSP", chitiet.TenSP);
-                    cmd.Parameters.AddWithValue("@SoLuongNhap", chitiet.SoLuongNhap);
-                    cmd.Parameters.AddWithValue("@SoLuongThieu", chitiet.SoLuongNhap);
+                    cmd.Parameters.Add("MaPhieuNhap", chitiet.MaPhieuNhap);
+                    cmd.Parameters.Add("MaSP", chitiet.MaSP);
+                    cmd.Parameters.Add("TenSP", chitiet.TenSP);
+                    cmd.Parameters.Add("SoLuongNhap", chitiet.SoLuongNhap);
+                    cmd.Parameters.Add("SoLuongThieu", chitiet.SoLuongNhap);
                         
 
                     conn.Open();
@@ -85,12 +85,12 @@ namespace FinalProject_IS.DAOs
 
         public static int GetNewPhieuNhapID()
         {
-            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
             {
                 conn.Open();
 
                 string query = "SELECT ISNULL(MAX(MaPhieuNhap), 0) FROM PhieuNhapHang";
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                using (OracleCommand cmd = new OracleCommand(query, conn))
                 {
                     object result = cmd.ExecuteScalar();
                     int maxID = Convert.ToInt32(result);
@@ -103,17 +103,17 @@ namespace FinalProject_IS.DAOs
         {
             List<PhieuNhapHang> dsPhieuNhapHang = new List<PhieuNhapHang>();
 
-            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
             {
                 string query = @"SELECT MaPhieuNhap, NgayTao, TinhTrangPhieuNhap 
                          FROM PhieuNhapHang 
-                         WHERE MaPhieuNhap LIKE @maphieu";
+                         WHERE MaPhieuNhap LIKE :maphieu";
 
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                using (OracleCommand cmd = new OracleCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@maphieu", maphieu + "%");
+                    cmd.Parameters.Add("maphieu", maphieu + "%");
 
-                    SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
+                    OracleDataAdapter dataAdapter = new OracleDataAdapter(cmd);
                     DataTable dataTable = new DataTable();
 
                     dataAdapter.Fill(dataTable);
@@ -139,14 +139,14 @@ namespace FinalProject_IS.DAOs
         {
             List<ChiTietPhieuNhapHang> ChitietPhieuNhapHang = new List<ChiTietPhieuNhapHang>();
 
-            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
             {
 
-                string query = @"SELECT MaSP, TenSP, SoLuongNhap, SoLuongThieu FROM ChiTietPhieuNhapHang where MaPhieuNhap = @id";
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                string query = @"SELECT MaSP, TenSP, SoLuongNhap, SoLuongThieu FROM ChiTietPhieuNhapHang where MaPhieuNhap = :id";
+                using (OracleCommand cmd = new OracleCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@id", id);
-                    SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
+                    cmd.Parameters.Add("id", id);
+                    OracleDataAdapter dataAdapter = new OracleDataAdapter(cmd);
                     DataTable dataTable = new DataTable();
 
                     dataAdapter.Fill(dataTable);
@@ -168,17 +168,17 @@ namespace FinalProject_IS.DAOs
 
         public static void UpdateChiTietPhieuNhapHang(int id, int soluong)
         {
-            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
             {
                 conn.Open();
                 int soLuongCanTru = soluong;
 
                 string selectQuery = "SELECT ChiTietPhieuNhapHang.MaPhieuNhap, SoLuongThieu FROM ChiTietPhieuNhapHang left join PhieuNhapHang " +
                     "on ChiTietPhieuNhapHang.MaPhieuNhap = PhieuNhapHang.MaPhieuNhap " +
-                    "Where MaSP = @maSP and TinhTrangPhieuNhap = 'Dang cho' " +
+                    "Where MaSP = :maSP and TinhTrangPhieuNhap = 'Dang cho' " +
                     "ORDER BY MaPhieuNhap ASC";
-                SqlCommand selectCmd = new SqlCommand(selectQuery, conn);
-                selectCmd.Parameters.AddWithValue("@maSP", id);
+                OracleCommand selectCmd = new OracleCommand(selectQuery, conn);
+                selectCmd.Parameters.Add("maSP", id);
                 var reader = selectCmd.ExecuteReader();
 
                 List<(int MaPhieuNhap, int SoLuongThieu)> danhSach = new List<(int, int)>();
@@ -193,13 +193,13 @@ namespace FinalProject_IS.DAOs
                     int tru = Math.Min(soLuongCanTru, item.SoLuongThieu);
                     string updateQuery = @"
                     UPDATE ChiTietPhieuNhapHang 
-                    SET SoLuongThieu = SoLuongThieu - @tru 
-                    WHERE MaPhieuNhap = @maPhieuNhap AND MaSP = @maSP";
+                    SET SoLuongThieu = SoLuongThieu - :tru 
+                    WHERE MaPhieuNhap = :maPhieuNhap AND MaSP = :maSP";
 
-                    SqlCommand updateCmd = new SqlCommand(updateQuery, conn);
-                    updateCmd.Parameters.AddWithValue("@tru", tru);
-                    updateCmd.Parameters.AddWithValue("@maPhieuNhap", item.MaPhieuNhap);
-                    updateCmd.Parameters.AddWithValue("@maSP", id);
+                    OracleCommand updateCmd = new OracleCommand(updateQuery, conn);
+                    updateCmd.Parameters.Add("tru", tru);
+                    updateCmd.Parameters.Add("maPhieuNhap", item.MaPhieuNhap);
+                    updateCmd.Parameters.Add("maSP", id);
                     updateCmd.ExecuteNonQuery();
 
                     soLuongCanTru -= tru;
@@ -210,7 +210,7 @@ namespace FinalProject_IS.DAOs
 
         public static void UpdateTinhTrangPhieuNhap()
         {
-            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
             {
                 string query = @"
             UPDATE PhieuNhapHang
@@ -223,7 +223,7 @@ namespace FinalProject_IS.DAOs
             );
         ";
 
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                using (OracleCommand cmd = new OracleCommand(query, conn))
                 {
                     conn.Open();
                     cmd.ExecuteNonQuery();

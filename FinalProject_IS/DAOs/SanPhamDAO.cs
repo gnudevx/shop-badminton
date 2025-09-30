@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Data.SqlClient;
+using Oracle.ManagedDataAccess.Client;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -16,11 +16,11 @@ namespace FinalProject_IS.DAOs
         {
             List<SanPham> dsSanPham = new List<SanPham>();
 
-            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
             {
                 string query = "SELECT TOP 100 * FROM SanPham";
 
-                SqlDataAdapter dataAdapter = new SqlDataAdapter(query, conn);
+                OracleDataAdapter dataAdapter = new OracleDataAdapter(query, conn);
                 DataTable dataTable = new DataTable();
 
                 dataAdapter.Fill(dataTable);
@@ -48,12 +48,12 @@ namespace FinalProject_IS.DAOs
 
         public static int GetNewProductID()
         {
-            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
             {
                 conn.Open();
 
                 string query = "SELECT ISNULL(MAX(MaSP), 0) FROM SanPham";
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                using (OracleCommand cmd = new OracleCommand(query, conn))
                 {
                     object result = cmd.ExecuteScalar();
                     int maxID = Convert.ToInt32(result);
@@ -64,14 +64,14 @@ namespace FinalProject_IS.DAOs
 
         public static string GetProductNameByID(int productID)  
         {
-            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
             {
                 conn.Open();
 
-                string query = "Select TenSP From SanPham where MaSP = @productID;";
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                string query = "Select TenSP From SanPham where MaSP = :productID;";
+                using (OracleCommand cmd = new OracleCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@productID", productID);
+                    cmd.Parameters.Add("productID", productID);
                     object result = cmd.ExecuteScalar();
                     string name = result.ToString();
                     return name;
@@ -81,16 +81,16 @@ namespace FinalProject_IS.DAOs
 
         public static SanPham GetProductByID(int id)
         {
-            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
             {
                 conn.Open();
 
-                string query = "SELECT * FROM SanPham WHERE MaSP = @productID;";
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                string query = "SELECT * FROM SanPham WHERE MaSP = :productID;";
+                using (OracleCommand cmd = new OracleCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@productID", id);
+                    cmd.Parameters.Add("productID", id);
 
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    using (OracleDataReader reader = cmd.ExecuteReader())
                     {
                         if (reader.Read())
                         {
@@ -119,16 +119,16 @@ namespace FinalProject_IS.DAOs
         {
             SanPham sanPham = null;
 
-            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
             {
                 conn.Open(); // Mở kết nối đến database
 
-                string query = "SELECT * FROM SanPham WHERE MaSP = @MaSP;";
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                string query = "SELECT * FROM SanPham WHERE MaSP = :MaSP;";
+                using (OracleCommand cmd = new OracleCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@MaSP", maSP); // Truyền tham số an toàn
+                    cmd.Parameters.Add("MaSP", maSP); // Truyền tham số an toàn
 
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    using (OracleDataReader reader = cmd.ExecuteReader())
                     {
                         if (reader.Read()) // Nếu tìm thấy sản phẩm
                         {
@@ -155,19 +155,19 @@ namespace FinalProject_IS.DAOs
 
         public static void UpdateSanPhamNhan(int id, int soluong)
         {
-            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
             {
                 string query = @"UPDATE SanPham
-                        SET SoLuongTon = SoLuongTon + @soluong
-                        WHERE MaSP = @id;
+                        SET SoLuongTon = SoLuongTon + :soluong
+                        WHERE MaSP = :id;
                         ";
 
 
 
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                using (OracleCommand cmd = new OracleCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@soluong", soluong);
-                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.Parameters.Add("soluong", soluong);
+                    cmd.Parameters.Add("id", id);
                     conn.Open();
                     cmd.ExecuteNonQuery();
                 }

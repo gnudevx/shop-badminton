@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Oracle.ManagedDataAccess.Client;
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace FinalProject_IS.DAOs
 {
@@ -15,11 +16,11 @@ namespace FinalProject_IS.DAOs
         {
             List<KhachHang> dsKhachHang = new List<KhachHang>();
 
-            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
             {
                 string query = "SELECT * FROM KhachHang";
 
-                SqlDataAdapter dataAdapter = new SqlDataAdapter(query, conn);
+                OracleDataAdapter dataAdapter = new OracleDataAdapter(query, conn);
                 DataTable dataTable = new DataTable();
 
                 dataAdapter.Fill(dataTable);
@@ -44,18 +45,18 @@ namespace FinalProject_IS.DAOs
         {
             KhachHang khachHang = null;
 
-            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
             {
-                conn.Open(); // Mở kết nối đến database
+                conn.Open();
 
-                string query = "SELECT * FROM KhachHang WHERE SoDienThoai LIKE @SoDienThoai";
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                string query = "SELECT * FROM KhachHang WHERE SoDienThoai = :SoDienThoai";
+                using (OracleCommand cmd = new OracleCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@SoDienThoai", "%" + soDienThoai + "%"); // Tìm kiếm gần đúng
+                    cmd.Parameters.Add("SoDienThoai", soDienThoai);
 
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    using (OracleDataReader reader = cmd.ExecuteReader())
                     {
-                        if (reader.Read()) // Nếu có dữ liệu
+                        if (reader.Read())
                         {
                             khachHang = new KhachHang
                             {
@@ -70,23 +71,23 @@ namespace FinalProject_IS.DAOs
                 }
             }
 
-            return khachHang; // Trả về khách hàng hoặc null nếu không tìm thấy
+            return khachHang;
         }
         public static bool ThemKhachHang(KhachHang khachHang)
         {
-            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
             {
                 conn.Open(); // Mở kết nối đến cơ sở dữ liệu
 
                 string query = "INSERT INTO KhachHang (HoTen, SoDienThoai, TongChiTieu, MaLoaiKH) " +
-                               "VALUES (@HoTen, @SoDienThoai, @TongChiTieu, @MaLoaiKH);";
+                               "VALUES (:HoTen, :SoDienThoai, :TongChiTieu, :MaLoaiKH);";
 
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                using (OracleCommand cmd = new OracleCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@HoTen", khachHang.HoTen);
-                    cmd.Parameters.AddWithValue("@SoDienThoai", khachHang.SoDienThoai);
-                    cmd.Parameters.AddWithValue("@TongChiTieu", khachHang.TongChiTieu ?? (object)DBNull.Value);
-                    cmd.Parameters.AddWithValue("@MaLoaiKH", khachHang.MaLoaiKH ?? (object)DBNull.Value);
+                    cmd.Parameters.Add("HoTen", khachHang.HoTen);
+                    cmd.Parameters.Add("SoDienThoai", khachHang.SoDienThoai);
+                    cmd.Parameters.Add("TongChiTieu", khachHang.TongChiTieu ?? (object)DBNull.Value);
+                    cmd.Parameters.Add("MaLoaiKH", khachHang.MaLoaiKH ?? (object)DBNull.Value);
 
                     int rowsAffected = cmd.ExecuteNonQuery(); // Thực thi câu lệnh INSERT
 

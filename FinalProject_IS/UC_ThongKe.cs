@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
+using Oracle.ManagedDataAccess.Client;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -38,7 +38,7 @@ namespace FinalProject_IS
                                     NgayGioTao AS Ngay,
                                     TongTien AS DoanhThu
                                 FROM HoaDon
-                                WHERE MONTH(NgayGioTao) = @Month AND YEAR(NgayGioTao) = @Year
+                                WHERE MONTH(NgayGioTao) = :Month AND YEAR(NgayGioTao) = :Year
 
                                 UNION ALL
 
@@ -46,21 +46,21 @@ namespace FinalProject_IS
                                     NgayGioTao AS Ngay,
                                     ThanhTien AS DoanhThu
                                 FROM HoaDonDichVu
-                                WHERE MONTH(NgayGioTao) = @Month AND YEAR(NgayGioTao) = @Year AND LoaiPhieu = 'DV'
+                                WHERE MONTH(NgayGioTao) = :Month AND YEAR(NgayGioTao) = :Year AND LoaiPhieu = 'DV'
                             ) AS TongHop
                             GROUP BY DAY(Ngay)
                             ORDER BY Ngay";
 
                 DataTable dt = new DataTable();
 
-                using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+                using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
                 {
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    using (OracleCommand cmd = new OracleCommand(query, conn))
                     {
-                        cmd.Parameters.AddWithValue("@Month", month);
-                        cmd.Parameters.AddWithValue("@Year", year);
+                        cmd.Parameters.Add("Month", month);
+                        cmd.Parameters.Add("Year", year);
 
-                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                        OracleDataAdapter adapter = new OracleDataAdapter(cmd);
                         adapter.Fill(dt);
                     }
                 }
@@ -100,7 +100,7 @@ namespace FinalProject_IS
                                     NgayGioTao AS Ngay,
                                     TongTien AS DoanhThu
                                 FROM HoaDon
-                                WHERE YEAR(NgayGioTao) = @Year
+                                WHERE YEAR(NgayGioTao) = :Year
 
                                 UNION ALL
 
@@ -108,20 +108,20 @@ namespace FinalProject_IS
                                     NgayGioTao AS Ngay,
                                     ThanhTien AS DoanhThu
                                 FROM HoaDonDichVu
-                                WHERE YEAR(NgayGioTao) = @Year AND LoaiPhieu = 'DV'
+                                WHERE YEAR(NgayGioTao) = :Year AND LoaiPhieu = 'DV'
                             ) AS TongHop
                             GROUP BY MONTH(Ngay)
                             ORDER BY Thang";
 
             DataTable dt = new DataTable();
 
-            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
             {
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                using (OracleCommand cmd = new OracleCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@Year", year);
+                    cmd.Parameters.Add("Year", year);
 
-                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    OracleDataAdapter adapter = new OracleDataAdapter(cmd);
                     adapter.Fill(dt);
                 }
             }
@@ -162,11 +162,11 @@ namespace FinalProject_IS
 
                 DataTable dt = new DataTable();
 
-                using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+                using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
                 {
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    using (OracleCommand cmd = new OracleCommand(query, conn))
                     {
-                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                        OracleDataAdapter adapter = new OracleDataAdapter(cmd);
                         adapter.Fill(dt);
                     }
                 }
@@ -209,11 +209,11 @@ namespace FinalProject_IS
 
                 DataTable dt = new DataTable();
 
-                using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+                using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
                 {
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    using (OracleCommand cmd = new OracleCommand(query, conn))
                     {
-                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                        OracleDataAdapter adapter = new OracleDataAdapter(cmd);
                         adapter.Fill(dt);
                     }
                 }
@@ -246,7 +246,7 @@ namespace FinalProject_IS
                                     FROM HoaDon hd
                                     JOIN ChiTietHD_SanPham ct ON hd.MaHD = ct.MaHD
                                     LEFT JOIN ThongtinNhap ttn ON ct.MaSP = ttn.MaSP
-                                    WHERE MONTH(hd.NgayGioTao) = @Month AND YEAR(hd.NgayGioTao) = @Year
+                                    WHERE MONTH(hd.NgayGioTao) = :Month AND YEAR(hd.NgayGioTao) = :Year
                                     GROUP BY CAST(hd.NgayGioTao AS DATE)
                                 ),
                                 LoiNhuanDichVu AS (
@@ -254,7 +254,7 @@ namespace FinalProject_IS
                                         CAST(NgayGioTao AS DATE) AS Ngay,
                                         SUM(ThanhTien) AS LoiNhuan
                                     FROM HoaDonDichVu
-                                    WHERE MONTH(NgayGioTao) = @Month AND YEAR(NgayGioTao) = @Year AND LoaiPhieu = 'DV'
+                                    WHERE MONTH(NgayGioTao) = :Month AND YEAR(NgayGioTao) = :Year AND LoaiPhieu = 'DV'
                                     GROUP BY CAST(NgayGioTao AS DATE)
                                 )
                                 SELECT 
@@ -270,14 +270,14 @@ namespace FinalProject_IS
 
                 DataTable dt = new DataTable();
 
-                using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+                using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
                 {
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    using (OracleCommand cmd = new OracleCommand(query, conn))
                     {
-                        cmd.Parameters.AddWithValue("@Month", month);
-                        cmd.Parameters.AddWithValue("@Year", year);
+                        cmd.Parameters.Add("Month", month);
+                        cmd.Parameters.Add("Year", year);
 
-                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                        OracleDataAdapter adapter = new OracleDataAdapter(cmd);
                         adapter.Fill(dt);
                     }
                 }
@@ -325,7 +325,7 @@ namespace FinalProject_IS
                                     FROM HoaDon hd
                                     JOIN ChiTietHD_SanPham ct ON hd.MaHD = ct.MaHD
                                     LEFT JOIN ThongTinNhap ttn ON ct.MaSP = ttn.MaSP
-                                    WHERE YEAR(hd.NgayGioTao) = @Year
+                                    WHERE YEAR(hd.NgayGioTao) = :Year
                                     GROUP BY CAST(hd.NgayGioTao AS DATE)
                                 ),
                                 LoiNhuanDichVu AS (
@@ -333,7 +333,7 @@ namespace FinalProject_IS
                                         CAST(NgayGioTao AS DATE) AS Ngay,
                                         SUM(ThanhTien) AS LoiNhuan
                                     FROM HoaDonDichVu
-                                    WHERE YEAR(NgayGioTao) = @Year AND LoaiPhieu = 'DV'
+                                    WHERE YEAR(NgayGioTao) = :Year AND LoaiPhieu = 'DV'
                                     GROUP BY CAST(NgayGioTao AS DATE)
                                 )
                                 SELECT 
@@ -350,13 +350,13 @@ namespace FinalProject_IS
             
                 DataTable dt = new DataTable();
 
-                using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+                using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
                 {
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    using (OracleCommand cmd = new OracleCommand(query, conn))
                     {
-                        cmd.Parameters.AddWithValue("@Year", year);
+                        cmd.Parameters.Add("Year", year);
 
-                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                        OracleDataAdapter adapter = new OracleDataAdapter(cmd);
                         adapter.Fill(dt);
                     }
                 }

@@ -149,6 +149,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1484, 667);
             this.panel1.TabIndex = 8;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // groupBox1
             // 
@@ -174,7 +175,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Consolas", 8.25F);
             this.groupBox1.Location = new System.Drawing.Point(1106, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(396, 644);
+            this.groupBox1.Size = new System.Drawing.Size(396, 648);
             this.groupBox1.TabIndex = 41;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thanh Toán";
@@ -639,7 +640,7 @@
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(482, 628);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(245, 16);
+            this.label14.Size = new System.Drawing.Size(211, 13);
             this.label14.TabIndex = 21;
             this.label14.Text = "__________________________________";
             // 
@@ -926,7 +927,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(300, 74);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(0, 16);
+            this.label5.Size = new System.Drawing.Size(0, 13);
             this.label5.TabIndex = 6;
             // 
             // label1
@@ -937,7 +938,7 @@
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(393, 31);
+            this.label1.Size = new System.Drawing.Size(300, 24);
             this.label1.TabIndex = 7;
             this.label1.Text = "Phần mềm bán hàng VNBSports";
             // 

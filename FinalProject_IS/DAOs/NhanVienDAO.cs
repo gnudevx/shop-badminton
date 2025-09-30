@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
+using Oracle.ManagedDataAccess.Client;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -14,11 +14,11 @@ namespace FinalProject_IS.DAOs
         {
             List<NhanVien> dsNhanVien = new List<NhanVien>();
 
-            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
             {
                 string query = "SELECT * FROM NhanVien";
 
-                SqlDataAdapter dataAdapter = new SqlDataAdapter(query, conn);
+                OracleDataAdapter dataAdapter = new OracleDataAdapter(query, conn);
                 DataTable dataTable = new DataTable();
 
                 dataAdapter.Fill(dataTable);
@@ -43,20 +43,20 @@ namespace FinalProject_IS.DAOs
         }
         public static void ThemNhanVien(NhanVien nv)
         {
-            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
             {
-                string query = @"INSERT INTO NhanVien Values(@MaNV, @HoTen, @NgaySinh, @GioiTinh,
-                                                                    @Email, @MaChucVu, @LuongCoBan)";
+                string query = @"INSERT INTO NhanVien Values(:MaNV, :HoTen, :NgaySinh, :GioiTinh,
+                                                                    :Email, :MaChucVu, :LuongCoBan)";
 
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                using (OracleCommand cmd = new OracleCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@MaNV", nv.MaNV);
-                    cmd.Parameters.AddWithValue("@HoTen", nv.HoTen);
-                    cmd.Parameters.AddWithValue("@NgaySinh", nv.NgaySinh);
-                    cmd.Parameters.AddWithValue("@GioiTinh", nv.GioiTinh);
-                    cmd.Parameters.AddWithValue("@Email", nv.Email);
-                    cmd.Parameters.AddWithValue("@MaChucVu", nv.MaChucVu);
-                    cmd.Parameters.AddWithValue("@LuongCoBan", nv.LuongCoBan);
+                    cmd.Parameters.Add("MaNV", nv.MaNV);
+                    cmd.Parameters.Add("HoTen", nv.HoTen);
+                    cmd.Parameters.Add("NgaySinh", nv.NgaySinh);
+                    cmd.Parameters.Add("GioiTinh", nv.GioiTinh);
+                    cmd.Parameters.Add("Email", nv.Email);
+                    cmd.Parameters.Add("MaChucVu", nv.MaChucVu);
+                    cmd.Parameters.Add("LuongCoBan", nv.LuongCoBan);
 
                     conn.Open();
                     cmd.ExecuteNonQuery();
