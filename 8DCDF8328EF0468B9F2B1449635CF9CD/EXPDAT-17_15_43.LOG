@@ -1,0 +1,148 @@
+Starting "DP_ADMIN"."EXP_SD_658-17_11_12":  
+Processing object type TABLE_EXPORT/TABLE/TABLE_DATA
+.  estimated "SHOPBADMINTON"."CHITIETHD_SANPHAM"         4.683 KB
+.  estimated "SHOPBADMINTON"."CHITIETPHIEUNHAN"          4.683 KB
+.  estimated "SHOPBADMINTON"."CHITIETPHIEUNHAPHANG"      4.683 KB
+.  estimated "SHOPBADMINTON"."CHITIET_HOADONDICHVU"      4.683 KB
+.  estimated "SHOPBADMINTON"."CHUCVU"                    4.683 KB
+.  estimated "SHOPBADMINTON"."HOADON"                    4.683 KB
+.  estimated "SHOPBADMINTON"."HOADONDICHVU"              4.683 KB
+.  estimated "SHOPBADMINTON"."HOADONLUONG"               4.683 KB
+.  estimated "SHOPBADMINTON"."KHACHHANG"                 4.683 KB
+.  estimated "SHOPBADMINTON"."KHACHHANG_KHUYENMAI"       4.683 KB
+.  estimated "SHOPBADMINTON"."KHUYENMAI"                 4.683 KB
+.  estimated "SHOPBADMINTON"."LOAIKHACHHANG"             4.683 KB
+.  estimated "SHOPBADMINTON"."MD_ADDITIONAL_PROPERTIES"  4.683 KB
+.  estimated "SHOPBADMINTON"."MD_APPLICATIONFILES"       4.683 KB
+.  estimated "SHOPBADMINTON"."MD_APPLICATIONS"           4.683 KB
+.  estimated "SHOPBADMINTON"."MD_CATALOGS"               4.683 KB
+.  estimated "SHOPBADMINTON"."MD_CODE_REGEX"             4.683 KB
+.  estimated "SHOPBADMINTON"."MD_COLUMNS"                4.683 KB
+.  estimated "SHOPBADMINTON"."MD_CONNECTIONS"            4.683 KB
+.  estimated "SHOPBADMINTON"."MD_CONSTRAINTS"            4.683 KB
+.  estimated "SHOPBADMINTON"."MD_CONSTRAINT_DETAILS"     4.683 KB
+.  estimated "SHOPBADMINTON"."MD_DERIVATIVES"            4.683 KB
+.  estimated "SHOPBADMINTON"."MD_FILE_ARTIFACTS"         4.683 KB
+.  estimated "SHOPBADMINTON"."MD_GROUPS"                 4.683 KB
+.  estimated "SHOPBADMINTON"."MD_GROUP_MEMBERS"          4.683 KB
+.  estimated "SHOPBADMINTON"."MD_GROUP_PRIVILEGES"       4.683 KB
+.  estimated "SHOPBADMINTON"."MD_INDEXES"                4.683 KB
+.  estimated "SHOPBADMINTON"."MD_INDEX_DETAILS"          4.683 KB
+.  estimated "SHOPBADMINTON"."MD_MIGR_DEPENDENCY"        4.683 KB
+.  estimated "SHOPBADMINTON"."MD_MIGR_PARAMETER"         4.683 KB
+.  estimated "SHOPBADMINTON"."MD_MIGR_WEAKDEP"           4.683 KB
+.  estimated "SHOPBADMINTON"."MD_NUMROW$SOURCE"          4.683 KB
+.  estimated "SHOPBADMINTON"."MD_NUMROW$TARGET"          4.683 KB
+.  estimated "SHOPBADMINTON"."MD_OTHER_OBJECTS"          4.683 KB
+.  estimated "SHOPBADMINTON"."MD_PACKAGES"               4.683 KB
+.  estimated "SHOPBADMINTON"."MD_PARTITIONS"             4.683 KB
+.  estimated "SHOPBADMINTON"."MD_PRIVILEGES"             4.683 KB
+.  estimated "SHOPBADMINTON"."MD_PROJECTS"               4.683 KB
+.  estimated "SHOPBADMINTON"."MD_REGISTRY"               4.683 KB
+.  estimated "SHOPBADMINTON"."MD_REPOVERSIONS"           4.683 KB
+.  estimated "SHOPBADMINTON"."MD_SCHEMAS"                4.683 KB
+.  estimated "SHOPBADMINTON"."MD_SEQUENCES"              4.683 KB
+.  estimated "SHOPBADMINTON"."MD_STORED_PROGRAMS"        4.683 KB
+.  estimated "SHOPBADMINTON"."MD_SYNONYMS"               4.683 KB
+.  estimated "SHOPBADMINTON"."MD_TABLES"                 4.683 KB
+.  estimated "SHOPBADMINTON"."MD_TABLESPACES"            4.683 KB
+.  estimated "SHOPBADMINTON"."MD_TARGET_ALL_ERRORS"      4.683 KB
+.  estimated "SHOPBADMINTON"."MD_TARGET_ALL_OBJECTS"     4.683 KB
+.  estimated "SHOPBADMINTON"."MD_TRIGGERS"               4.683 KB
+.  estimated "SHOPBADMINTON"."MD_USERS"                  4.683 KB
+.  estimated "SHOPBADMINTON"."MD_USER_DEFINED_DATA_TYPES"  4.683 KB
+.  estimated "SHOPBADMINTON"."MD_USER_PRIVILEGES"        4.683 KB
+.  estimated "SHOPBADMINTON"."MD_VIEWS"                  4.683 KB
+.  estimated "SHOPBADMINTON"."MIGRATION_RESERVED_WORDS"  4.683 KB
+.  estimated "SHOPBADMINTON"."MIGRLOG"                   4.683 KB
+.  estimated "SHOPBADMINTON"."MIGR_DATATYPE_TRANSFORM_MAP"  4.683 KB
+.  estimated "SHOPBADMINTON"."MIGR_DATATYPE_TRANSFORM_RULE"  4.683 KB
+.  estimated "SHOPBADMINTON"."MIGR_GENERATION_ORDER"     4.683 KB
+.  estimated "SHOPBADMINTON"."NHANVIEN"                  4.683 KB
+.  estimated "SHOPBADMINTON"."PHIEUNHAN"                 4.683 KB
+.  estimated "SHOPBADMINTON"."PHIEUNHAPHANG"             4.683 KB
+.  estimated "SHOPBADMINTON"."SANPHAM"                   4.683 KB
+.  estimated "SHOPBADMINTON"."STAGE_MIGRLOG"             4.683 KB
+.  estimated "SHOPBADMINTON"."THUONGHIEU"                4.683 KB
+Processing object type TABLE_EXPORT/TABLE/INDEX/STATISTICS/INDEX_STATISTICS
+Processing object type TABLE_EXPORT/TABLE/INDEX/STATISTICS/FUNCTIONAL_INDEX/INDEX_STATISTICS
+Processing object type TABLE_EXPORT/TABLE/STATISTICS/TABLE_STATISTICS
+Processing object type TABLE_EXPORT/TABLE/STATISTICS/MARKER
+Processing object type TABLE_EXPORT/TABLE/TABLE
+Processing object type TABLE_EXPORT/TABLE/COMMENT
+Processing object type TABLE_EXPORT/TABLE/AUDIT_OBJ
+Processing object type TABLE_EXPORT/TABLE/IDENTITY_COLUMN
+Processing object type TABLE_EXPORT/TABLE/INDEX/INDEX
+Processing object type TABLE_EXPORT/TABLE/INDEX/FUNCTIONAL_INDEX/INDEX
+Processing object type TABLE_EXPORT/TABLE/CONSTRAINT/CONSTRAINT
+Processing object type TABLE_EXPORT/TABLE/CONSTRAINT/REF_CONSTRAINT
+Processing object type TABLE_EXPORT/TABLE/TRIGGER
+. . exported "SHOPBADMINTON"."CHITIETHD_SANPHAM"         5.625 KB      30 rows
+. . exported "SHOPBADMINTON"."CHITIETPHIEUNHAN"              0 KB       0 rows
+. . exported "SHOPBADMINTON"."CHITIETPHIEUNHAPHANG"          0 KB       0 rows
+. . exported "SHOPBADMINTON"."CHITIET_HOADONDICHVU"          0 KB       0 rows
+. . exported "SHOPBADMINTON"."CHUCVU"                    4.890 KB       4 rows
+. . exported "SHOPBADMINTON"."HOADON"                      5.5 KB      20 rows
+. . exported "SHOPBADMINTON"."HOADONDICHVU"              5.593 KB      10 rows
+. . exported "SHOPBADMINTON"."HOADONLUONG"               5.226 KB      10 rows
+. . exported "SHOPBADMINTON"."KHACHHANG"                 5.343 KB      10 rows
+. . exported "SHOPBADMINTON"."KHACHHANG_KHUYENMAI"           0 KB       0 rows
+. . exported "SHOPBADMINTON"."KHUYENMAI"                     0 KB       0 rows
+. . exported "SHOPBADMINTON"."LOAIKHACHHANG"             5.195 KB      10 rows
+. . exported "SHOPBADMINTON"."MD_ADDITIONAL_PROPERTIES"  6.945 KB     107 rows
+. . exported "SHOPBADMINTON"."MD_APPLICATIONFILES"           0 KB       0 rows
+. . exported "SHOPBADMINTON"."MD_APPLICATIONS"               0 KB       0 rows
+. . exported "SHOPBADMINTON"."MD_CATALOGS"               5.695 KB       2 rows
+. . exported "SHOPBADMINTON"."MD_CODE_REGEX"             5.046 KB       5 rows
+. . exported "SHOPBADMINTON"."MD_COLUMNS"                8.257 KB     186 rows
+. . exported "SHOPBADMINTON"."MD_CONNECTIONS"            7.125 KB       2 rows
+. . exported "SHOPBADMINTON"."MD_CONSTRAINTS"            10.48 KB      76 rows
+. . exported "SHOPBADMINTON"."MD_CONSTRAINT_DETAILS"     6.648 KB     118 rows
+. . exported "SHOPBADMINTON"."MD_DERIVATIVES"            12.39 KB     362 rows
+. . exported "SHOPBADMINTON"."MD_FILE_ARTIFACTS"             0 KB       0 rows
+. . exported "SHOPBADMINTON"."MD_GROUPS"                     0 KB       0 rows
+. . exported "SHOPBADMINTON"."MD_GROUP_MEMBERS"              0 KB       0 rows
+. . exported "SHOPBADMINTON"."MD_GROUP_PRIVILEGES"           0 KB       0 rows
+. . exported "SHOPBADMINTON"."MD_INDEXES"                    0 KB       0 rows
+. . exported "SHOPBADMINTON"."MD_INDEX_DETAILS"              0 KB       0 rows
+. . exported "SHOPBADMINTON"."MD_MIGR_DEPENDENCY"        5.648 KB       3 rows
+. . exported "SHOPBADMINTON"."MD_MIGR_PARAMETER"             0 KB       0 rows
+. . exported "SHOPBADMINTON"."MD_MIGR_WEAKDEP"               0 KB       0 rows
+. . exported "SHOPBADMINTON"."MD_NUMROW$SOURCE"              0 KB       0 rows
+. . exported "SHOPBADMINTON"."MD_NUMROW$TARGET"              0 KB       0 rows
+. . exported "SHOPBADMINTON"."MD_OTHER_OBJECTS"              0 KB       0 rows
+. . exported "SHOPBADMINTON"."MD_PACKAGES"               38.82 KB       1 rows
+. . exported "SHOPBADMINTON"."MD_PARTITIONS"                 0 KB       0 rows
+. . exported "SHOPBADMINTON"."MD_PRIVILEGES"                 0 KB       0 rows
+. . exported "SHOPBADMINTON"."MD_PROJECTS"               5.351 KB       1 rows
+. . exported "SHOPBADMINTON"."MD_REGISTRY"               6.406 KB     134 rows
+. . exported "SHOPBADMINTON"."MD_REPOVERSIONS"           4.718 KB       1 rows
+. . exported "SHOPBADMINTON"."MD_SCHEMAS"                5.960 KB       2 rows
+. . exported "SHOPBADMINTON"."MD_SEQUENCES"                  0 KB       0 rows
+. . exported "SHOPBADMINTON"."MD_STORED_PROGRAMS"            0 KB       0 rows
+. . exported "SHOPBADMINTON"."MD_SYNONYMS"                   0 KB       0 rows
+. . exported "SHOPBADMINTON"."MD_TABLES"                 8.640 KB      34 rows
+. . exported "SHOPBADMINTON"."MD_TABLESPACES"                0 KB       0 rows
+. . exported "SHOPBADMINTON"."MD_TARGET_ALL_ERRORS"          0 KB       0 rows
+. . exported "SHOPBADMINTON"."MD_TARGET_ALL_OBJECTS"     9.070 KB     532 rows
+. . exported "SHOPBADMINTON"."MD_TRIGGERS"                   0 KB       0 rows
+. . exported "SHOPBADMINTON"."MD_USERS"                      0 KB       0 rows
+. . exported "SHOPBADMINTON"."MD_USER_DEFINED_DATA_TYPES"      0 KB       0 rows
+. . exported "SHOPBADMINTON"."MD_USER_PRIVILEGES"            0 KB       0 rows
+. . exported "SHOPBADMINTON"."MD_VIEWS"                      0 KB       0 rows
+. . exported "SHOPBADMINTON"."MIGRATION_RESERVED_WORDS"  5.343 KB     110 rows
+. . exported "SHOPBADMINTON"."MIGRLOG"                   22.65 KB    1332 rows
+. . exported "SHOPBADMINTON"."MIGR_DATATYPE_TRANSFORM_MAP"  5.359 KB       1 rows
+. . exported "SHOPBADMINTON"."MIGR_DATATYPE_TRANSFORM_RULE"  6.296 KB      37 rows
+. . exported "SHOPBADMINTON"."MIGR_GENERATION_ORDER"     5.156 KB       3 rows
+. . exported "SHOPBADMINTON"."NHANVIEN"                  5.570 KB      10 rows
+. . exported "SHOPBADMINTON"."PHIEUNHAN"                     0 KB       0 rows
+. . exported "SHOPBADMINTON"."PHIEUNHAPHANG"                 0 KB       0 rows
+. . exported "SHOPBADMINTON"."SANPHAM"                   131.0 KB     800 rows
+. . exported "SHOPBADMINTON"."STAGE_MIGRLOG"                 0 KB       0 rows
+. . exported "SHOPBADMINTON"."THUONGHIEU"                5.164 KB      42 rows
+Master table "DP_ADMIN"."EXP_SD_658-17_11_12" successfully loaded/unloaded
+******************************************************************************
+Dump file set for DP_ADMIN.EXP_SD_658-17_11_12 is:
+  D:\NAMCUOI\SECURITYDATABASE\ORACLE\PROJECT_HTTT\8DCDF8328EF0468B9F2B1449635CF9CD\DLL_SHOPBADMINTON-17_15_43.DMP
+Job "DP_ADMIN"."EXP_SD_658-17_11_12" successfully completed at Tue Sep 30 17:16:44 2025 elapsed 0 00:01:02
