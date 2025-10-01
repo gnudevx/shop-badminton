@@ -15,7 +15,7 @@ namespace FinalProject_IS.DAOs
         {
             List<HoaDon> dsHoaDon = new List<HoaDon>();
 
-            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = DataProvider.GetConnection())
             {
                 string query = "SELECT * FROM HoaDon";
 
@@ -47,7 +47,7 @@ namespace FinalProject_IS.DAOs
         {
             List<ChiTietHD_SanPham> ChiTietHD_SanPham = new List<ChiTietHD_SanPham>();
 
-            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = DataProvider.GetConnection())
             {
                 string query = @"SELECT MASP, SOLUONGSP, DONGIA, THANHTIEN 
                                  FROM CHITIETHD_SANPHAM 

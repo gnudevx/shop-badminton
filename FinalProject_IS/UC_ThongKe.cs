@@ -53,7 +53,7 @@ namespace FinalProject_IS
 
                 DataTable dt = new DataTable();
 
-                using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
+                using (OracleConnection conn = DataProvider.GetConnection())
                 {
                     using (OracleCommand cmd = new OracleCommand(query, conn))
                     {
@@ -115,7 +115,7 @@ namespace FinalProject_IS
 
             DataTable dt = new DataTable();
 
-            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = DataProvider.GetConnection())
             {
                 using (OracleCommand cmd = new OracleCommand(query, conn))
                 {
@@ -162,7 +162,7 @@ namespace FinalProject_IS
 
                 DataTable dt = new DataTable();
 
-                using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
+                using (OracleConnection conn = DataProvider.GetConnection())
                 {
                     using (OracleCommand cmd = new OracleCommand(query, conn))
                     {
@@ -209,7 +209,7 @@ namespace FinalProject_IS
 
                 DataTable dt = new DataTable();
 
-                using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
+                using (OracleConnection conn = DataProvider.GetConnection())
                 {
                     using (OracleCommand cmd = new OracleCommand(query, conn))
                     {
@@ -270,7 +270,7 @@ namespace FinalProject_IS
 
                 DataTable dt = new DataTable();
 
-                using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
+                using (OracleConnection conn = DataProvider.GetConnection())
                 {
                     using (OracleCommand cmd = new OracleCommand(query, conn))
                     {
@@ -350,7 +350,7 @@ namespace FinalProject_IS
             
                 DataTable dt = new DataTable();
 
-                using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
+                using (OracleConnection conn = DataProvider.GetConnection())
                 {
                     using (OracleCommand cmd = new OracleCommand(query, conn))
                     {

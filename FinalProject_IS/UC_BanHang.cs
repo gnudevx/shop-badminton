@@ -312,9 +312,9 @@ namespace FinalProject_IS
             string soHD;
             Random rnd = new Random();
 
-            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = DataProvider.GetConnection())
             {
-                conn.Open();
+                
                 while (true)
                 {
                     soHD = "HD" + DateTime.Now.ToString("yyyyMMddHHmm") + rnd.Next(10, 99);
@@ -332,9 +332,9 @@ namespace FinalProject_IS
         }
     private void LuuHoaDon()
             {
-                using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
+                using (OracleConnection conn = DataProvider.GetConnection())
                 {
-                    conn.Open();
+                    
                     OracleTransaction tran = conn.BeginTransaction();
 
                     try
@@ -384,9 +384,9 @@ namespace FinalProject_IS
             }
         private int LayMaKH_TuSDT(string sdt)
         {
-            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = DataProvider.GetConnection())
             {
-                conn.Open();
+                
                 string sql = "SELECT MaKH FROM KhachHang WHERE SoDienThoai = :sdt";
                 OracleCommand cmd = new OracleCommand(sql, conn);
                 cmd.Parameters.Add("sdt", sdt);
@@ -404,9 +404,9 @@ namespace FinalProject_IS
         }
         private int LayMaNV_TuTen(string tenNV)
         {
-            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = DataProvider.GetConnection())
             {
-                conn.Open();
+                
                 string sql = "SELECT MaNV FROM NhanVien WHERE HoTen = :ten";
                 OracleCommand cmd = new OracleCommand(sql, conn);
                 cmd.Parameters.Add("ten", tenNV);

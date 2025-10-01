@@ -14,7 +14,7 @@ namespace FinalProject_IS.DAOs
         {
             List<HoaDonDichVu> dsHoaDonDichVu = new List<HoaDonDichVu>();
 
-            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = DataProvider.GetConnection())
             {
                 string query = "SELECT * FROM HoaDonDichVu";
 

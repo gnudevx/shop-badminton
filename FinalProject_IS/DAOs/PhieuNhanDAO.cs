@@ -16,7 +16,7 @@ namespace FinalProject_IS.DAOs
         {
             List<PhieuNhan> dsPhieuNhan = new List<PhieuNhan>();
 
-            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = DataProvider.GetConnection())
             {
                 string query = "SELECT * FROM PhieuNhan";
 
@@ -42,7 +42,7 @@ namespace FinalProject_IS.DAOs
         {
             List<PhieuNhan> dsPhieuNhan = new List<PhieuNhan>();
 
-            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = DataProvider.GetConnection())
             {
                 string query = @"SELECT * FROM PhieuNhan
                          WHERE MaPhieuNhan LIKE :maphieu";
@@ -83,10 +83,10 @@ namespace FinalProject_IS.DAOs
             string order = ascending ? "ASC" : "DESC"; // Chọn thứ tự sắp xếp
             string query = $@"SELECT * FROM PhieuNhan ORDER BY {columnName} {order}";
 
-            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = DataProvider.GetConnection())
             using (OracleCommand cmd = new OracleCommand(query, conn))
             {
-                conn.Open();
+                
 
                 using (OracleDataReader reader = cmd.ExecuteReader())
                 {
@@ -116,7 +116,7 @@ namespace FinalProject_IS.DAOs
 
         public static void InsertPhieu(PhieuNhan phieu)
         {
-            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = DataProvider.GetConnection())
             {
                 string query = @"INSERT INTO PhieuNhan Values(:NgayTao)";
 
@@ -126,7 +126,7 @@ namespace FinalProject_IS.DAOs
                 {
                     cmd.Parameters.Add("NgayTao", phieu.NgayTao);
 
-                    conn.Open();
+                    
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -134,7 +134,7 @@ namespace FinalProject_IS.DAOs
 
         public static void InsertChiTietPhieu(ChiTietPhieuNhan chitiet)
         {
-            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = DataProvider.GetConnection())
             {
                 string query = @"INSERT INTO ChiTietPhieuNhan Values(:MaPhieuNhan, :MaSP, :TenSP, :LoaiSP
                                                                         ,:SoLuongNhap, :DonGiaNhap, :ThuongHieu
@@ -156,7 +156,7 @@ namespace FinalProject_IS.DAOs
                     cmd.Parameters.Add("TongTien", chitiet.TongTien);
                     cmd.Parameters.Add("NgayNhan", chitiet.NgayNhan);
 
-                    conn.Open();
+                    
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -164,9 +164,9 @@ namespace FinalProject_IS.DAOs
 
         public static int GetNewPhieuNhanID()
         {
-            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = DataProvider.GetConnection())
             {
-                conn.Open();
+                
 
                 string query = "SELECT ISNULL(MAX(MaPhieuNhan), 0) FROM PhieuNhan";
                 using (OracleCommand cmd = new OracleCommand(query, conn))
@@ -182,7 +182,7 @@ namespace FinalProject_IS.DAOs
         {
             List<ChiTietPhieuNhan> ChitietPhieuNhanHang = new List<ChiTietPhieuNhan>();
 
-            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = DataProvider.GetConnection())
             {
                 string query = @"SELECT * FROM ChiTietPhieuNhan where MaPhieuNhan = :id";
                 using (OracleCommand cmd = new OracleCommand(query, conn))

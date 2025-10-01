@@ -16,7 +16,7 @@ namespace FinalProject_IS.DAOs
         {
             List<SanPham> dsSanPham = new List<SanPham>();
 
-            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = DataProvider.GetConnection())
             {
                 string query = "SELECT TOP 100 * FROM SanPham";
 
@@ -48,9 +48,9 @@ namespace FinalProject_IS.DAOs
 
         public static int GetNewProductID()
         {
-            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = DataProvider.GetConnection())
             {
-                conn.Open();
+                
 
                 string query = "SELECT ISNULL(MAX(MaSP), 0) FROM SanPham";
                 using (OracleCommand cmd = new OracleCommand(query, conn))
@@ -64,9 +64,9 @@ namespace FinalProject_IS.DAOs
 
         public static string GetProductNameByID(int productID)  
         {
-            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = DataProvider.GetConnection())
             {
-                conn.Open();
+                
 
                 string query = "Select TenSP From SanPham where MaSP = :productID;";
                 using (OracleCommand cmd = new OracleCommand(query, conn))
@@ -81,9 +81,9 @@ namespace FinalProject_IS.DAOs
 
         public static SanPham GetProductByID(int id)
         {
-            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = DataProvider.GetConnection())
             {
-                conn.Open();
+                
 
                 string query = "SELECT * FROM SanPham WHERE MaSP = :productID;";
                 using (OracleCommand cmd = new OracleCommand(query, conn))
@@ -119,9 +119,9 @@ namespace FinalProject_IS.DAOs
         {
             SanPham sanPham = null;
 
-            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = DataProvider.GetConnection())
             {
-                conn.Open(); // Mở kết nối đến database
+                 // Mở kết nối đến database
 
                 string query = "SELECT * FROM SanPham WHERE MaSP = :MaSP;";
                 using (OracleCommand cmd = new OracleCommand(query, conn))
@@ -155,7 +155,7 @@ namespace FinalProject_IS.DAOs
 
         public static void UpdateSanPhamNhan(int id, int soluong)
         {
-            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = DataProvider.GetConnection())
             {
                 string query = @"UPDATE SanPham
                         SET SoLuongTon = SoLuongTon + :soluong
@@ -168,7 +168,7 @@ namespace FinalProject_IS.DAOs
                 {
                     cmd.Parameters.Add("soluong", soluong);
                     cmd.Parameters.Add("id", id);
-                    conn.Open();
+                    
                     cmd.ExecuteNonQuery();
                 }
             }

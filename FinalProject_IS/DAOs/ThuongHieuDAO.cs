@@ -11,9 +11,9 @@ namespace FinalProject_IS.DAOs
     {
         public static string GetTenThuongHieuByID(int? id)
         {
-            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = DataProvider.GetConnection())
             {
-                conn.Open();
+                
 
                 string query = "Select TenTH From ThuongHieu where MaTH = :productID;";
                 using (OracleCommand cmd = new OracleCommand(query, conn))
