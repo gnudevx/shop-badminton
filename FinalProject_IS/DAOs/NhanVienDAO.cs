@@ -14,7 +14,7 @@ namespace FinalProject_IS.DAOs
         {
             List<NhanVien> dsNhanVien = new List<NhanVien>();
 
-            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = DataProvider.GetConnection())
             {
                 string query = "SELECT * FROM NhanVien";
 
@@ -43,7 +43,7 @@ namespace FinalProject_IS.DAOs
         }
         public static void ThemNhanVien(NhanVien nv)
         {
-            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = DataProvider.GetConnection())
             {
                 string query = @"INSERT INTO NhanVien Values(:MaNV, :HoTen, :NgaySinh, :GioiTinh,
                                                                     :Email, :MaChucVu, :LuongCoBan)";
@@ -58,7 +58,7 @@ namespace FinalProject_IS.DAOs
                     cmd.Parameters.Add("MaChucVu", nv.MaChucVu);
                     cmd.Parameters.Add("LuongCoBan", nv.LuongCoBan);
 
-                    conn.Open();
+                    
                     cmd.ExecuteNonQuery();
                 }
             }

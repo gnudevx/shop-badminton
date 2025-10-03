@@ -14,7 +14,7 @@ namespace FinalProject_IS.DAOs
         {
             List<KhuyenMai> dsKhuyenMai = new List<KhuyenMai>();
 
-            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = DataProvider.GetConnection())
             {
                 string query = "SELECT * FROM KhuyenMai";
 
@@ -43,7 +43,7 @@ namespace FinalProject_IS.DAOs
         }
         public static void InsertKhuyenMai(KhuyenMai khuyenMai)
         {
-            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = DataProvider.GetConnection())
             {
                 string query = @"INSERT INTO KhuyenMai Values(:TenChuongTrinh, :GiaTriKhuyenMai, :DieuKienKhuyenMai,
                                 :NgayBatDau,:NgayKetThuc,:SoLuong)";
@@ -56,7 +56,7 @@ namespace FinalProject_IS.DAOs
                     cmd.Parameters.Add("NgayKetThuc", khuyenMai.NgayKetThuc);
                     cmd.Parameters.Add("SoLuong", khuyenMai.SoLuong);
 
-                    conn.Open();
+                    
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -64,14 +64,14 @@ namespace FinalProject_IS.DAOs
         public static int XoaKhuyenMai(int maKM)
         {
             int rowsAffected = 0;
-            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = DataProvider.GetConnection())
             {
                 string query = @"DELETE FROM KhuyenMai WHERE MaKM = :MaKM";
                 using (OracleCommand cmd = new OracleCommand(query, conn))
                 {
                     cmd.Parameters.Add("MaKM", maKM);
 
-                    conn.Open();
+                    
                     rowsAffected = cmd.ExecuteNonQuery();
                 }
             }

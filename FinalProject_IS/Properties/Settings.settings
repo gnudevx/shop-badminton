@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="conStr" Type="System.String" Scope="User">
-      <Value Profile="(Default)">User Id=SHOPBADMINTON;Password=2003;Data Source=localhost:1521/ORCLPDB;</Value>
+      <Value Profile="(Default)">User Id=DEV_DUNG;Password=DEV_DUNG;Data Source=20.6.131.54:1521/ORCLPDB;</Value>
     </Setting>
   </Settings>
 </SettingsFile>

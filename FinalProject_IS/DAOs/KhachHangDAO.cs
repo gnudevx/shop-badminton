@@ -16,7 +16,7 @@ namespace FinalProject_IS.DAOs
         {
             List<KhachHang> dsKhachHang = new List<KhachHang>();
 
-            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = DataProvider.GetConnection())
             {
                 string query = "SELECT * FROM KhachHang";
 
@@ -45,9 +45,9 @@ namespace FinalProject_IS.DAOs
         {
             KhachHang khachHang = null;
 
-            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = DataProvider.GetConnection())
             {
-                conn.Open();
+                
 
                 string query = "SELECT * FROM KhachHang WHERE SoDienThoai = :SoDienThoai";
                 using (OracleCommand cmd = new OracleCommand(query, conn))
@@ -75,9 +75,9 @@ namespace FinalProject_IS.DAOs
         }
         public static bool ThemKhachHang(KhachHang khachHang)
         {
-            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = DataProvider.GetConnection())
             {
-                conn.Open(); // Mở kết nối đến cơ sở dữ liệu
+                 // Mở kết nối đến cơ sở dữ liệu
 
                 string query = "INSERT INTO KhachHang (HoTen, SoDienThoai, TongChiTieu, MaLoaiKH) " +
                                "VALUES (:HoTen, :SoDienThoai, :TongChiTieu, :MaLoaiKH);";

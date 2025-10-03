@@ -15,7 +15,7 @@ namespace FinalProject_IS.DAOs
         {
             List<PhieuNhapHang> dsPhieuNhapHang = new List<PhieuNhapHang>();
 
-            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = DataProvider.GetConnection())
             {
                 string query = "SELECT MaPhieuNhap, NgayTao, TinhTrangPhieuNhap FROM PhieuNhapHang";
 
@@ -43,7 +43,7 @@ namespace FinalProject_IS.DAOs
 
         public static void InsertPhieu(PhieuNhapHang phieu)
         {
-            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = DataProvider.GetConnection())
             {
                 string query = @"INSERT INTO PhieuNhapHang Values(:NgayTao, :TinhTrangPhieuNhap)";
 
@@ -54,7 +54,7 @@ namespace FinalProject_IS.DAOs
                     cmd.Parameters.Add("NgayTao", phieu.NgayTao);
                     cmd.Parameters.Add("TinhTrangPhieuNhap", phieu.TinhTrangPhieuNhap);
 
-                    conn.Open();
+                    
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -62,7 +62,7 @@ namespace FinalProject_IS.DAOs
 
         public static void InsertChiTietPhieu(ChiTietPhieuNhapHang chitiet)
         {
-            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = DataProvider.GetConnection())
             {
                 string query = @"INSERT INTO ChiTietPhieuNhapHang Values(:MaPhieuNhap, :MaSP, :TenSP, :SoLuongNhap, :SoLuongThieu)";
 
@@ -77,7 +77,7 @@ namespace FinalProject_IS.DAOs
                     cmd.Parameters.Add("SoLuongThieu", chitiet.SoLuongNhap);
                         
 
-                    conn.Open();
+                    
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -85,9 +85,9 @@ namespace FinalProject_IS.DAOs
 
         public static int GetNewPhieuNhapID()
         {
-            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = DataProvider.GetConnection())
             {
-                conn.Open();
+                
 
                 string query = "SELECT ISNULL(MAX(MaPhieuNhap), 0) FROM PhieuNhapHang";
                 using (OracleCommand cmd = new OracleCommand(query, conn))
@@ -103,7 +103,7 @@ namespace FinalProject_IS.DAOs
         {
             List<PhieuNhapHang> dsPhieuNhapHang = new List<PhieuNhapHang>();
 
-            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = DataProvider.GetConnection())
             {
                 string query = @"SELECT MaPhieuNhap, NgayTao, TinhTrangPhieuNhap 
                          FROM PhieuNhapHang 
@@ -139,7 +139,7 @@ namespace FinalProject_IS.DAOs
         {
             List<ChiTietPhieuNhapHang> ChitietPhieuNhapHang = new List<ChiTietPhieuNhapHang>();
 
-            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = DataProvider.GetConnection())
             {
 
                 string query = @"SELECT MaSP, TenSP, SoLuongNhap, SoLuongThieu FROM ChiTietPhieuNhapHang where MaPhieuNhap = :id";
@@ -168,9 +168,9 @@ namespace FinalProject_IS.DAOs
 
         public static void UpdateChiTietPhieuNhapHang(int id, int soluong)
         {
-            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = DataProvider.GetConnection())
             {
-                conn.Open();
+                
                 int soLuongCanTru = soluong;
 
                 string selectQuery = "SELECT ChiTietPhieuNhapHang.MaPhieuNhap, SoLuongThieu FROM ChiTietPhieuNhapHang left join PhieuNhapHang " +
@@ -210,7 +210,7 @@ namespace FinalProject_IS.DAOs
 
         public static void UpdateTinhTrangPhieuNhap()
         {
-            using (OracleConnection conn = new OracleConnection(DataProvider.ConnStr))
+            using (OracleConnection conn = DataProvider.GetConnection())
             {
                 string query = @"
             UPDATE PhieuNhapHang
@@ -225,7 +225,7 @@ namespace FinalProject_IS.DAOs
 
                 using (OracleCommand cmd = new OracleCommand(query, conn))
                 {
-                    conn.Open();
+                    
                     cmd.ExecuteNonQuery();
                 }
             }
