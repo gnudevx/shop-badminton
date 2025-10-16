@@ -1,9 +1,5 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="FinalProject_IS.Properties" GeneratedClassName="Settings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
   <Profiles />
-  <Settings>
-    <Setting Name="conStr" Type="System.String" Scope="User">
-      <Value Profile="(Default)">User Id=tin;Password=123;Data Source=20.6.131.54:1521/ORCLPDB;</Value>
-    </Setting>
-  </Settings>
+  <Settings />
 </SettingsFile>

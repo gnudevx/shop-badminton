@@ -9,8 +9,8 @@ namespace FinalProject_IS.DAOs
 {
     public static class DataProvider
     {
-        private static readonly string _defaultUser = "tin";
-        private static readonly string _defaultPass = "123";
+        private static readonly string _defaultUser = "";
+        private static readonly string _defaultPass = "";
         private static readonly string _dataSource = "20.6.131.54:1521/ORCLPDB"; // chỉnh theo DB của bạn
 
         // 🔹 Dùng ConnectionString động, để sau này form login thay vào        

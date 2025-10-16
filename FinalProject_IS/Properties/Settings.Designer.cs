@@ -22,17 +22,5 @@ namespace FinalProject_IS.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("User Id=tin;Password=123;Data Source=20.6.131.54:1521/ORCLPDB;")]
-        public string conStr {
-            get {
-                return ((string)(this["conStr"]));
-            }
-            set {
-                this["conStr"] = value;
-            }
-        }
     }
 }
