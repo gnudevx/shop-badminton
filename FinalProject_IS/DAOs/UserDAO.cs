@@ -3,6 +3,7 @@ using System;
 using System.Data;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace FinalProject_IS.DAOs
 {
@@ -139,6 +140,38 @@ namespace FinalProject_IS.DAOs
                 }
             }
         }
-        
+
+        public static string CheckUserRole(string username, string password)
+        {
+            try
+            {
+                using (var conn = new OracleConnection($"User Id={username};Password={password};Data Source=YourDB"))
+                {
+                    conn.Open();
+
+                    // Kiểm tra role mà user có
+                    using (var cmd = new OracleCommand("SELECT GRANTED_ROLE FROM USER_ROLE_PRIVS", conn))
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string role = reader.GetString(0).ToUpper();
+
+                            // Nếu có role system_manager thì trả về ngay
+                            if (role.Contains("ROLE_SYSTEM_MANAGER") || role.Contains("DBA"))
+                                return "SYSTEM_MANAGER";
+                        }
+                    }
+
+                    // Không có role đặc biệt
+                    return "USER";
+                }
+            }
+            catch (OracleException ex)
+            {
+                MessageBox.Show("Lỗi đăng nhập: " + ex.Message);
+                return null;
+            }
+        }
     }
 }

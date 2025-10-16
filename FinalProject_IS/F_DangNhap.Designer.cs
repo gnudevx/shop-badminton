@@ -31,7 +31,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btn_XacNhan = new System.Windows.Forms.Button();
             this.txt_MatKhau = new System.Windows.Forms.TextBox();
-            this.txt_MaNV = new System.Windows.Forms.TextBox();
+            this.txt_TK = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -65,12 +65,12 @@
             this.txt_MatKhau.Size = new System.Drawing.Size(247, 22);
             this.txt_MatKhau.TabIndex = 3;
             // 
-            // txt_MaNV
+            // txt_TK
             // 
-            this.txt_MaNV.Location = new System.Drawing.Point(122, 130);
-            this.txt_MaNV.Name = "txt_MaNV";
-            this.txt_MaNV.Size = new System.Drawing.Size(247, 22);
-            this.txt_MaNV.TabIndex = 4;
+            this.txt_TK.Location = new System.Drawing.Point(122, 130);
+            this.txt_TK.Name = "txt_TK";
+            this.txt_TK.Size = new System.Drawing.Size(247, 22);
+            this.txt_TK.TabIndex = 4;
             // 
             // label2
             // 
@@ -78,9 +78,9 @@
             this.label2.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(31, 129);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(51, 22);
+            this.label2.Size = new System.Drawing.Size(59, 22);
             this.label2.TabIndex = 5;
-            this.label2.Text = "Email";
+            this.label2.Text = "Tên TK";
             // 
             // label3
             // 
@@ -112,7 +112,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.txt_MaNV);
+            this.Controls.Add(this.txt_TK);
             this.Controls.Add(this.txt_MatKhau);
             this.Controls.Add(this.btn_XacNhan);
             this.Controls.Add(this.label1);
@@ -129,7 +129,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_XacNhan;
         private System.Windows.Forms.TextBox txt_MatKhau;
-        private System.Windows.Forms.TextBox txt_MaNV;
+        private System.Windows.Forms.TextBox txt_TK;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox1;

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FinalProject_IS.DAOs;
+using Oracle.ManagedDataAccess.Client;
 
 namespace FinalProject_IS
 {
@@ -20,31 +21,61 @@ namespace FinalProject_IS
 
         private void btn_XacNhan_Click(object sender, EventArgs e)
         {
-            F_Main form = new F_Main();
-            string email = txt_MaNV.Text;
-            int manv = -1;
-            if (txt_MatKhau.Text != "")
-            {
-                manv = Convert.ToInt32(txt_MatKhau.Text);
-            }
+            string username = txt_TK.Text.Trim().ToUpper();
+            string password = txt_MatKhau.Text.Trim();
 
-                
-            NhanVien nv = NhanVienDAO.KiemTraDangNhap(email, manv);
-            if (nv != null)
+            try
             {
-                form.manv = manv;
-                form.tenNV = nv.HoTen;
-                form.maChucVu = nv.MaChucVu ?? 0;
+                // Cập nhật thông tin đăng nhập động
+                DataProvider.SetLogin(username, password);
 
-                form.Show();
+                using (var conn = DataProvider.GetConnection())
+                {
+                    // Lấy danh sách ROLE của user hiện tại
+                    string sql = @"SELECT GRANTED_ROLE 
+                                   FROM USER_ROLE_PRIVS";
+
+                    using (var cmd = new OracleCommand(sql, conn))
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        bool isSystemManager = false;
+
+                        while (reader.Read())
+                        {
+                            string role = reader.GetString(0).ToUpper();
+                            if (role == "ROLE_SYSTEM_MANAGER")
+                            {
+                                isSystemManager = true;
+                                break;
+                            }
+                        }
+
+                        conn.Close();
+
+                        // Điều hướng theo vai trò
+                        this.Hide();
+                        if (isSystemManager)
+                        {
+                            FSystemManager f = new FSystemManager();
+                            f.ShowDialog();
+                        }
+                        else
+                        {
+                            // nếu không phải system manager thì qua form nhân viên
+                            Form1 f = new Form1();
+                            f.ShowDialog();
+                        }
+
+                        this.Show();
+                    }
+                }
             }
-            else if(email == "" && manv == -1)
+            catch (OracleException ex)
             {
-                form.Show();
-            }
-            else
-            {
-                MessageBox.Show("Đăng nhập không thành công");
+                MessageBox.Show("Đăng nhập thất bại: " + ex.Message,
+                                "Lỗi đăng nhập",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
             }
         }
     }

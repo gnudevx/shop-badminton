@@ -37,7 +37,7 @@ namespace FinalProject_IS.DAOs
         }
 
 
-        // ✅ Chuẩn bị sẵn hàm cho form đăng nhập sau này
+        // Chuẩn bị sẵn hàm cho form đăng nhập sau này
         public static void SetLogin(string username, string password)
         {
             ConnStr = $"Data Source={_dataSource};User Id={username};Password={password};";

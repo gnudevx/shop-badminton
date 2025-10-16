@@ -326,6 +326,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="UC_BanHang.resx">
       <DependentUpon>UC_BanHang.cs</DependentUpon>
@@ -386,7 +387,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\tải xuống.png" />
+    <None Include="Resources\tải xuống1.png" />
     <Content Include="ShopBadmintonModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ShopBadmintonModel.Context.cs</LastGenOutput>

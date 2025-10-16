@@ -16,7 +16,7 @@ namespace FinalProject_IS
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FSystemManager());
+            Application.Run(new F_DangNhap());
         }
         // aplication
     }
