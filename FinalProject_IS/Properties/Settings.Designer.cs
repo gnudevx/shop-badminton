@@ -12,7 +12,7 @@ namespace FinalProject_IS.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.14.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.12.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -25,7 +25,7 @@ namespace FinalProject_IS.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("User Id=DEV_DUNG;Password=DEV_DUNG;Data Source=20.6.131.54:1521/ORCLPDB;")]
+        [global::System.Configuration.DefaultSettingValueAttribute("User Id=tin;Password=123;Data Source=20.6.131.54:1521/ORCLPDB;")]
         public string conStr {
             get {
                 return ((string)(this["conStr"]));
