@@ -30,6 +30,22 @@ namespace FinalProject_IS.DAOs
             }
         }
 
+        public static List<string> GetListUser(string query)
+        {
+            var list = new List<string>();
+            using (var conn = DataProvider.GetConnection())
+            using (var cmd = conn.CreateCommand())
+            {
+                cmd.CommandText = query;
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                        list.Add(reader.GetString(0));
+                }
+            }
+            return list;
+        }
+
         // Tạo user mới
         public static bool CreateUser(
             string username,
@@ -171,6 +187,26 @@ namespace FinalProject_IS.DAOs
             {
                 MessageBox.Show("Lỗi đăng nhập: " + ex.Message);
                 return null;
+            }
+        }
+        public static DataTable SearchUsers(string keyword)
+        {
+            using (var conn = DataProvider.GetConnection())
+            using (var cmd = conn.CreateCommand())
+            {
+                cmd.CommandText = @"
+            SELECT USERNAME, ACCOUNT_STATUS, PROFILE, DEFAULT_TABLESPACE, TEMPORARY_TABLESPACE
+            FROM DBA_USERS
+            WHERE UPPER(USERNAME) LIKE :keyword
+            ORDER BY USERNAME";
+                cmd.Parameters.Add(new OracleParameter("keyword", $"%{keyword.ToUpper()}%"));
+
+                using (var adapter = new OracleDataAdapter(cmd))
+                {
+                    var dt = new DataTable();
+                    adapter.Fill(dt);
+                    return dt;
+                }
             }
         }
     }

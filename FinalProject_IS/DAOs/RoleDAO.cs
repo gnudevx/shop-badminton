@@ -94,15 +94,20 @@ namespace FinalProject_IS.DAOs
             using (var conn = DataProvider.GetConnection())
             using (var cmd = conn.CreateCommand())
             {
-                cmd.CommandText = $"GRANT {roleName} TO {username}";
                 try
                 {
+                    if (conn.State != ConnectionState.Open)
+                        conn.Open();
+
+                    // Dùng dấu ngoặc kép cho tên user và role để tránh lỗi nếu tên có ký tự đặc biệt hoặc viết thường
+                    cmd.CommandText = $"GRANT \"{roleName}\" TO \"{username}\"";
                     cmd.ExecuteNonQuery();
                     return true;
                 }
                 catch (OracleException ex)
                 {
-                    MessageBox.Show("Lỗi gán role: " + ex.Message);
+                    MessageBox.Show($"Lỗi gán role '{roleName}' cho user '{username}':\n{ex.Message}",
+                                    "Grant Role Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
             }
@@ -114,7 +119,7 @@ namespace FinalProject_IS.DAOs
             using (var conn = DataProvider.GetConnection())
             using (var cmd = conn.CreateCommand())
             {
-                cmd.CommandText = $"REVOKE {roleName} FROM {username}";
+                cmd.CommandText = $"REVOKE \"{roleName}\" FROM  \"{username}\"";
                 try
                 {
                     cmd.ExecuteNonQuery();
@@ -122,8 +127,29 @@ namespace FinalProject_IS.DAOs
                 }
                 catch (OracleException ex)
                 {
-                    System.Windows.Forms.MessageBox.Show("Lỗi thu hồi role: " + ex.Message);
+                    MessageBox.Show($"Lỗi thu hồi role '{roleName}' với user '{username}':\n{ex.Message}",
+                                    "Grant Role Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
+                }
+            }
+        }
+        public static DataTable SearchRoles(string keyword)
+        {
+            using (var conn = DataProvider.GetConnection())
+            using (var cmd = conn.CreateCommand())
+            {
+                cmd.CommandText = @"
+            SELECT ROLE, AUTHENTICATION_TYPE, COMMON
+            FROM DBA_ROLES
+            WHERE UPPER(ROLE) LIKE :keyword
+            ORDER BY ROLE";
+                cmd.Parameters.Add(new OracleParameter("keyword", $"%{keyword.ToUpper()}%"));
+
+                using (var adapter = new OracleDataAdapter(cmd))
+                {
+                    var dt = new DataTable();
+                    adapter.Fill(dt);
+                    return dt;
                 }
             }
         }

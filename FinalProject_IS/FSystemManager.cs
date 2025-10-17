@@ -19,6 +19,7 @@ namespace FinalProject_IS
         public FSystemManager()
         {
             InitializeComponent();
+            LoadComboBoxOptions();
         }
 
         private void FSystemManager_FormClosing(object sender, FormClosingEventArgs e)
@@ -38,13 +39,16 @@ namespace FinalProject_IS
                 dgvUsers.DataSource = UserDAO.GetAllUsers();
                 dgvRoles.DataSource = RoleDAO.GetAllRoles();
                 dgvProfiles.DataSource = ProfileDAO.GetAllProfiles();
-                cbDefaultTS.DataSource = GetList("SELECT tablespace_name FROM dba_tablespaces");
-                cbTempTS.DataSource = GetList("SELECT tablespace_name FROM dba_tablespaces");
-                cbProfile.DataSource = GetList("SELECT profile FROM dba_profiles GROUP BY profile");
-                clbRoles.DataSource = GetList("SELECT role FROM dba_roles");
+                cbDefaultTS.DataSource = UserDAO.GetListUser("SELECT tablespace_name FROM dba_tablespaces");
+                cbTempTS.DataSource = UserDAO.GetListUser("SELECT tablespace_name FROM dba_tablespaces");
+                cbProfile.DataSource = UserDAO.GetListUser("SELECT profile FROM dba_profiles GROUP BY profile");
+                clbRoles.DataSource = UserDAO.GetListUser("SELECT role FROM dba_roles");
 
                 // Role
-                cboUsers.DataSource = GetList("SELECT USERNAME FROM dba_users");
+                clbUserRole.DataSource = UserDAO.GetListUser("SELECT USERNAME FROM dba_users");
+
+                // Profile
+                clbUserProfile.DataSource = UserDAO.GetListUser("SELECT USERNAME FROM dba_users");
 
                 dgvUsers.CellClick += dgvUsers_CellClick;
                 dgvRoles.CellClick += dgvRoles_CellClick;
@@ -54,6 +58,7 @@ namespace FinalProject_IS
                 MessageBox.Show("Lỗi khi tải dữ liệu: " + ex.Message);
             }
         }
+
         #region User
         private void btnCreateUser_Click(object sender, EventArgs e)
         {
@@ -63,7 +68,7 @@ namespace FinalProject_IS
             string tempTS = cbTempTS.Text.Trim();
             string quota = txtQuota.Text.Trim();
             string profile = cbProfile.Text.Trim();
-            string status = cbStatus.Text.Trim().ToUpper(); 
+            string status = cbStatus.Text.Trim().ToUpper();
 
             // 🔹 Kiểm tra nhập liệu cơ bản
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
@@ -147,19 +152,6 @@ namespace FinalProject_IS
             }
         }
 
-        private void btnLoadUsers_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                dgvUsers.DataSource = UserDAO.GetAllUsers();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi khi tải danh sách user: " + ex.Message, "Lỗi",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         private void dgvUsers_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
@@ -182,6 +174,20 @@ namespace FinalProject_IS
             // 🔹 Reset các trường không có trong bảng (nếu cần)
             txtPassword.Text = "";
             txtQuota.Text = "";
+        }
+        private void btnRefreshProfileRole_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                clbRoles.DataSource = null;
+                cbProfile.DataSource = null;
+                cbProfile.DataSource = UserDAO.GetListUser("SELECT profile FROM dba_profiles GROUP BY profile");
+                clbRoles.DataSource = UserDAO.GetListUser("SELECT role FROM dba_roles");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi làm mới danh sách user: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         #endregion
@@ -261,39 +267,98 @@ namespace FinalProject_IS
                 }
             }
         }
+        private void btnFindUser_Click(object sender, EventArgs e)
+        {
+            string keyword = txtFindUser.Text.Trim();
+            dgvUsers.DataSource = UserDAO.SearchUsers(keyword);
+        }
 
         private void btnGrantRole_Click(object sender, EventArgs e)
         {
-            string username = txtUsername.Text.Trim().ToUpper();
             string roleName = txtRoleName.Text.Trim().ToUpper();
 
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(roleName))
+            if (string.IsNullOrEmpty(roleName))
             {
-                MessageBox.Show("Vui lòng nhập username và role cần gán!");
+                MessageBox.Show("Vui lòng nhập role cần gán!");
                 return;
             }
 
-            if (RoleDAO.GrantRoleToUser(username, roleName))
+            if (clbUserRole.CheckedItems.Count == 0)
             {
-                MessageBox.Show($"Đã gán role {roleName} cho user {username}!");
+                MessageBox.Show("Vui lòng chọn ít nhất một user để gán role!");
+                return;
             }
+
+            int successCount = 0;
+            foreach (var item in clbUserRole.CheckedItems)
+            {
+                string username = item.ToString().Trim().ToUpper();
+
+                if (RoleDAO.GrantRoleToUser(username, roleName))
+                {
+                    successCount++;
+                }
+                else
+                {
+                    MessageBox.Show($"Không thể gán role {roleName} cho user {username}!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+            MessageBox.Show($"Đã gán role {roleName} cho {successCount}/{clbUserRole.CheckedItems.Count} user được chọn!", "Hoàn tất");
         }
 
         private void btnRevoke_Click(object sender, EventArgs e)
         {
-            string username = txtUsername.Text.Trim().ToUpper();
             string roleName = txtRoleName.Text.Trim().ToUpper();
 
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(roleName))
+            if (string.IsNullOrEmpty(roleName))
             {
-                MessageBox.Show("Vui lòng nhập username và role cần thu hồi!");
+                MessageBox.Show("Vui lòng nhập role cần thu hồi!");
                 return;
             }
 
-            if (RoleDAO.RevokeRoleFromUser(username, roleName))
+            if (clbUserRole.CheckedItems.Count == 0)
             {
-                MessageBox.Show($"Đã thu hồi role {roleName} khỏi user {username}!");
+                MessageBox.Show("Vui lòng chọn ít nhất một user để thu hồi role!");
+                return;
             }
+
+            int successCount = 0;
+            foreach (var item in clbUserRole.CheckedItems)
+            {
+                string username = item.ToString().Trim().ToUpper();
+
+                if (RoleDAO.RevokeRoleFromUser(username, roleName))
+                {
+                    successCount++;
+                }
+                else
+                {
+                    MessageBox.Show($"Không thể thu hồi role {roleName} với user {username}!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+            MessageBox.Show($"Đã thu hồi role {roleName} với {successCount}/{clbUserRole.CheckedItems.Count} user được chọn!", "Hoàn tất");
+        }
+
+        private void btnRefreshUserRole_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Load lại danh sách user
+                clbUserRole.DataSource = null; // Xóa datasource cũ để đảm bảo reset
+                clbUserRole.DataSource = UserDAO.GetListUser("SELECT USERNAME FROM dba_users");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi làm mới danh sách user: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnFindRole_Click(object sender, EventArgs e)
+        {
+            string keyword = txtFindRole.Text.Trim();
+            dgvRoles.DataSource = RoleDAO.SearchRoles(keyword);
         }
 
         private void dgvRoles_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -309,21 +374,126 @@ namespace FinalProject_IS
         }
 
         #endregion
-        private List<string> GetList(string query)
+
+        #region Profile
+        private void LoadComboBoxOptions()
         {
-            var list = new List<string>();
-            using (var conn = DataProvider.GetConnection())
-            using (var cmd = conn.CreateCommand())
+            string[] options = { "DEFAULT", "UNLIMITED" };
+            foreach (var cb in new ComboBox[]
             {
-                cmd.CommandText = query;
-                using (var reader = cmd.ExecuteReader())
+                cbFailedLoginAttempts, cbSessionsPerUser, cbPasswordLifeTime, cbPasswordGraceTime,
+                cbConnectTime, cbIdleTime, cbPasswordReuseTime, cbPasswordReuseMax
+            })
+            {
+                cb.Items.AddRange(options);
+                cb.DropDownStyle = ComboBoxStyle.DropDown; // cho phép tự nhập
+            }
+        }
+
+        private void btnCreateProfile_Click(object sender, EventArgs e)
+        {
+            if (ProfileDAO.CreateProfile(
+                txtProfileName.Text.ToUpper(),
+                cbFailedLoginAttempts.Text.ToUpper(), cbSessionsPerUser.Text.ToUpper(),
+                cbPasswordLifeTime.Text.ToUpper(), cbPasswordGraceTime.Text.ToUpper(),
+                cbConnectTime.Text.ToUpper(), cbIdleTime.Text.ToUpper(),
+                cbPasswordReuseTime.Text.ToUpper(), cbPasswordReuseMax.Text.ToUpper()))
+            {
+                MessageBox.Show("Đã tạo profile!");
+                dgvProfiles.DataSource = ProfileDAO.GetAllProfiles();
+            }
+        }
+
+        private void btnDeleteProfile_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtProfileName.Text.ToUpper()))
+            {
+                MessageBox.Show("Vui lòng nhập tên profile cần xóa!");
+                return;
+            }
+
+            if (MessageBox.Show($"Bạn có chắc muốn xóa user {txtProfileName.Text}?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                if (ProfileDAO.DeleteProfile(txtProfileName.Text))
                 {
-                    while (reader.Read())
-                        list.Add(reader.GetString(0));
+                    MessageBox.Show("Đã xóa profile!");
+                    dgvProfiles.DataSource = ProfileDAO.GetAllProfiles(); // refresh
                 }
             }
-            return list;
         }
+
+        private void btnUpdateProfile_Click(object sender, EventArgs e)
+        {
+            if (ProfileDAO.UpdateProfile(
+                txtProfileName.Text.ToUpper(),
+                cbFailedLoginAttempts.Text.ToUpper(), cbSessionsPerUser.Text.ToUpper(),
+                cbPasswordLifeTime.Text.ToUpper(), cbPasswordGraceTime.Text.ToUpper(),
+                cbConnectTime.Text.ToUpper(), cbIdleTime.Text.ToUpper(),
+                cbPasswordReuseTime.Text.ToUpper(), cbPasswordReuseMax.Text.ToUpper()))
+            {
+                MessageBox.Show("Đã cập nhật profile!");
+                dgvProfiles.DataSource = ProfileDAO.GetAllProfiles();
+            }
+        }
+
+        private void btnFindProfile_Click(object sender, EventArgs e)
+        {
+            string keyword = txtFindProfile.Text.Trim();
+            DataTable dt = ProfileDAO.FindProfile(keyword);
+            dgvProfiles.DataSource = dt;
+        }
+
+        private void btnGrantProfile_Click(object sender, EventArgs e)
+        {
+            string selectedProfile = txtProfileName.Text.Trim().ToUpper();
+            foreach (var user in clbUserProfile.CheckedItems)
+            {
+                if (ProfileDAO.GrantProfileToUser(user.ToString(), selectedProfile))
+                    MessageBox.Show($"Đã gán profile {selectedProfile} cho {user}");
+            }
+        }
+
+        private void btnRevokeProfile_Click(object sender, EventArgs e)
+        {
+            foreach (var user in clbUserProfile.CheckedItems)
+            {
+                if (ProfileDAO.RevokeProfileFromUser(user.ToString()))
+                    MessageBox.Show($"Thu hồi profile với {user}");
+            }
+        }
+
+        private void dgvProfiles_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+            else
+            {
+                DataGridViewRow row = dgvProfiles.Rows[e.RowIndex];
+                txtProfileName.Text = row.Cells["PROFILE"].Value.ToString();
+                cbSessionsPerUser.Text = row.Cells["SESSIONS_PER_USER"].Value.ToString();
+                cbConnectTime.Text = row.Cells["CONNECT_TIME"].Value.ToString();
+                cbIdleTime.Text = row.Cells["IDLE_TIME"].Value.ToString();
+                cbPasswordLifeTime.Text = row.Cells["PASSWORD_LIFE_TIME"].Value.ToString();
+                cbPasswordGraceTime.Text = row.Cells["PASSWORD_GRACE_TIME"].Value.ToString();
+                cbPasswordReuseTime.Text = row.Cells["PASSWORD_REUSE_TIME"].Value.ToString();
+                cbPasswordReuseMax.Text = row.Cells["PASSWORD_REUSE_MAX"].Value.ToString();
+                cbFailedLoginAttempts.Text = row.Cells["FAILED_LOGIN_ATTEMPTS"].Value.ToString();
+            }
+        }
+
+        private void btnRefreshUserProfile_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                clbUserProfile.DataSource = null;
+                clbUserProfile.DataSource = UserDAO.GetListUser("SELECT USERNAME FROM dba_users");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi làm mới danh sách user: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        #endregion
     }
 }
 
