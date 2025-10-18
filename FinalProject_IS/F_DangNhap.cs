@@ -39,13 +39,19 @@ namespace FinalProject_IS
                     using (var reader = cmd.ExecuteReader())
                     {
                         bool isSystemManager = false;
-
+                        bool isShopSupervisor = false;
                         while (reader.Read())
                         {
                             string role = reader.GetString(0).ToUpper();
                             if (role == "ROLE_SYSTEM_MANAGER")
                             {
                                 isSystemManager = true;
+                                break;
+                            }
+
+                            if (role == "ROLE_SHOP_SUPERVISOR")
+                            {
+                                isShopSupervisor = true;
                                 break;
                             }
                         }
@@ -59,14 +65,21 @@ namespace FinalProject_IS
                             FSystemManager f = new FSystemManager();
                             f.ShowDialog();
                         }
-                        else
+                        else if (isShopSupervisor)
                         {
                             // nếu không phải system manager thì qua form nhân viên
-                            Form1 f = new Form1();
+                            Supervisor_Dashboard f = new Supervisor_Dashboard();
+                            f.ShowDialog();
+                        }
+                        else
+                        {
+                            Form1 f =new Form1();
                             f.ShowDialog();
                         }
 
-                        this.Show();
+
+
+                            this.Show();
                     }
                 }
             }
