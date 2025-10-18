@@ -25,7 +25,7 @@ namespace FinalProject_IS.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("User Id=DEV_DUNG;Password=DEV_DUNG;Data Source=20.6.131.54:1521/ORCLPDB;")]
+        [global::System.Configuration.DefaultSettingValueAttribute("User Id=SHOPBADMINTON;Password=2003;Data Source=20.6.131.54:1521/ORCLPDB;")]
         public string conStr {
             get {
                 return ((string)(this["conStr"]));
