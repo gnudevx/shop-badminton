@@ -11,9 +11,25 @@ namespace FinalProject_IS.DAOs
         public static DataTable GetAllRoles()
         {
             using (var conn = DataProvider.GetConnection())
-            using (var cmd = new OracleCommand(@"SELECT ROLE, ROLE_ID, PASSWORD_REQUIRED
-                                               FROM DBA_ROLES
-                                               ORDER BY ROLE", conn))
+            using (var cmd = new OracleCommand(@"
+                    SELECT
+                        R.ROLE,
+                        R.ROLE_ID,
+                        R.PASSWORD_REQUIRED,
+                        NVL(P.PRIVILEGES, '—') AS PRIVILEGES,
+                        NVL(U.USERS, '—') AS USERS
+                    FROM DBA_ROLES R
+                    LEFT JOIN (
+                        SELECT ROLE, LISTAGG(PRIVILEGE, ', ') WITHIN GROUP (ORDER BY PRIVILEGE) AS PRIVILEGES
+                        FROM ROLE_SYS_PRIVS
+                        GROUP BY ROLE
+                    ) P ON R.ROLE = P.ROLE
+                    LEFT JOIN (
+                        SELECT GRANTED_ROLE AS ROLE, LISTAGG(GRANTEE, ', ') WITHIN GROUP (ORDER BY GRANTEE) AS USERS
+                        FROM DBA_ROLE_PRIVS
+                        GROUP BY GRANTED_ROLE
+                    ) U ON R.ROLE = U.ROLE
+                    ORDER BY R.ROLE", conn))
             using (var adapter = new OracleDataAdapter(cmd))
             {
                 var dt = new DataTable();
@@ -22,51 +38,77 @@ namespace FinalProject_IS.DAOs
             }
         }
 
+
         // Tạo role
         public static bool CreateRole(string roleName, string password = null)
         {
             using (var conn = DataProvider.GetConnection())
             using (var cmd = conn.CreateCommand())
+            using (var trans = conn.BeginTransaction()) // dùng transaction để đảm bảo đồng bộ
             {
-                // Nếu có mật khẩu => IDENTIFIED BY
-                if (!string.IsNullOrEmpty(password))
-                    cmd.CommandText = $"CREATE ROLE {roleName} IDENTIFIED BY \"{password}\"";
-                else
-                    cmd.CommandText = $"CREATE ROLE {roleName}";
+                cmd.Transaction = trans;
 
                 try
                 {
+                    // 1️⃣ Tạo role
+                    if (!string.IsNullOrEmpty(password))
+                        cmd.CommandText = $"CREATE ROLE {roleName} IDENTIFIED BY \"{password}\"";
+                    else
+                        cmd.CommandText = $"CREATE ROLE {roleName}";
                     cmd.ExecuteNonQuery();
+
+                    // 2️⃣ Thêm role đó vào bảng ALLOWED_ROLES
+                    cmd.CommandText = "INSERT INTO TIN.ALLOWED_ROLES (ROLE_NAME) VALUES (:roleName)";
+                    cmd.Parameters.Clear();
+                    cmd.Parameters.Add(new OracleParameter("roleName", roleName.ToUpper())); // chuẩn hóa tên role
+                    cmd.ExecuteNonQuery();
+
+                    trans.Commit();
                     MessageBox.Show("Tạo role thành công!");
                     return true;
                 }
                 catch (OracleException ex)
                 {
+                    trans.Rollback();
                     MessageBox.Show("Lỗi tạo role: " + ex.Message);
                     return false;
                 }
             }
         }
 
-        // Xóa role
         public static bool DropRole(string roleName)
         {
             using (var conn = DataProvider.GetConnection())
             using (var cmd = conn.CreateCommand())
+            using (var trans = conn.BeginTransaction())
             {
-                cmd.CommandText = $"DROP ROLE {roleName}";
+                cmd.Transaction = trans;
+
                 try
                 {
+                    // 1️⃣ Xóa role trong Oracle
+                    cmd.CommandText = $"DROP ROLE {roleName}";
                     cmd.ExecuteNonQuery();
+
+                    // 2️⃣ Xóa role khỏi bảng ALLOWED_ROLES (nếu tồn tại)
+                    cmd.CommandText = "DELETE FROM TIN.ALLOWED_ROLES WHERE ROLE_NAME = :roleName";
+                    cmd.Parameters.Clear();
+                    cmd.Parameters.Add(new OracleParameter("roleName", roleName.ToUpper()));
+                    cmd.ExecuteNonQuery();
+
+                    trans.Commit();
+                    MessageBox.Show("Xóa role thành công!");
                     return true;
                 }
                 catch (OracleException ex)
                 {
+                    trans.Rollback();
                     MessageBox.Show("Lỗi xóa role: " + ex.Message);
                     return false;
                 }
             }
         }
+
 
         // Cấp quyền cho role
         public static bool GrantPrivilegeToRole(string roleName, string privilege)

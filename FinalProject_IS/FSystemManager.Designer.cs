@@ -28,8 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ManageTab = new System.Windows.Forms.TabControl();
             this.tabProfile = new System.Windows.Forms.TabPage();
+            this.cbPasswordReuseTime = new System.Windows.Forms.ComboBox();
+            this.cbPasswordGraceTime = new System.Windows.Forms.ComboBox();
+            this.cbFailedLoginAttempts = new System.Windows.Forms.ComboBox();
             this.btnRefreshUserProfile = new System.Windows.Forms.Button();
             this.btnFindProfile = new System.Windows.Forms.Button();
             this.txtFindProfile = new System.Windows.Forms.TextBox();
@@ -50,6 +55,7 @@
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
+            this.txtProfileName = new System.Windows.Forms.TextBox();
             this.btnUpdateProfile = new System.Windows.Forms.Button();
             this.btnRevokeProfile = new System.Windows.Forms.Button();
             this.btnGrantProfile = new System.Windows.Forms.Button();
@@ -57,6 +63,7 @@
             this.btnCreateProfile = new System.Windows.Forms.Button();
             this.dgvProfiles = new System.Windows.Forms.DataGridView();
             this.tabUser = new System.Windows.Forms.TabPage();
+            this.btnRefreshProfileRole = new System.Windows.Forms.Button();
             this.btnFindUser = new System.Windows.Forms.Button();
             this.txtFindUser = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -98,11 +105,7 @@
             this.txtRoleName = new System.Windows.Forms.TextBox();
             this.btnDeleteRole = new System.Windows.Forms.Button();
             this.btnCreateRole = new System.Windows.Forms.Button();
-            this.txtProfileName = new System.Windows.Forms.TextBox();
-            this.cbFailedLoginAttempts = new System.Windows.Forms.ComboBox();
-            this.cbPasswordGraceTime = new System.Windows.Forms.ComboBox();
-            this.cbPasswordReuseTime = new System.Windows.Forms.ComboBox();
-            this.btnRefreshProfileRole = new System.Windows.Forms.Button();
+            this.btnDetail = new System.Windows.Forms.Button();
             this.ManageTab.SuspendLayout();
             this.tabProfile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProfiles)).BeginInit();
@@ -164,6 +167,33 @@
             this.tabProfile.TabIndex = 0;
             this.tabProfile.Text = "Profile";
             this.tabProfile.UseVisualStyleBackColor = true;
+            // 
+            // cbPasswordReuseTime
+            // 
+            this.cbPasswordReuseTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbPasswordReuseTime.FormattingEnabled = true;
+            this.cbPasswordReuseTime.Location = new System.Drawing.Point(784, 131);
+            this.cbPasswordReuseTime.Name = "cbPasswordReuseTime";
+            this.cbPasswordReuseTime.Size = new System.Drawing.Size(154, 30);
+            this.cbPasswordReuseTime.TabIndex = 88;
+            // 
+            // cbPasswordGraceTime
+            // 
+            this.cbPasswordGraceTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbPasswordGraceTime.FormattingEnabled = true;
+            this.cbPasswordGraceTime.Location = new System.Drawing.Point(784, 18);
+            this.cbPasswordGraceTime.Name = "cbPasswordGraceTime";
+            this.cbPasswordGraceTime.Size = new System.Drawing.Size(154, 30);
+            this.cbPasswordGraceTime.TabIndex = 87;
+            // 
+            // cbFailedLoginAttempts
+            // 
+            this.cbFailedLoginAttempts.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbFailedLoginAttempts.FormattingEnabled = true;
+            this.cbFailedLoginAttempts.Location = new System.Drawing.Point(280, 54);
+            this.cbFailedLoginAttempts.Name = "cbFailedLoginAttempts";
+            this.cbFailedLoginAttempts.Size = new System.Drawing.Size(160, 30);
+            this.cbFailedLoginAttempts.TabIndex = 86;
             // 
             // btnRefreshUserProfile
             // 
@@ -370,6 +400,14 @@
             this.label21.TabIndex = 55;
             this.label21.Text = "PROFILE NAME";
             // 
+            // txtProfileName
+            // 
+            this.txtProfileName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProfileName.Location = new System.Drawing.Point(280, 18);
+            this.txtProfileName.Name = "txtProfileName";
+            this.txtProfileName.Size = new System.Drawing.Size(160, 28);
+            this.txtProfileName.TabIndex = 54;
+            // 
             // btnUpdateProfile
             // 
             this.btnUpdateProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -439,6 +477,7 @@
             // 
             // tabUser
             // 
+            this.tabUser.Controls.Add(this.btnDetail);
             this.tabUser.Controls.Add(this.btnRefreshProfileRole);
             this.tabUser.Controls.Add(this.btnFindUser);
             this.tabUser.Controls.Add(this.txtFindUser);
@@ -471,6 +510,17 @@
             this.tabUser.TabIndex = 1;
             this.tabUser.Text = "User";
             this.tabUser.UseVisualStyleBackColor = true;
+            // 
+            // btnRefreshProfileRole
+            // 
+            this.btnRefreshProfileRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRefreshProfileRole.Location = new System.Drawing.Point(966, 112);
+            this.btnRefreshProfileRole.Name = "btnRefreshProfileRole";
+            this.btnRefreshProfileRole.Size = new System.Drawing.Size(133, 40);
+            this.btnRefreshProfileRole.TabIndex = 86;
+            this.btnRefreshProfileRole.Text = "REFRESH";
+            this.btnRefreshProfileRole.UseVisualStyleBackColor = true;
+            this.btnRefreshProfileRole.Click += new System.EventHandler(this.btnRefreshProfileRole_Click);
             // 
             // btnFindUser
             // 
@@ -850,7 +900,23 @@
             // dgvRoles
             // 
             this.dgvRoles.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRoles.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvRoles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvRoles.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvRoles.Location = new System.Drawing.Point(6, 261);
             this.dgvRoles.Name = "dgvRoles";
             this.dgvRoles.RowHeadersWidth = 51;
@@ -863,7 +929,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.label3.Location = new System.Drawing.Point(8, 21);
+            this.label3.Location = new System.Drawing.Point(10, 21);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(115, 22);
             this.label3.TabIndex = 27;
@@ -910,51 +976,16 @@
             this.btnCreateRole.UseVisualStyleBackColor = true;
             this.btnCreateRole.Click += new System.EventHandler(this.btnCreateRole_Click);
             // 
-            // txtProfileName
+            // btnDetail
             // 
-            this.txtProfileName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProfileName.Location = new System.Drawing.Point(280, 18);
-            this.txtProfileName.Name = "txtProfileName";
-            this.txtProfileName.Size = new System.Drawing.Size(160, 28);
-            this.txtProfileName.TabIndex = 54;
-            // 
-            // cbFailedLoginAttempts
-            // 
-            this.cbFailedLoginAttempts.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbFailedLoginAttempts.FormattingEnabled = true;
-            this.cbFailedLoginAttempts.Location = new System.Drawing.Point(280, 54);
-            this.cbFailedLoginAttempts.Name = "cbFailedLoginAttempts";
-            this.cbFailedLoginAttempts.Size = new System.Drawing.Size(160, 30);
-            this.cbFailedLoginAttempts.TabIndex = 86;
-            // 
-            // cbPasswordGraceTime
-            // 
-            this.cbPasswordGraceTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbPasswordGraceTime.FormattingEnabled = true;
-            this.cbPasswordGraceTime.Location = new System.Drawing.Point(784, 18);
-            this.cbPasswordGraceTime.Name = "cbPasswordGraceTime";
-            this.cbPasswordGraceTime.Size = new System.Drawing.Size(154, 30);
-            this.cbPasswordGraceTime.TabIndex = 87;
-            // 
-            // cbPasswordReuseTime
-            // 
-            this.cbPasswordReuseTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbPasswordReuseTime.FormattingEnabled = true;
-            this.cbPasswordReuseTime.Location = new System.Drawing.Point(784, 131);
-            this.cbPasswordReuseTime.Name = "cbPasswordReuseTime";
-            this.cbPasswordReuseTime.Size = new System.Drawing.Size(154, 30);
-            this.cbPasswordReuseTime.TabIndex = 88;
-            // 
-            // btnRefreshProfileRole
-            // 
-            this.btnRefreshProfileRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRefreshProfileRole.Location = new System.Drawing.Point(966, 112);
-            this.btnRefreshProfileRole.Name = "btnRefreshProfileRole";
-            this.btnRefreshProfileRole.Size = new System.Drawing.Size(133, 40);
-            this.btnRefreshProfileRole.TabIndex = 86;
-            this.btnRefreshProfileRole.Text = "REFRESH";
-            this.btnRefreshProfileRole.UseVisualStyleBackColor = true;
-            this.btnRefreshProfileRole.Click += new System.EventHandler(this.btnRefreshProfileRole_Click);
+            this.btnDetail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDetail.Location = new System.Drawing.Point(6, 169);
+            this.btnDetail.Name = "btnDetail";
+            this.btnDetail.Size = new System.Drawing.Size(133, 40);
+            this.btnDetail.TabIndex = 87;
+            this.btnDetail.Text = "CHECK";
+            this.btnDetail.UseVisualStyleBackColor = true;
+            this.btnDetail.Click += new System.EventHandler(this.btnDetail_Click);
             // 
             // FSystemManager
             // 
@@ -1056,5 +1087,6 @@
         private System.Windows.Forms.ComboBox cbFailedLoginAttempts;
         private System.Windows.Forms.TextBox txtProfileName;
         private System.Windows.Forms.Button btnRefreshProfileRole;
+        private System.Windows.Forms.Button btnDetail;
     }
 }
