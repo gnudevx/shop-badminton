@@ -27,15 +27,13 @@ namespace FinalProject_IS
 
             try
             {
-                // Cập nhật thông tin đăng nhập động
+                // Thiết lập thông tin kết nối cho user hiện tại
                 DataProvider.SetLogin(username, password);
 
                 using (var conn = DataProvider.GetConnection())
                 {
-                    // Lấy danh sách ROLE của user hiện tại
-                    string sql = @"SELECT GRANTED_ROLE 
-                                   FROM USER_ROLE_PRIVS";
-
+                    // Lấy danh sách role mà user có
+                    string sql = @"SELECT GRANTED_ROLE FROM USER_ROLE_PRIVS";
                     using (var cmd = new OracleCommand(sql, conn))
                     using (var reader = cmd.ExecuteReader())
                     {
@@ -64,8 +62,7 @@ namespace FinalProject_IS
                             roles.Add(reader.GetString(0).ToUpper());
                         }
 
-
-                        // Điều hướng theo vai trò
+                        // Điều hướng form
                         this.Hide();
                         if (roles.Contains("ROLE_SYSTEM_MANAGER"))
                         {
@@ -77,7 +74,11 @@ namespace FinalProject_IS
                         }
                         else
                         {
+
                             new Form1().ShowDialog();
+
+                            Form1 f = new Form1();
+                            f.ShowDialog();
                         }
                         this.Show();
 
