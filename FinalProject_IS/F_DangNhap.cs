@@ -1,14 +1,15 @@
-﻿using System;
+﻿using FinalProject_IS.DAOs;
+using Oracle.ManagedDataAccess.Client;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using FinalProject_IS.DAOs;
-using Oracle.ManagedDataAccess.Client;
 
 namespace FinalProject_IS
 {
@@ -38,33 +39,47 @@ namespace FinalProject_IS
                     using (var cmd = new OracleCommand(sql, conn))
                     using (var reader = cmd.ExecuteReader())
                     {
-                        bool isSystemManager = false;
+                        //bool isSystemManager = false;
+                        //bool isSecurityManager = false;
 
+                        //while (reader.Read())
+                        //{
+                        //    string role = reader.GetString(0).ToUpper();
+                        //    if (role == "ROLE_SYSTEM_MANAGER")
+                        //    {
+                        //        isSystemManager = true;
+                        //        break;
+                        //    }
+                        //    else if (role == "ROLE_SECURITY_MANAGER")
+                        //    {
+                        //        isSystemManager = true;
+                        //        break;
+                        //    }
+                        //}
+
+                        //conn.Close();
+                        List<string> roles = new List<string>();
                         while (reader.Read())
                         {
-                            string role = reader.GetString(0).ToUpper();
-                            if (role == "ROLE_SYSTEM_MANAGER")
-                            {
-                                isSystemManager = true;
-                                break;
-                            }
+                            roles.Add(reader.GetString(0).ToUpper());
                         }
 
-                        conn.Close();
 
                         // Điều hướng theo vai trò
                         this.Hide();
-                        if (isSystemManager)
+                        if (roles.Contains("ROLE_SYSTEM_MANAGER"))
                         {
-                            FSystemManager f = new FSystemManager();
-                            f.ShowDialog();
+                            new FSystemManager().ShowDialog();
+                        }
+                        else if (roles.Contains("ROLE_SECURITY_MANAGER"))
+                        {
+                            new F_Security_Manager().ShowDialog();
                         }
                         else
                         {
-                            // nếu không phải system manager thì qua form nhân viên
-                            Form1 f = new Form1();
-                            f.ShowDialog();
+                            new Form1().ShowDialog();
                         }
+                        this.Show();
 
                         this.Show();
                     }

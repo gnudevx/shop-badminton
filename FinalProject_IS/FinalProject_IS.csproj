@@ -111,6 +111,12 @@
     <Compile Include="Form4.Designer.cs">
       <DependentUpon>Form4.cs</DependentUpon>
     </Compile>
+    <Compile Include="F_RoleEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F_RoleEditor.Designer.cs">
+      <DependentUpon>F_RoleEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="FSystemManager.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -181,6 +187,12 @@
     <Compile Include="F_DangNhap.Designer.cs">
       <DependentUpon>F_DangNhap.cs</DependentUpon>
     </Compile>
+    <Compile Include="F_Security_Manager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F_Security_Manager.Designer.cs">
+      <DependentUpon>F_Security_Manager.cs</DependentUpon>
+    </Compile>
     <Compile Include="HoaDon.cs">
       <DependentUpon>ShopBadmintonModel.tt</DependentUpon>
     </Compile>
@@ -230,6 +242,12 @@
     </Compile>
     <Compile Include="ThuongHieu.cs">
       <DependentUpon>ShopBadmintonModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="uc_applypolicy.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="uc_applypolicy.Designer.cs">
+      <DependentUpon>uc_applypolicy.cs</DependentUpon>
     </Compile>
     <Compile Include="UC_BanHang.cs">
       <SubType>UserControl</SubType>
@@ -294,8 +312,12 @@
     <EmbeddedResource Include="Form4.resx">
       <DependentUpon>Form4.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="F_RoleEditor.resx">
+      <DependentUpon>F_RoleEditor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FSystemManager.resx">
       <DependentUpon>FSystemManager.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="F_ChiTietHD_SanPham.resx">
       <DependentUpon>F_ChiTietHD_SanPham.cs</DependentUpon>
@@ -318,6 +340,9 @@
     <EmbeddedResource Include="F_DangNhap.resx">
       <DependentUpon>F_DangNhap.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="F_Security_Manager.resx">
+      <DependentUpon>F_Security_Manager.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -328,6 +353,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="uc_applypolicy.resx">
+      <DependentUpon>uc_applypolicy.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UC_BanHang.resx">
       <DependentUpon>UC_BanHang.cs</DependentUpon>
     </EmbeddedResource>
