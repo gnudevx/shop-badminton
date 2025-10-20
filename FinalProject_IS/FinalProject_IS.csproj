@@ -117,6 +117,12 @@
     <Compile Include="FSystemManager.Designer.cs">
       <DependentUpon>FSystemManager.cs</DependentUpon>
     </Compile>
+    <Compile Include="FUserDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FUserDetail.Designer.cs">
+      <DependentUpon>FUserDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="F_ChiTietHD_SanPham.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -213,6 +219,7 @@
     <Compile Include="SanPham.cs">
       <DependentUpon>ShopBadmintonModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SessionInfo.cs" />
     <Compile Include="ShopBadmintonModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -296,6 +303,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FSystemManager.resx">
       <DependentUpon>FSystemManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FUserDetail.resx">
+      <DependentUpon>FUserDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="F_ChiTietHD_SanPham.resx">
       <DependentUpon>F_ChiTietHD_SanPham.cs</DependentUpon>
