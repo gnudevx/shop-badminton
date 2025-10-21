@@ -25,8 +25,8 @@ namespace FinalProject_IS
             string username = txt_TK.Text.Trim().ToUpper();
             string password = txt_MatKhau.Text.Trim();
 
-            try
-            {
+            //try
+            //{
                 // Thiết lập thông tin kết nối cho user hiện tại
                 DataProvider.SetLogin(username, password);
 
@@ -88,14 +88,14 @@ namespace FinalProject_IS
 
                     }
                 }
-            }
-            catch (OracleException ex)
-            {
-                MessageBox.Show("Đăng nhập thất bại: " + ex.Message,
-                                "Lỗi đăng nhập",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
-            }
+            //}
+            //catch (OracleException ex)
+            //{
+            //    MessageBox.Show("Đăng nhập thất bại: " + ex.Message,
+            //                    "Lỗi đăng nhập",
+            //                    MessageBoxButtons.OK,
+            //                    MessageBoxIcon.Error);
+            //}
         }
     }
 }

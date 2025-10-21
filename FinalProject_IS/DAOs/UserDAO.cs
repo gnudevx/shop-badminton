@@ -76,14 +76,14 @@ namespace FinalProject_IS.DAOs
 
         // Tạo user mới
         public static bool CreateUser(
-    string username,
-    string password,
-    string defaultTS,
-    string tempTS,
-    string quota,
-    string profile,
-    string status,
-    List<string> roles)
+            string username,
+            string password,
+            string defaultTS,
+            string tempTS,
+            string quota,
+            string profile,
+            string status,
+            List<string> roles)
         {
             string quotaValue = quota.ToUpper().Contains("M") || quota.ToUpper() == "UNLIMITED"
                                 ? quota.ToUpper()
@@ -91,7 +91,6 @@ namespace FinalProject_IS.DAOs
 
             using (var conn = DataProvider.GetConnection())
             {
-                conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
                     var transaction = conn.BeginTransaction();
@@ -101,14 +100,14 @@ namespace FinalProject_IS.DAOs
                     {
                         // 1️⃣ Tạo user
                         cmd.CommandText = $@"
-                    CREATE USER {username}
-                    IDENTIFIED BY {password}
-                    DEFAULT TABLESPACE {defaultTS}
-                    TEMPORARY TABLESPACE {tempTS}
-                    QUOTA {quotaValue} ON {defaultTS}
-                    PROFILE {profile}
-                    ACCOUNT {status}";
-                        cmd.ExecuteNonQuery();
+                        CREATE USER {username}
+                        IDENTIFIED BY {password}
+                        DEFAULT TABLESPACE {defaultTS}
+                        TEMPORARY TABLESPACE {tempTS}
+                        QUOTA {quotaValue} ON {defaultTS}
+                        PROFILE {profile}
+                        ACCOUNT {status}";
+                            cmd.ExecuteNonQuery();
 
                         // 2️⃣ Gán role (nếu có)
                         if (roles != null && roles.Count > 0)
@@ -146,7 +145,6 @@ namespace FinalProject_IS.DAOs
         {
             using (var conn = DataProvider.GetConnection())
             {
-                conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
                     var transaction = conn.BeginTransaction();

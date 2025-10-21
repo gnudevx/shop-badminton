@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ManageTab = new System.Windows.Forms.TabControl();
             this.tabProfile = new System.Windows.Forms.TabPage();
             this.cbPasswordReuseTime = new System.Windows.Forms.ComboBox();
@@ -105,14 +107,16 @@
             this.btnDeleteRole = new System.Windows.Forms.Button();
             this.btnCreateRole = new System.Windows.Forms.Button();
             this.tabNhanVien = new System.Windows.Forms.TabPage();
+            this.txt_luongcoban = new System.Windows.Forms.TextBox();
+            this.label33 = new System.Windows.Forms.Label();
+            this.txt_machucvu = new System.Windows.Forms.ComboBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.rdb_Nam = new System.Windows.Forms.RadioButton();
             this.rdb_Nu = new System.Windows.Forms.RadioButton();
             this.btn_save = new System.Windows.Forms.Button();
-            this.userpassword = new System.Windows.Forms.TextBox();
+            this.txt_userpassword = new System.Windows.Forms.TextBox();
             this.txt_username = new System.Windows.Forms.TextBox();
-            this.txt_luongcoban = new System.Windows.Forms.TextBox();
             this.txt_hoten = new System.Windows.Forms.TextBox();
-            this.txt_manv = new System.Windows.Forms.TextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label32 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
@@ -120,10 +124,6 @@
             this.label29 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
-            this.lblMaNV = new System.Windows.Forms.Label();
-            this.txt_machucvu = new System.Windows.Forms.TextBox();
-            this.label30 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.ManageTab.SuspendLayout();
             this.tabProfile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProfiles)).BeginInit();
@@ -132,7 +132,7 @@
             this.tabRole.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRoles)).BeginInit();
             this.tabNhanVien.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // ManageTab
@@ -195,7 +195,7 @@
             // 
             this.cbPasswordReuseTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbPasswordReuseTime.FormattingEnabled = true;
-            this.cbPasswordReuseTime.Location = new System.Drawing.Point(784, 131);
+            this.cbPasswordReuseTime.Location = new System.Drawing.Point(784, 130);
             this.cbPasswordReuseTime.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbPasswordReuseTime.Name = "cbPasswordReuseTime";
             this.cbPasswordReuseTime.Size = new System.Drawing.Size(153, 30);
@@ -272,7 +272,7 @@
             this.clbUserProfile.Location = new System.Drawing.Point(1108, 57);
             this.clbUserProfile.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.clbUserProfile.Name = "clbUserProfile";
-            this.clbUserProfile.Size = new System.Drawing.Size(304, 119);
+            this.clbUserProfile.Size = new System.Drawing.Size(304, 96);
             this.clbUserProfile.TabIndex = 77;
             // 
             // label13
@@ -628,7 +628,7 @@
             this.clbRoles.Location = new System.Drawing.Point(1105, 64);
             this.clbRoles.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.clbRoles.Name = "clbRoles";
-            this.clbRoles.Size = new System.Drawing.Size(304, 165);
+            this.clbRoles.Size = new System.Drawing.Size(304, 142);
             this.clbRoles.TabIndex = 52;
             // 
             // cbProfile
@@ -917,7 +917,7 @@
             this.clbUserRole.Location = new System.Drawing.Point(917, 21);
             this.clbUserRole.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.clbUserRole.Name = "clbUserRole";
-            this.clbUserRole.Size = new System.Drawing.Size(495, 165);
+            this.clbUserRole.Size = new System.Drawing.Size(495, 142);
             this.clbUserRole.TabIndex = 61;
             // 
             // btnUpdateRole
@@ -978,13 +978,29 @@
             // dgvRoles
             // 
             this.dgvRoles.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRoles.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvRoles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvRoles.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvRoles.Location = new System.Drawing.Point(8, 258);
             this.dgvRoles.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvRoles.Name = "dgvRoles";
             this.dgvRoles.RowHeadersWidth = 51;
             this.dgvRoles.RowTemplate.Height = 24;
-            this.dgvRoles.Size = new System.Drawing.Size(1405, 451);
+            this.dgvRoles.Size = new System.Drawing.Size(1405, 450);
             this.dgvRoles.TabIndex = 26;
             // 
             // label3
@@ -1045,25 +1061,23 @@
             // 
             // tabNhanVien
             // 
-            this.tabNhanVien.Controls.Add(this.pictureBox1);
+            this.tabNhanVien.Controls.Add(this.txt_luongcoban);
+            this.tabNhanVien.Controls.Add(this.label33);
             this.tabNhanVien.Controls.Add(this.txt_machucvu);
+            this.tabNhanVien.Controls.Add(this.pictureBox2);
             this.tabNhanVien.Controls.Add(this.rdb_Nam);
             this.tabNhanVien.Controls.Add(this.rdb_Nu);
             this.tabNhanVien.Controls.Add(this.btn_save);
-            this.tabNhanVien.Controls.Add(this.userpassword);
+            this.tabNhanVien.Controls.Add(this.txt_userpassword);
             this.tabNhanVien.Controls.Add(this.txt_username);
-            this.tabNhanVien.Controls.Add(this.txt_luongcoban);
             this.tabNhanVien.Controls.Add(this.txt_hoten);
-            this.tabNhanVien.Controls.Add(this.txt_manv);
             this.tabNhanVien.Controls.Add(this.dateTimePicker1);
             this.tabNhanVien.Controls.Add(this.label32);
             this.tabNhanVien.Controls.Add(this.label31);
-            this.tabNhanVien.Controls.Add(this.label30);
             this.tabNhanVien.Controls.Add(this.label24);
             this.tabNhanVien.Controls.Add(this.label29);
             this.tabNhanVien.Controls.Add(this.label28);
             this.tabNhanVien.Controls.Add(this.label27);
-            this.tabNhanVien.Controls.Add(this.lblMaNV);
             this.tabNhanVien.Location = new System.Drawing.Point(4, 31);
             this.tabNhanVien.Margin = new System.Windows.Forms.Padding(4);
             this.tabNhanVien.Name = "tabNhanVien";
@@ -1072,14 +1086,49 @@
             this.tabNhanVien.Text = "Employer";
             this.tabNhanVien.UseVisualStyleBackColor = true;
             // 
+            // txt_luongcoban
+            // 
+            this.txt_luongcoban.Location = new System.Drawing.Point(248, 377);
+            this.txt_luongcoban.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_luongcoban.Name = "txt_luongcoban";
+            this.txt_luongcoban.Size = new System.Drawing.Size(263, 28);
+            this.txt_luongcoban.TabIndex = 10;
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(69, 380);
+            this.label33.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(119, 22);
+            this.label33.TabIndex = 9;
+            this.label33.Text = "Lương cơ bản";
+            // 
+            // txt_machucvu
+            // 
+            this.txt_machucvu.FormattingEnabled = true;
+            this.txt_machucvu.Location = new System.Drawing.Point(248, 307);
+            this.txt_machucvu.Name = "txt_machucvu";
+            this.txt_machucvu.Size = new System.Drawing.Size(263, 30);
+            this.txt_machucvu.TabIndex = 8;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::FinalProject_IS.Properties.Resources.employer2;
+            this.pictureBox2.Location = new System.Drawing.Point(804, 71);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(512, 512);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 7;
+            this.pictureBox2.TabStop = false;
+            // 
             // rdb_Nam
             // 
             this.rdb_Nam.AutoSize = true;
-            this.rdb_Nam.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdb_Nam.Location = new System.Drawing.Point(456, 266);
+            this.rdb_Nam.Location = new System.Drawing.Point(443, 238);
             this.rdb_Nam.Margin = new System.Windows.Forms.Padding(4);
             this.rdb_Nam.Name = "rdb_Nam";
-            this.rdb_Nam.Size = new System.Drawing.Size(71, 29);
+            this.rdb_Nam.Size = new System.Drawing.Size(68, 26);
             this.rdb_Nam.TabIndex = 6;
             this.rdb_Nam.TabStop = true;
             this.rdb_Nam.Text = "Nam";
@@ -1088,11 +1137,10 @@
             // rdb_Nu
             // 
             this.rdb_Nu.AutoSize = true;
-            this.rdb_Nu.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdb_Nu.Location = new System.Drawing.Point(261, 266);
+            this.rdb_Nu.Location = new System.Drawing.Point(250, 238);
             this.rdb_Nu.Margin = new System.Windows.Forms.Padding(4);
             this.rdb_Nu.Name = "rdb_Nu";
-            this.rdb_Nu.Size = new System.Drawing.Size(57, 29);
+            this.rdb_Nu.Size = new System.Drawing.Size(54, 26);
             this.rdb_Nu.TabIndex = 6;
             this.rdb_Nu.TabStop = true;
             this.rdb_Nu.Text = "Nữ";
@@ -1100,8 +1148,7 @@
             // 
             // btn_save
             // 
-            this.btn_save.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_save.Location = new System.Drawing.Point(584, 320);
+            this.btn_save.Location = new System.Drawing.Point(557, 276);
             this.btn_save.Margin = new System.Windows.Forms.Padding(4);
             this.btn_save.Name = "btn_save";
             this.btn_save.Size = new System.Drawing.Size(167, 59);
@@ -1110,167 +1157,97 @@
             this.btn_save.UseVisualStyleBackColor = true;
             this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
             // 
-            // userpassword
+            // txt_userpassword
             // 
-            this.userpassword.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userpassword.Location = new System.Drawing.Point(263, 545);
-            this.userpassword.Margin = new System.Windows.Forms.Padding(4);
-            this.userpassword.Name = "userpassword";
-            this.userpassword.Size = new System.Drawing.Size(263, 31);
-            this.userpassword.TabIndex = 4;
+            this.txt_userpassword.Location = new System.Drawing.Point(248, 517);
+            this.txt_userpassword.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_userpassword.Name = "txt_userpassword";
+            this.txt_userpassword.Size = new System.Drawing.Size(263, 28);
+            this.txt_userpassword.TabIndex = 4;
             // 
             // txt_username
             // 
-            this.txt_username.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_username.Location = new System.Drawing.Point(263, 475);
+            this.txt_username.Location = new System.Drawing.Point(248, 447);
             this.txt_username.Margin = new System.Windows.Forms.Padding(4);
             this.txt_username.Name = "txt_username";
-            this.txt_username.Size = new System.Drawing.Size(263, 31);
+            this.txt_username.Size = new System.Drawing.Size(263, 28);
             this.txt_username.TabIndex = 4;
-            // 
-            // txt_luongcoban
-            // 
-            this.txt_luongcoban.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_luongcoban.Location = new System.Drawing.Point(261, 403);
-            this.txt_luongcoban.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_luongcoban.Name = "txt_luongcoban";
-            this.txt_luongcoban.Size = new System.Drawing.Size(263, 31);
-            this.txt_luongcoban.TabIndex = 4;
             // 
             // txt_hoten
             // 
-            this.txt_hoten.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_hoten.Location = new System.Drawing.Point(261, 135);
+            this.txt_hoten.Location = new System.Drawing.Point(248, 97);
             this.txt_hoten.Margin = new System.Windows.Forms.Padding(4);
             this.txt_hoten.Name = "txt_hoten";
-            this.txt_hoten.Size = new System.Drawing.Size(263, 31);
+            this.txt_hoten.Size = new System.Drawing.Size(263, 28);
             this.txt_hoten.TabIndex = 4;
-            // 
-            // txt_manv
-            // 
-            this.txt_manv.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_manv.Location = new System.Drawing.Point(261, 62);
-            this.txt_manv.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_manv.Name = "txt_manv";
-            this.txt_manv.Size = new System.Drawing.Size(263, 31);
-            this.txt_manv.TabIndex = 4;
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(259, 193);
+            this.dateTimePicker1.Location = new System.Drawing.Point(248, 165);
             this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(265, 31);
+            this.dateTimePicker1.Size = new System.Drawing.Size(263, 28);
             this.dateTimePicker1.TabIndex = 2;
             // 
             // label32
             // 
             this.label32.AutoSize = true;
-            this.label32.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label32.Location = new System.Drawing.Point(45, 548);
+            this.label32.Location = new System.Drawing.Point(69, 520);
             this.label32.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(87, 25);
+            this.label32.Size = new System.Drawing.Size(89, 22);
             this.label32.TabIndex = 0;
             this.label32.Text = "Password";
             // 
             // label31
             // 
             this.label31.AutoSize = true;
-            this.label31.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.Location = new System.Drawing.Point(45, 478);
+            this.label31.Location = new System.Drawing.Point(69, 450);
             this.label31.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(96, 25);
+            this.label31.Size = new System.Drawing.Size(97, 22);
             this.label31.TabIndex = 0;
             this.label31.Text = "User name";
             // 
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(45, 338);
+            this.label24.Location = new System.Drawing.Point(69, 310);
             this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(103, 25);
+            this.label24.Size = new System.Drawing.Size(101, 22);
             this.label24.TabIndex = 0;
             this.label24.Text = "Mã chức vụ";
             // 
             // label29
             // 
             this.label29.AutoSize = true;
-            this.label29.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.Location = new System.Drawing.Point(45, 268);
+            this.label29.Location = new System.Drawing.Point(69, 240);
             this.label29.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(78, 25);
+            this.label29.Size = new System.Drawing.Size(76, 22);
             this.label29.TabIndex = 0;
             this.label29.Text = "Giới tính";
             // 
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.Location = new System.Drawing.Point(45, 198);
+            this.label28.Location = new System.Drawing.Point(69, 170);
             this.label28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(91, 25);
+            this.label28.Size = new System.Drawing.Size(90, 22);
             this.label28.TabIndex = 0;
             this.label28.Text = "Ngày sinh";
             // 
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(45, 138);
+            this.label27.Location = new System.Drawing.Point(69, 100);
             this.label27.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(66, 25);
+            this.label27.Size = new System.Drawing.Size(63, 22);
             this.label27.TabIndex = 0;
             this.label27.Text = "Họ tên";
-            // 
-            // lblMaNV
-            // 
-            this.lblMaNV.AutoSize = true;
-            this.lblMaNV.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMaNV.Location = new System.Drawing.Point(45, 68);
-            this.lblMaNV.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblMaNV.Name = "lblMaNV";
-            this.lblMaNV.Size = new System.Drawing.Size(64, 25);
-            this.lblMaNV.TabIndex = 0;
-            this.lblMaNV.Text = "MANV";
-            // 
-            // txt_machucvu
-            // 
-            this.txt_machucvu.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_machucvu.Location = new System.Drawing.Point(263, 335);
-            this.txt_machucvu.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_machucvu.Name = "txt_machucvu";
-            this.txt_machucvu.Size = new System.Drawing.Size(263, 31);
-            this.txt_machucvu.TabIndex = 7;
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.Location = new System.Drawing.Point(45, 406);
-            this.label30.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(122, 25);
-            this.label30.TabIndex = 0;
-            this.label30.Text = "Lương cơ bản";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.pictureBox1.Image = global::FinalProject_IS.Properties.Resources.employer2;
-            this.pictureBox1.Location = new System.Drawing.Point(820, 71);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(512, 512);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // FSystemManager
             // 
@@ -1294,7 +1271,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvRoles)).EndInit();
             this.tabNhanVien.ResumeLayout(false);
             this.tabNhanVien.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1381,21 +1358,21 @@
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.Label lblMaNV;
+        private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Button btn_save;
-        private System.Windows.Forms.TextBox txt_luongcoban;
         private System.Windows.Forms.TextBox txt_hoten;
-        private System.Windows.Forms.TextBox txt_manv;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.TextBox userpassword;
+        private System.Windows.Forms.TextBox txt_userpassword;
         private System.Windows.Forms.TextBox txt_username;
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.RadioButton rdb_Nam;
         private System.Windows.Forms.RadioButton rdb_Nu;
-        private System.Windows.Forms.TextBox txt_machucvu;
-        private System.Windows.Forms.Label label30;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.ComboBox txt_machucvu;
+        private System.Windows.Forms.TextBox txt_luongcoban;
+        private System.Windows.Forms.Label label33;
     }
 }
