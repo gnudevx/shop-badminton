@@ -1,14 +1,17 @@
-﻿using System;
+﻿using FinalProject_IS.DAOs;
+using Oracle.ManagedDataAccess.Client;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Oracle.ManagedDataAccess.Client;
-using FinalProject_IS.DAOs;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace FinalProject_IS
 {
@@ -36,7 +39,9 @@ namespace FinalProject_IS
                 conn = DataProvider.GetConnection();
 
                 // User
-                dgvUsers.DataSource = UserDAO.GetAllUsers();
+                // Ví dụ biến lưu username đăng nhập
+                dgvUsers.DataSource = UserDAO.GetAllUsers(SessionInfo.CurrentRole, SessionInfo.CurrentUsername);
+
                 dgvRoles.DataSource = RoleDAO.GetAllRoles();
                 dgvProfiles.DataSource = ProfileDAO.GetAllProfiles();
                 cbDefaultTS.DataSource = UserDAO.GetListUser("SELECT tablespace_name FROM dba_tablespaces");
@@ -55,7 +60,7 @@ namespace FinalProject_IS
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi tải dữ liệu: " + ex.Message);
+            MessageBox.Show("Lỗi khi tải dữ liệu: " + ex.Message);
             }
         }
 
@@ -69,6 +74,9 @@ namespace FinalProject_IS
             string quota = txtQuota.Text.Trim();
             string profile = cbProfile.Text.Trim();
             string status = cbStatus.Text.Trim().ToUpper();
+            var selectedRoles = clbRoles.CheckedItems
+                           .Cast<string>()
+                           .ToList();
 
             // 🔹 Kiểm tra nhập liệu cơ bản
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
@@ -88,10 +96,10 @@ namespace FinalProject_IS
 
             try
             {
-                bool result = UserDAO.CreateUser(username, password, defaultTS, tempTS, quota, profile, status);
+                bool result = UserDAO.CreateUser(username, password, defaultTS, tempTS, quota, profile, status, selectedRoles);
                 if (result)
                 {
-                    dgvUsers.DataSource = UserDAO.GetAllUsers(); // refresh
+                    dgvUsers.DataSource = UserDAO.GetAllUsers(SessionInfo.CurrentRole, SessionInfo.CurrentUsername); // refresh
                 }
             }
             catch (Exception ex)
@@ -117,21 +125,13 @@ namespace FinalProject_IS
                 return;
             }
 
-            // Kiểm tra nếu tất cả đều trống => không có gì để cập nhật
-            if (string.IsNullOrEmpty(password) && string.IsNullOrEmpty(defaultTS)
-                && string.IsNullOrEmpty(tempTS) && string.IsNullOrEmpty(quota)
-                && string.IsNullOrEmpty(profile) && string.IsNullOrEmpty(status))
-            {
-                MessageBox.Show("Vui lòng nhập ít nhất một thông tin để cập nhật!");
-                return;
-            }
+            var selectedRoles = clbRoles.CheckedItems.Cast<string>().ToList();
 
-            bool result = UserDAO.AlterUser(username, password, defaultTS, tempTS, quota, profile, status);
+            bool result = UserDAO.AlterUser(username, password, defaultTS, tempTS, quota, profile, status, selectedRoles);
 
             if (result)
             {
-                // Refresh lại danh sách user
-                dgvUsers.DataSource = UserDAO.GetAllUsers();
+                dgvUsers.DataSource = UserDAO.GetAllUsers(SessionInfo.CurrentRole, SessionInfo.CurrentUsername);
             }
         }
 
@@ -147,7 +147,7 @@ namespace FinalProject_IS
             {
                 if (UserDAO.DropUser(txtUsername.Text))
                 {
-                    dgvUsers.DataSource = UserDAO.GetAllUsers(); // refresh
+                    dgvUsers.DataSource = UserDAO.GetAllUsers(SessionInfo.CurrentRole, SessionInfo.CurrentUsername);  // refresh
                 }
             }
         }
@@ -158,22 +158,35 @@ namespace FinalProject_IS
 
             DataGridViewRow row = dgvUsers.Rows[e.RowIndex];
 
-            // 🔹 Lấy dữ liệu theo tên cột đúng với DataSource (DBA_USERS)
+            // 🔹 Lấy dữ liệu từ DataGridView
             txtUsername.Text = row.Cells["USERNAME"].Value?.ToString().Trim();
             cbDefaultTS.Text = row.Cells["DEFAULT_TABLESPACE"].Value?.ToString().Trim();
             cbTempTS.Text = row.Cells["TEMPORARY_TABLESPACE"].Value?.ToString().Trim();
             cbProfile.Text = row.Cells["PROFILE"].Value?.ToString().Trim();
 
-            // 🔹 Trạng thái tài khoản: ACTIVE, LOCKED, EXPIRED...
+            // 🔹 Trạng thái tài khoản
             string accStatus = row.Cells["ACCOUNT_STATUS"].Value?.ToString().ToUpper() ?? "";
-            if (accStatus.Contains("LOCK"))
-                cbStatus.Text = "LOCK";
-            else
-                cbStatus.Text = "UNLOCK";
+            cbStatus.Text = accStatus.Contains("LOCK") ? "LOCK" : "UNLOCK";
 
-            // 🔹 Reset các trường không có trong bảng (nếu cần)
+            // 🔹 Reset các trường khác
             txtPassword.Text = "";
             txtQuota.Text = "";
+
+            // 🔹 Lấy roles của user đang chọn (chứ không phải user đang đăng nhập)
+            string selectedUser = txtUsername.Text.Trim().ToUpper();
+            var userRoles = UserDAO.GetUserRoles(selectedUser);
+
+            // 🔹 Reset tất cả checkbox trước khi tick lại
+            for (int i = 0; i < clbRoles.Items.Count; i++)
+                clbRoles.SetItemChecked(i, false);
+
+            // 🔹 Tick lại role mà user đang có
+            for (int i = 0; i < clbRoles.Items.Count; i++)
+            {
+                string role = clbRoles.Items[i].ToString();
+                if (userRoles.Contains(role))
+                    clbRoles.SetItemChecked(i, true);
+            }
         }
         private void btnRefreshProfileRole_Click(object sender, EventArgs e)
         {
@@ -181,6 +194,7 @@ namespace FinalProject_IS
             {
                 clbRoles.DataSource = null;
                 cbProfile.DataSource = null;
+                dgvUsers.DataSource = UserDAO.GetAllUsers(SessionInfo.CurrentRole, SessionInfo.CurrentUsername);
                 cbProfile.DataSource = UserDAO.GetListUser("SELECT profile FROM dba_profiles GROUP BY profile");
                 clbRoles.DataSource = UserDAO.GetListUser("SELECT role FROM dba_roles");
             }
@@ -188,6 +202,20 @@ namespace FinalProject_IS
             {
                 MessageBox.Show("Lỗi khi làm mới danh sách user: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnDetail_Click(object sender, EventArgs e)
+        {
+            if (dgvUsers.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Vui lòng chọn một user để xem chi tiết.");
+                return;
+            }
+
+            string username = dgvUsers.SelectedRows[0].Cells["USERNAME"].Value.ToString();
+
+            FUserDetail detailForm = new FUserDetail(username, SessionInfo.CurrentRole);
+            detailForm.ShowDialog();
         }
 
         #endregion
@@ -228,7 +256,6 @@ namespace FinalProject_IS
             {
                 if (RoleDAO.DropRole(roleName))
                 {
-                    MessageBox.Show("Xóa role thành công!");
                     dgvRoles.DataSource = RoleDAO.GetAllRoles();
                     txtRoleName.Clear();
                 }
@@ -493,6 +520,92 @@ namespace FinalProject_IS
             }
         }
 
+
+        #endregion
+        #region EMPLOYEER
+        private void btn_save_Click(object sender, EventArgs e)
+        {
+
+            string hoten = txt_hoten.Text.Trim();
+            DateTime ngaysinh = dateTimePicker1.Value;
+            string gioitinh = rdb_Nam.Checked ? "Nam" : (rdb_Nu.Checked ? "Nữ" : "");
+            string machucvu = txt_machucvu.Text.Trim();
+            decimal luong = decimal.Parse(txt_luongcoban.Text.Trim());
+            string username = txt_username.Text.Trim().ToUpper();
+            string password = txt_userpassword.Text.Trim();
+            if (hoten.Length > 100)
+            {
+                MessageBox.Show("Họ tên không được vượt quá 100 ký tự!");
+                return;
+            }
+
+            if (username.Length > 50)
+            {
+                MessageBox.Show("Username không được vượt quá 50 ký tự!");
+                return;
+            }
+
+            // 2️⃣ Parse MACHUCVU sang int? (nếu có)
+            int? machucvuInt = null;
+            if (!string.IsNullOrEmpty(machucvu))
+            {
+                if (int.TryParse(machucvu, out int mv))
+                    machucvuInt = mv;
+                else
+                {
+                    MessageBox.Show("Mã chức vụ phải là số!");
+                    return;
+                }
+            }
+            // 1️⃣ Hash password để lưu trong bảng
+            string passwordHash = HashPassword(password);
+
+            // Lưu thông tin nhân viên vào bảng SHOPBADMINTON.NHANVIEN
+            using (var conn = DataProvider.GetConnection())
+            {
+                string sql = @"INSERT INTO SHOPBADMINTON.NHANVIEN 
+                   (HOTEN, NGAYSINH, GIOITINH, MACHUCVU, LUONGCOBAN, USERNAME, PASSWORD)
+                   VALUES (:hoten, :ngaysinh, :gioitinh, :machucvu, :luong, :username, :passwordhash)";
+                using (var cmd = new OracleCommand(sql, conn))
+                {
+                    cmd.Parameters.Add(":hoten", hoten);
+                    cmd.Parameters.Add(":ngaysinh", ngaysinh); // dạng string
+                    cmd.Parameters.Add(":gioitinh", gioitinh);
+                    cmd.Parameters.Add(":machucvu", (object)machucvuInt ?? DBNull.Value);
+                    cmd.Parameters.Add(":luong", luong);
+                    cmd.Parameters.Add(":username", username);
+                    cmd.Parameters.Add(":passwordhash", passwordHash);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+
+            // 3️⃣ Tạo user hệ thống Oracle bằng tài khoản SYS
+            CreateOracleUser(username, password);
+
+            MessageBox.Show("Thêm nhân viên và tạo user Oracle thành công!");
+        }
+        private string HashPassword(string password)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                StringBuilder sb = new StringBuilder();
+                foreach (byte b in bytes)
+                    sb.Append(b.ToString("x2"));
+                return sb.ToString();
+            }
+        }
+
+        private void CreateOracleUser(string username, string password)
+        {
+            using (var cmd = new OracleCommand("SYS.SP_CREATE_USER", conn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("p_username", username);
+                cmd.Parameters.Add("p_password", password);
+                cmd.ExecuteNonQuery();
+            }
+        }
         #endregion
     }
 }

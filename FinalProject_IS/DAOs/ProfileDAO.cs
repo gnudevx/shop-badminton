@@ -78,9 +78,9 @@ namespace FinalProject_IS.DAOs
                     SESSIONS_PER_USER {sess}
                     CONNECT_TIME {connect}
                     IDLE_TIME {idle}
-                    PASSWORD_LIFE_TIME {passLife}/1440
-                    PASSWORD_GRACE_TIME {passGrace}/1440
-                    PASSWORD_REUSE_TIME {passReuseTime}/1440
+                    PASSWORD_LIFE_TIME {passLife}
+                    PASSWORD_GRACE_TIME {passGrace}
+                    PASSWORD_REUSE_TIME {passReuseTime}
                     PASSWORD_REUSE_MAX {passReuseMax}
                     FAILED_LOGIN_ATTEMPTS {failed}";
                 using (var cmd = new OracleCommand(sql, conn))

@@ -1,14 +1,15 @@
-﻿using System;
+﻿using FinalProject_IS.DAOs;
+using Oracle.ManagedDataAccess.Client;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using FinalProject_IS.DAOs;
-using Oracle.ManagedDataAccess.Client;
 
 namespace FinalProject_IS
 {
@@ -24,72 +25,77 @@ namespace FinalProject_IS
             string username = txt_TK.Text.Trim().ToUpper();
             string password = txt_MatKhau.Text.Trim();
 
-            try
-            {
-                // Cập nhật thông tin đăng nhập động
+            //try
+            //{
+                // Thiết lập thông tin kết nối cho user hiện tại
                 DataProvider.SetLogin(username, password);
 
                 using (var conn = DataProvider.GetConnection())
                 {
-                    // Lấy danh sách ROLE của user hiện tại
-                    string sql = @"SELECT GRANTED_ROLE 
-                                   FROM USER_ROLE_PRIVS";
-
+                    // Lấy danh sách role mà user có
+                    string sql = @"SELECT GRANTED_ROLE FROM USER_ROLE_PRIVS";
                     using (var cmd = new OracleCommand(sql, conn))
                     using (var reader = cmd.ExecuteReader())
                     {
-                        bool isSystemManager = false;
-                        bool isShopSupervisor = false;
+                        //bool isSystemManager = false;
+                        //bool isSecurityManager = false;
+
+                        //while (reader.Read())
+                        //{
+                        //    string role = reader.GetString(0).ToUpper();
+                        //    if (role == "ROLE_SYSTEM_MANAGER")
+                        //    {
+                        //        isSystemManager = true;
+                        //        break;
+                        //    }
+                        //    else if (role == "ROLE_SECURITY_MANAGER")
+                        //    {
+                        //        isSystemManager = true;
+                        //        break;
+                        //    }
+                        //}
+
+                        //conn.Close();
+                        List<string> roles = new List<string>();
                         while (reader.Read())
                         {
-                            string role = reader.GetString(0).ToUpper();
-                            if (role == "ROLE_SYSTEM_MANAGER")
-                            {
-                                isSystemManager = true;
-                                break;
-                            }
-
-                            if (role == "ROLE_SHOP_SUPERVISOR")
-                            {
-                                isShopSupervisor = true;
-                                break;
-                            }
+                            roles.Add(reader.GetString(0).ToUpper());
                         }
 
-                        conn.Close();
-
-                        // Điều hướng theo vai trò
+                        // Điều hướng form
                         this.Hide();
-                        if (isSystemManager)
+                        if (roles.Contains("ROLE_SYSTEM_MANAGER"))
                         {
-                            FSystemManager f = new FSystemManager();
-                            f.ShowDialog();
+                            SessionInfo.CurrentRole = "ROLE_SYSTEM_MANAGER";
+                            SessionInfo.CurrentUsername = username;
+                            new FSystemManager().ShowDialog();
                         }
-                        else if (isShopSupervisor)
+                        else if (roles.Contains("ROLE_SECURITY_MANAGER"))
                         {
-                            // nếu không phải system manager thì qua form nhân viên
-                            Supervisor_Dashboard f = new Supervisor_Dashboard();
-                            f.ShowDialog();
+                            SessionInfo.CurrentRole = "ROLE_SECURITY_MANAGER";
+                            SessionInfo.CurrentUsername = username;
+                            new F_Security_Manager().ShowDialog();
                         }
                         else
                         {
-                            Form1 f =new Form1();
+
+                            new Form1().ShowDialog();
+
+                            Form1 f = new Form1();
                             f.ShowDialog();
                         }
+                        this.Show();
 
-
-
-                            this.Show();
                     }
                 }
-            }
-            catch (OracleException ex)
-            {
-                MessageBox.Show("Đăng nhập thất bại: " + ex.Message,
-                                "Lỗi đăng nhập",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
-            }
+            //}
+            //catch (OracleException ex)
+            //{
+            //    MessageBox.Show("Đăng nhập thất bại: " + ex.Message,
+            //                    "Lỗi đăng nhập",
+            //                    MessageBoxButtons.OK,
+            //                    MessageBoxIcon.Error);
+            //}
         }
     }
 }
