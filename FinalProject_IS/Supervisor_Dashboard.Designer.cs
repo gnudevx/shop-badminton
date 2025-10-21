@@ -29,19 +29,25 @@
         private void InitializeComponent()
         {
             this.tabUserActivities = new System.Windows.Forms.TabPage();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dgvUserActivities = new System.Windows.Forms.DataGridView();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.cbAuditTable = new System.Windows.Forms.ComboBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.txtFindUser = new System.Windows.Forms.TextBox();
+            this.txtYear = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cbMonth = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cbDay = new System.Windows.Forms.ComboBox();
+            this.cbActionType = new System.Windows.Forms.ComboBox();
+            this.cbUsername = new System.Windows.Forms.ComboBox();
             this.btnFindUser = new System.Windows.Forms.Button();
+            this.txtFindUser = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.cbAuditTable = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.dgvUserActivities = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
             this.tabAuditLogs = new System.Windows.Forms.TabPage();
             this.dgvAudit = new System.Windows.Forms.DataGridView();
             this.ManageTab = new System.Windows.Forms.TabControl();
-            this.cbUsername = new System.Windows.Forms.ComboBox();
-            this.cbActionType = new System.Windows.Forms.ComboBox();
             this.tabUserActivities.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUserActivities)).BeginInit();
             this.tabAuditLogs.SuspendLayout();
@@ -51,6 +57,12 @@
             // 
             // tabUserActivities
             // 
+            this.tabUserActivities.Controls.Add(this.txtYear);
+            this.tabUserActivities.Controls.Add(this.label4);
+            this.tabUserActivities.Controls.Add(this.label3);
+            this.tabUserActivities.Controls.Add(this.cbMonth);
+            this.tabUserActivities.Controls.Add(this.label2);
+            this.tabUserActivities.Controls.Add(this.cbDay);
             this.tabUserActivities.Controls.Add(this.cbActionType);
             this.tabUserActivities.Controls.Add(this.cbUsername);
             this.tabUserActivities.Controls.Add(this.btnFindUser);
@@ -62,114 +74,200 @@
             this.tabUserActivities.Controls.Add(this.dgvUserActivities);
             this.tabUserActivities.Controls.Add(this.label1);
             this.tabUserActivities.Location = new System.Drawing.Point(4, 31);
-            this.tabUserActivities.Margin = new System.Windows.Forms.Padding(2);
+            this.tabUserActivities.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabUserActivities.Name = "tabUserActivities";
-            this.tabUserActivities.Padding = new System.Windows.Forms.Padding(2);
-            this.tabUserActivities.Size = new System.Drawing.Size(1062, 526);
+            this.tabUserActivities.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabUserActivities.Size = new System.Drawing.Size(1419, 655);
             this.tabUserActivities.TabIndex = 1;
             this.tabUserActivities.Text = "User Activities";
             this.tabUserActivities.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // txtYear
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(6, 17);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(111, 22);
-            this.label1.TabIndex = 34;
-            this.label1.Text = "USERNAME";
+            this.txtYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtYear.Location = new System.Drawing.Point(1105, 87);
+            this.txtYear.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtYear.Name = "txtYear";
+            this.txtYear.Size = new System.Drawing.Size(198, 28);
+            this.txtYear.TabIndex = 95;
+            this.txtYear.TextChanged += new System.EventHandler(this.txtYear_TextChanged);
             // 
-            // dgvUserActivities
+            // label4
             // 
-            this.dgvUserActivities.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvUserActivities.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvUserActivities.Location = new System.Drawing.Point(4, 212);
-            this.dgvUserActivities.Margin = new System.Windows.Forms.Padding(2);
-            this.dgvUserActivities.Name = "dgvUserActivities";
-            this.dgvUserActivities.RowHeadersWidth = 51;
-            this.dgvUserActivities.RowTemplate.Height = 24;
-            this.dgvUserActivities.Size = new System.Drawing.Size(1062, 315);
-            this.dgvUserActivities.TabIndex = 40;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Red;
+            this.label4.Location = new System.Drawing.Point(899, 93);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(48, 22);
+            this.label4.TabIndex = 94;
+            this.label4.Text = "Year";
             // 
-            // label7
+            // label3
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.Red;
-            this.label7.Location = new System.Drawing.Point(672, 18);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(152, 22);
-            this.label7.TabIndex = 42;
-            this.label7.Text = "AUDITED TABLE";
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Red;
+            this.label3.Location = new System.Drawing.Point(498, 90);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(59, 22);
+            this.label3.TabIndex = 92;
+            this.label3.Text = "Month";
             // 
-            // label9
+            // cbMonth
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.Red;
-            this.label9.Location = new System.Drawing.Point(369, 17);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(90, 22);
-            this.label9.TabIndex = 44;
-            this.label9.Text = "ACTIONS";
+            this.cbMonth.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbMonth.FormattingEnabled = true;
+            this.cbMonth.Location = new System.Drawing.Point(660, 87);
+            this.cbMonth.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbMonth.Name = "cbMonth";
+            this.cbMonth.Size = new System.Drawing.Size(195, 30);
+            this.cbMonth.TabIndex = 91;
+            this.cbMonth.SelectedIndexChanged += new System.EventHandler(this.cbMonth_SelectedIndexChanged);
             // 
-            // cbAuditTable
+            // label2
             // 
-            this.cbAuditTable.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbAuditTable.FormattingEnabled = true;
-            this.cbAuditTable.Location = new System.Drawing.Point(829, 15);
-            this.cbAuditTable.Margin = new System.Windows.Forms.Padding(2);
-            this.cbAuditTable.Name = "cbAuditTable";
-            this.cbAuditTable.Size = new System.Drawing.Size(229, 30);
-            this.cbAuditTable.TabIndex = 51;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Red;
+            this.label2.Location = new System.Drawing.Point(8, 87);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(42, 22);
+            this.label2.TabIndex = 90;
+            this.label2.Text = "Day";
+            // 
+            // cbDay
+            // 
+            this.cbDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbDay.FormattingEnabled = true;
+            this.cbDay.Location = new System.Drawing.Point(212, 84);
+            this.cbDay.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbDay.Name = "cbDay";
+            this.cbDay.Size = new System.Drawing.Size(204, 30);
+            this.cbDay.TabIndex = 89;
+            // 
+            // cbActionType
+            // 
+            this.cbActionType.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbActionType.FormattingEnabled = true;
+            this.cbActionType.Items.AddRange(new object[] {
+            "ALL",
+            "SELECT",
+            "UPDATE",
+            "INSERT",
+            "DELETE"});
+            this.cbActionType.Location = new System.Drawing.Point(660, 17);
+            this.cbActionType.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbActionType.Name = "cbActionType";
+            this.cbActionType.Size = new System.Drawing.Size(195, 30);
+            this.cbActionType.TabIndex = 88;
+            // 
+            // cbUsername
+            // 
+            this.cbUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbUsername.FormattingEnabled = true;
+            this.cbUsername.Location = new System.Drawing.Point(212, 17);
+            this.cbUsername.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbUsername.Name = "cbUsername";
+            this.cbUsername.Size = new System.Drawing.Size(204, 30);
+            this.cbUsername.TabIndex = 87;
+            // 
+            // btnFindUser
+            // 
+            this.btnFindUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFindUser.Location = new System.Drawing.Point(1008, 144);
+            this.btnFindUser.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnFindUser.Name = "btnFindUser";
+            this.btnFindUser.Size = new System.Drawing.Size(133, 39);
+            this.btnFindUser.TabIndex = 56;
+            this.btnFindUser.Text = "FIND";
+            this.btnFindUser.UseVisualStyleBackColor = true;
+            this.btnFindUser.Click += new System.EventHandler(this.btnFindUser_Click);
+            // 
+            // txtFindUser
+            // 
+            this.txtFindUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFindUser.Location = new System.Drawing.Point(521, 146);
+            this.txtFindUser.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtFindUser.Name = "txtFindUser";
+            this.txtFindUser.Size = new System.Drawing.Size(463, 28);
+            this.txtFindUser.TabIndex = 55;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.Red;
-            this.label14.Location = new System.Drawing.Point(256, 122);
-            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label14.Location = new System.Drawing.Point(341, 150);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(111, 22);
             this.label14.TabIndex = 54;
             this.label14.Text = "FIND USER:";
             // 
-            // txtFindUser
+            // cbAuditTable
             // 
-            this.txtFindUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFindUser.Location = new System.Drawing.Point(391, 119);
-            this.txtFindUser.Margin = new System.Windows.Forms.Padding(2);
-            this.txtFindUser.Name = "txtFindUser";
-            this.txtFindUser.Size = new System.Drawing.Size(348, 28);
-            this.txtFindUser.TabIndex = 55;
+            this.cbAuditTable.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbAuditTable.FormattingEnabled = true;
+            this.cbAuditTable.Location = new System.Drawing.Point(1105, 18);
+            this.cbAuditTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbAuditTable.Name = "cbAuditTable";
+            this.cbAuditTable.Size = new System.Drawing.Size(304, 30);
+            this.cbAuditTable.TabIndex = 51;
             // 
-            // btnFindUser
+            // label9
             // 
-            this.btnFindUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFindUser.Location = new System.Drawing.Point(756, 117);
-            this.btnFindUser.Margin = new System.Windows.Forms.Padding(2);
-            this.btnFindUser.Name = "btnFindUser";
-            this.btnFindUser.Size = new System.Drawing.Size(100, 32);
-            this.btnFindUser.TabIndex = 56;
-            this.btnFindUser.Text = "FIND";
-            this.btnFindUser.UseVisualStyleBackColor = true;
-            this.btnFindUser.Click += new System.EventHandler(this.btnFindUser_Click);
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.Red;
+            this.label9.Location = new System.Drawing.Point(492, 21);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(90, 22);
+            this.label9.TabIndex = 44;
+            this.label9.Text = "ACTIONS";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Red;
+            this.label7.Location = new System.Drawing.Point(896, 22);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(152, 22);
+            this.label7.TabIndex = 42;
+            this.label7.Text = "AUDITED TABLE";
+            // 
+            // dgvUserActivities
+            // 
+            this.dgvUserActivities.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvUserActivities.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvUserActivities.Location = new System.Drawing.Point(5, 214);
+            this.dgvUserActivities.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvUserActivities.Name = "dgvUserActivities";
+            this.dgvUserActivities.RowHeadersWidth = 51;
+            this.dgvUserActivities.RowTemplate.Height = 24;
+            this.dgvUserActivities.Size = new System.Drawing.Size(1416, 435);
+            this.dgvUserActivities.TabIndex = 40;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.Location = new System.Drawing.Point(8, 21);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(111, 22);
+            this.label1.TabIndex = 34;
+            this.label1.Text = "USERNAME";
             // 
             // tabAuditLogs
             // 
             this.tabAuditLogs.Controls.Add(this.dgvAudit);
             this.tabAuditLogs.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.tabAuditLogs.Location = new System.Drawing.Point(4, 31);
-            this.tabAuditLogs.Margin = new System.Windows.Forms.Padding(2);
+            this.tabAuditLogs.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabAuditLogs.Name = "tabAuditLogs";
-            this.tabAuditLogs.Padding = new System.Windows.Forms.Padding(2);
-            this.tabAuditLogs.Size = new System.Drawing.Size(1062, 526);
+            this.tabAuditLogs.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabAuditLogs.Size = new System.Drawing.Size(1419, 655);
             this.tabAuditLogs.TabIndex = 0;
             this.tabAuditLogs.Text = "Audit Logs";
             this.tabAuditLogs.UseVisualStyleBackColor = true;
@@ -178,12 +276,12 @@
             // 
             this.dgvAudit.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvAudit.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAudit.Location = new System.Drawing.Point(4, 2);
-            this.dgvAudit.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvAudit.Location = new System.Drawing.Point(5, 2);
+            this.dgvAudit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvAudit.Name = "dgvAudit";
             this.dgvAudit.RowHeadersWidth = 51;
             this.dgvAudit.RowTemplate.Height = 24;
-            this.dgvAudit.Size = new System.Drawing.Size(1054, 525);
+            this.dgvAudit.Size = new System.Drawing.Size(1405, 646);
             this.dgvAudit.TabIndex = 9;
             // 
             // ManageTab
@@ -191,44 +289,20 @@
             this.ManageTab.Controls.Add(this.tabAuditLogs);
             this.ManageTab.Controls.Add(this.tabUserActivities);
             this.ManageTab.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ManageTab.Location = new System.Drawing.Point(9, 10);
-            this.ManageTab.Margin = new System.Windows.Forms.Padding(2);
+            this.ManageTab.Location = new System.Drawing.Point(12, 12);
+            this.ManageTab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ManageTab.Name = "ManageTab";
             this.ManageTab.SelectedIndex = 0;
-            this.ManageTab.Size = new System.Drawing.Size(1070, 561);
+            this.ManageTab.Size = new System.Drawing.Size(1427, 690);
             this.ManageTab.TabIndex = 6;
-            // 
-            // cbUsername
-            // 
-            this.cbUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbUsername.FormattingEnabled = true;
-            this.cbUsername.Location = new System.Drawing.Point(159, 14);
-            this.cbUsername.Margin = new System.Windows.Forms.Padding(2);
-            this.cbUsername.Name = "cbUsername";
-            this.cbUsername.Size = new System.Drawing.Size(154, 30);
-            this.cbUsername.TabIndex = 87;
-            // 
-            // cbActionType
-            // 
-            this.cbActionType.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbActionType.FormattingEnabled = true;
-            this.cbActionType.Items.AddRange(new object[] {
-            "SELECT",
-            "UPDATE",
-            "INSERT",
-            "DELETE"});
-            this.cbActionType.Location = new System.Drawing.Point(495, 14);
-            this.cbActionType.Margin = new System.Windows.Forms.Padding(2);
-            this.cbActionType.Name = "cbActionType";
-            this.cbActionType.Size = new System.Drawing.Size(147, 30);
-            this.cbActionType.TabIndex = 88;
             // 
             // Supervisor_Dashboard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1088, 580);
+            this.ClientSize = new System.Drawing.Size(1451, 714);
             this.Controls.Add(this.ManageTab);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Supervisor_Dashboard";
             this.Text = "Supervisor_Dashboard";
             this.Load += new System.EventHandler(this.Supervisor_Dashboard_Load);
@@ -258,5 +332,11 @@
         public System.Windows.Forms.ComboBox cbUsername;
         private System.Windows.Forms.ComboBox cbActionType;
         public System.Windows.Forms.TextBox txtFindUser;
+        private System.Windows.Forms.Label label2;
+        public System.Windows.Forms.ComboBox cbDay;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        public System.Windows.Forms.ComboBox cbMonth;
+        public System.Windows.Forms.TextBox txtYear;
     }
 }
