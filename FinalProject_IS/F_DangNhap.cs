@@ -66,10 +66,14 @@ namespace FinalProject_IS
                         this.Hide();
                         if (roles.Contains("ROLE_SYSTEM_MANAGER"))
                         {
+                            SessionInfo.CurrentRole = "ROLE_SYSTEM_MANAGER";
+                            SessionInfo.CurrentUsername = username;
                             new FSystemManager().ShowDialog();
                         }
                         else if (roles.Contains("ROLE_SECURITY_MANAGER"))
                         {
+                            SessionInfo.CurrentRole = "ROLE_SECURITY_MANAGER";
+                            SessionInfo.CurrentUsername = username;
                             new F_Security_Manager().ShowDialog();
                         }
                         else
