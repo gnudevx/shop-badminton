@@ -524,15 +524,40 @@ namespace FinalProject_IS
         #region EMPLOYEER
         private void btn_save_Click(object sender, EventArgs e)
         {
-            string manv = txt_manv.Text.Trim();
+
             string hoten = txt_hoten.Text.Trim();
             DateTime ngaysinh = dateTimePicker1.Value;
             string gioitinh = rdb_Nam.Checked ? "Nam" : (rdb_Nu.Checked ? "Nữ" : "");
             string machucvu = txt_machucvu.Text.Trim();
             decimal luong = decimal.Parse(txt_luongcoban.Text.Trim());
-            string username = txtUsername.Text.Trim().ToUpper();
-            string password = txtPassword.Text.Trim();
+            string username = txt_username.Text.Trim().ToUpper();
+            string password = txt_userpassword.Text.Trim();
+            if (hoten.Length > 100)
+            {
+                MessageBox.Show("Họ tên không được vượt quá 100 ký tự!");
+                return;
+            }
 
+            string ngaysinhStr = ngaysinh.ToString("yyyy-MM-dd"); // <200 ký tự
+
+            if (username.Length > 50)
+            {
+                MessageBox.Show("Username không được vượt quá 50 ký tự!");
+                return;
+            }
+
+            // 2️⃣ Parse MACHUCVU sang int? (nếu có)
+            int? machucvuInt = null;
+            if (!string.IsNullOrEmpty(machucvu))
+            {
+                if (int.TryParse(machucvu, out int mv))
+                    machucvuInt = mv;
+                else
+                {
+                    MessageBox.Show("Mã chức vụ phải là số!");
+                    return;
+                }
+            }
             // 1️⃣ Hash password để lưu trong bảng
             string passwordHash = HashPassword(password);
 
@@ -540,15 +565,14 @@ namespace FinalProject_IS
             using (var conn = DataProvider.GetConnection())
             {
                 string sql = @"INSERT INTO SHOPBADMINTON.NHANVIEN 
-                               (MANV, HOTEN, NGAYSINH, GIOITINH, MACHUCVU, LUONGCOBAN, USERNAME, PASSWORD_HASH)
-                               VALUES (:manv, :hoten, :ngaysinh, :gioitinh, :machucvu, :luong, :username, :passwordhash)";
+                   (HOTEN, NGAYSINH, GIOITINH, MACHUCVU, LUONGCOBAN, USERNAME, PASSWORD)
+                   VALUES (:hoten, :ngaysinh, :gioitinh, :machucvu, :luong, :username, :passwordhash)";
                 using (var cmd = new OracleCommand(sql, conn))
                 {
-                    cmd.Parameters.Add(":manv", manv);
                     cmd.Parameters.Add(":hoten", hoten);
-                    cmd.Parameters.Add(":ngaysinh", ngaysinh);
+                    cmd.Parameters.Add(":ngaysinh", ngaysinhStr); // dạng string
                     cmd.Parameters.Add(":gioitinh", gioitinh);
-                    cmd.Parameters.Add(":machucvu", machucvu);
+                    cmd.Parameters.Add(":machucvu", (object)machucvuInt ?? DBNull.Value);
                     cmd.Parameters.Add(":luong", luong);
                     cmd.Parameters.Add(":username", username);
                     cmd.Parameters.Add(":passwordhash", passwordHash);
@@ -575,15 +599,12 @@ namespace FinalProject_IS
 
         private void CreateOracleUser(string username, string password)
         {
-            using (var conn = DataProvider.GetConnection())
+            using (var cmd = new OracleCommand("SYS.SP_CREATE_USER", conn))
             {
-                using (var cmd = new OracleCommand("SYS.SP_CREATE_USER", conn))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("p_username", username);
-                    cmd.Parameters.Add("p_password", password);
-                    cmd.ExecuteNonQuery();
-                }
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("p_username", username);
+                cmd.Parameters.Add("p_password", password);
+                cmd.ExecuteNonQuery();
             }
         }
         #endregion

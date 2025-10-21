@@ -101,14 +101,14 @@ namespace FinalProject_IS.DAOs
                     {
                         // 1️⃣ Tạo user
                         cmd.CommandText = $@"
-                    CREATE USER {username}
-                    IDENTIFIED BY {password}
-                    DEFAULT TABLESPACE {defaultTS}
-                    TEMPORARY TABLESPACE {tempTS}
-                    QUOTA {quotaValue} ON {defaultTS}
-                    PROFILE {profile}
-                    ACCOUNT {status}";
-                        cmd.ExecuteNonQuery();
+                        CREATE USER {username}
+                        IDENTIFIED BY {password}
+                        DEFAULT TABLESPACE {defaultTS}
+                        TEMPORARY TABLESPACE {tempTS}
+                        QUOTA {quotaValue} ON {defaultTS}
+                        PROFILE {profile}
+                        ACCOUNT {status}";
+                            cmd.ExecuteNonQuery();
 
                         // 2️⃣ Gán role (nếu có)
                         if (roles != null && roles.Count > 0)
