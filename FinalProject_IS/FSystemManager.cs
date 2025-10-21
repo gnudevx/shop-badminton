@@ -1,14 +1,16 @@
-﻿using System;
+﻿using FinalProject_IS.DAOs;
+using Oracle.ManagedDataAccess.Client;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Oracle.ManagedDataAccess.Client;
-using FinalProject_IS.DAOs;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace FinalProject_IS
@@ -517,9 +519,74 @@ namespace FinalProject_IS
             }
         }
 
-        #endregion
 
-        
+        #endregion
+        #region EMPLOYEER
+        private void btn_save_Click(object sender, EventArgs e)
+        {
+            string manv = txt_manv.Text.Trim();
+            string hoten = txt_hoten.Text.Trim();
+            DateTime ngaysinh = dateTimePicker1.Value;
+            string gioitinh = rdb_Nam.Checked ? "Nam" : (rdb_Nu.Checked ? "Nữ" : "");
+            string machucvu = txt_machucvu.Text.Trim();
+            decimal luong = decimal.Parse(txt_luongcoban.Text.Trim());
+            string username = txtUsername.Text.Trim().ToUpper();
+            string password = txtPassword.Text.Trim();
+
+            // 1️⃣ Hash password để lưu trong bảng
+            string passwordHash = HashPassword(password);
+
+            // Lưu thông tin nhân viên vào bảng SHOPBADMINTON.NHANVIEN
+            using (var conn = DataProvider.GetConnection())
+            {
+                string sql = @"INSERT INTO SHOPBADMINTON.NHANVIEN 
+                               (MANV, HOTEN, NGAYSINH, GIOITINH, MACHUCVU, LUONGCOBAN, USERNAME, PASSWORD_HASH)
+                               VALUES (:manv, :hoten, :ngaysinh, :gioitinh, :machucvu, :luong, :username, :passwordhash)";
+                using (var cmd = new OracleCommand(sql, conn))
+                {
+                    cmd.Parameters.Add(":manv", manv);
+                    cmd.Parameters.Add(":hoten", hoten);
+                    cmd.Parameters.Add(":ngaysinh", ngaysinh);
+                    cmd.Parameters.Add(":gioitinh", gioitinh);
+                    cmd.Parameters.Add(":machucvu", machucvu);
+                    cmd.Parameters.Add(":luong", luong);
+                    cmd.Parameters.Add(":username", username);
+                    cmd.Parameters.Add(":passwordhash", passwordHash);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+
+            // 3️⃣ Tạo user hệ thống Oracle bằng tài khoản SYS
+            CreateOracleUser(username, password);
+
+            MessageBox.Show("Thêm nhân viên và tạo user Oracle thành công!");
+        }
+        private string HashPassword(string password)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                StringBuilder sb = new StringBuilder();
+                foreach (byte b in bytes)
+                    sb.Append(b.ToString("x2"));
+                return sb.ToString();
+            }
+        }
+
+        private void CreateOracleUser(string username, string password)
+        {
+            using (var conn = DataProvider.GetConnection())
+            {
+                using (var cmd = new OracleCommand("SYS.SP_CREATE_USER", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("p_username", username);
+                    cmd.Parameters.Add("p_password", password);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+        #endregion
     }
 }
 
