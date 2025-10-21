@@ -30,12 +30,13 @@ namespace FinalProject_IS
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabManager = new System.Windows.Forms.TabControl();
             this.tabPrivileges = new System.Windows.Forms.TabPage();
             this.label24 = new System.Windows.Forms.Label();
             this.dgv_privilege = new System.Windows.Forms.DataGridView();
             this.tabProfile = new System.Windows.Forms.TabPage();
+            this.lblProfileName = new System.Windows.Forms.Label();
             this.cbPasswordReuseTime = new System.Windows.Forms.ComboBox();
             this.cbPasswordGraceTime = new System.Windows.Forms.ComboBox();
             this.cbFailedLoginAttempts = new System.Windows.Forms.ComboBox();
@@ -98,7 +99,6 @@ namespace FinalProject_IS
             this.cbObjectName = new System.Windows.Forms.ComboBox();
             this.cbObjectSchema = new System.Windows.Forms.ComboBox();
             this.dgvPolicy = new System.Windows.Forms.DataGridView();
-            this.lblProfileName = new System.Windows.Forms.Label();
             this.tabManager.SuspendLayout();
             this.tabPrivileges.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_privilege)).BeginInit();
@@ -204,6 +204,16 @@ namespace FinalProject_IS
             this.tabProfile.TabIndex = 0;
             this.tabProfile.Text = "Profile";
             this.tabProfile.UseVisualStyleBackColor = true;
+            // 
+            // lblProfileName
+            // 
+            this.lblProfileName.AutoSize = true;
+            this.lblProfileName.Location = new System.Drawing.Point(1173, 597);
+            this.lblProfileName.Name = "lblProfileName";
+            this.lblProfileName.Size = new System.Drawing.Size(46, 18);
+            this.lblProfileName.TabIndex = 89;
+            this.lblProfileName.Text = "label1";
+            this.lblProfileName.Visible = false;
             // 
             // cbPasswordReuseTime
             // 
@@ -509,14 +519,14 @@ namespace FinalProject_IS
             this.dgvProfiles.AllowUserToDeleteRows = false;
             this.dgvProfiles.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvProfiles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LightBlue;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvProfiles.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LightBlue;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvProfiles.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvProfiles.Location = new System.Drawing.Point(170, 228);
             this.dgvProfiles.Margin = new System.Windows.Forms.Padding(2);
             this.dgvProfiles.Name = "dgvProfiles";
@@ -734,6 +744,7 @@ namespace FinalProject_IS
             // 
             this.txt_policyFuntion.Location = new System.Drawing.Point(147, 121);
             this.txt_policyFuntion.Name = "txt_policyFuntion";
+            this.txt_policyFuntion.ReadOnly = true;
             this.txt_policyFuntion.Size = new System.Drawing.Size(194, 24);
             this.txt_policyFuntion.TabIndex = 6;
             // 
@@ -894,16 +905,6 @@ namespace FinalProject_IS
             this.dgvPolicy.TabIndex = 85;
             this.dgvPolicy.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPolicy_CellContentClick);
             this.dgvPolicy.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPolicy_CellContentDoubleClick);
-            // 
-            // lblProfileName
-            // 
-            this.lblProfileName.AutoSize = true;
-            this.lblProfileName.Location = new System.Drawing.Point(1173, 597);
-            this.lblProfileName.Name = "lblProfileName";
-            this.lblProfileName.Size = new System.Drawing.Size(46, 18);
-            this.lblProfileName.TabIndex = 89;
-            this.lblProfileName.Text = "label1";
-            this.lblProfileName.Visible = false;
             // 
             // F_Security_Manager
             // 
