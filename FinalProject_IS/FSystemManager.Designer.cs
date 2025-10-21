@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ManageTab = new System.Windows.Forms.TabControl();
             this.tabProfile = new System.Windows.Forms.TabPage();
             this.cbPasswordReuseTime = new System.Windows.Forms.ComboBox();
@@ -63,6 +61,7 @@
             this.btnCreateProfile = new System.Windows.Forms.Button();
             this.dgvProfiles = new System.Windows.Forms.DataGridView();
             this.tabUser = new System.Windows.Forms.TabPage();
+            this.btnDetail = new System.Windows.Forms.Button();
             this.btnRefreshProfileRole = new System.Windows.Forms.Button();
             this.btnFindUser = new System.Windows.Forms.Button();
             this.txtFindUser = new System.Windows.Forms.TextBox();
@@ -105,7 +104,25 @@
             this.txtRoleName = new System.Windows.Forms.TextBox();
             this.btnDeleteRole = new System.Windows.Forms.Button();
             this.btnCreateRole = new System.Windows.Forms.Button();
-            this.btnDetail = new System.Windows.Forms.Button();
+            this.tabNhanVien = new System.Windows.Forms.TabPage();
+            this.btn_save = new System.Windows.Forms.Button();
+            this.userpassword = new System.Windows.Forms.TextBox();
+            this.txt_username = new System.Windows.Forms.TextBox();
+            this.txt_luongcoban = new System.Windows.Forms.TextBox();
+            this.txt_hoten = new System.Windows.Forms.TextBox();
+            this.txt_manv = new System.Windows.Forms.TextBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.txt_machucvu = new System.Windows.Forms.ComboBox();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.lblMaNV = new System.Windows.Forms.Label();
+            this.rdb_Nu = new System.Windows.Forms.RadioButton();
+            this.rdb_Nam = new System.Windows.Forms.RadioButton();
             this.ManageTab.SuspendLayout();
             this.tabProfile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProfiles)).BeginInit();
@@ -113,6 +130,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             this.tabRole.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRoles)).BeginInit();
+            this.tabNhanVien.SuspendLayout();
             this.SuspendLayout();
             // 
             // ManageTab
@@ -120,9 +138,10 @@
             this.ManageTab.Controls.Add(this.tabProfile);
             this.ManageTab.Controls.Add(this.tabUser);
             this.ManageTab.Controls.Add(this.tabRole);
+            this.ManageTab.Controls.Add(this.tabNhanVien);
             this.ManageTab.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ManageTab.Location = new System.Drawing.Point(11, 8);
-            this.ManageTab.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ManageTab.Margin = new System.Windows.Forms.Padding(2);
             this.ManageTab.Name = "ManageTab";
             this.ManageTab.SelectedIndex = 0;
             this.ManageTab.Size = new System.Drawing.Size(1070, 561);
@@ -162,9 +181,9 @@
             this.tabProfile.Controls.Add(this.dgvProfiles);
             this.tabProfile.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.tabProfile.Location = new System.Drawing.Point(4, 26);
-            this.tabProfile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabProfile.Margin = new System.Windows.Forms.Padding(2);
             this.tabProfile.Name = "tabProfile";
-            this.tabProfile.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabProfile.Padding = new System.Windows.Forms.Padding(2);
             this.tabProfile.Size = new System.Drawing.Size(1062, 531);
             this.tabProfile.TabIndex = 0;
             this.tabProfile.Text = "Profile";
@@ -174,46 +193,37 @@
             // 
             this.cbPasswordReuseTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbPasswordReuseTime.FormattingEnabled = true;
-            this.cbPasswordReuseTime.Location = new System.Drawing.Point(588, 106);
-            this.cbPasswordReuseTime.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.cbPasswordReuseTime.Name = "cbPasswordReuseTime";
-            this.cbPasswordReuseTime.Size = new System.Drawing.Size(116, 25);
             this.cbPasswordReuseTime.Location = new System.Drawing.Point(784, 131);
+            this.cbPasswordReuseTime.Margin = new System.Windows.Forms.Padding(2);
             this.cbPasswordReuseTime.Name = "cbPasswordReuseTime";
-            this.cbPasswordReuseTime.Size = new System.Drawing.Size(154, 30);
+            this.cbPasswordReuseTime.Size = new System.Drawing.Size(154, 25);
             this.cbPasswordReuseTime.TabIndex = 88;
             // 
             // cbPasswordGraceTime
             // 
             this.cbPasswordGraceTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbPasswordGraceTime.FormattingEnabled = true;
-            this.cbPasswordGraceTime.Location = new System.Drawing.Point(588, 15);
-            this.cbPasswordGraceTime.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.cbPasswordGraceTime.Name = "cbPasswordGraceTime";
-            this.cbPasswordGraceTime.Size = new System.Drawing.Size(116, 25);
             this.cbPasswordGraceTime.Location = new System.Drawing.Point(784, 18);
+            this.cbPasswordGraceTime.Margin = new System.Windows.Forms.Padding(2);
             this.cbPasswordGraceTime.Name = "cbPasswordGraceTime";
-            this.cbPasswordGraceTime.Size = new System.Drawing.Size(154, 30);
+            this.cbPasswordGraceTime.Size = new System.Drawing.Size(154, 25);
             this.cbPasswordGraceTime.TabIndex = 87;
             // 
             // cbFailedLoginAttempts
             // 
             this.cbFailedLoginAttempts.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbFailedLoginAttempts.FormattingEnabled = true;
-            this.cbFailedLoginAttempts.Location = new System.Drawing.Point(210, 44);
-            this.cbFailedLoginAttempts.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.cbFailedLoginAttempts.Name = "cbFailedLoginAttempts";
-            this.cbFailedLoginAttempts.Size = new System.Drawing.Size(121, 25);
             this.cbFailedLoginAttempts.Location = new System.Drawing.Point(280, 54);
+            this.cbFailedLoginAttempts.Margin = new System.Windows.Forms.Padding(2);
             this.cbFailedLoginAttempts.Name = "cbFailedLoginAttempts";
-            this.cbFailedLoginAttempts.Size = new System.Drawing.Size(160, 30);
+            this.cbFailedLoginAttempts.Size = new System.Drawing.Size(160, 25);
             this.cbFailedLoginAttempts.TabIndex = 86;
             // 
             // btnRefreshUserProfile
             // 
             this.btnRefreshUserProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRefreshUserProfile.Location = new System.Drawing.Point(724, 91);
-            this.btnRefreshUserProfile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnRefreshUserProfile.Margin = new System.Windows.Forms.Padding(2);
             this.btnRefreshUserProfile.Name = "btnRefreshUserProfile";
             this.btnRefreshUserProfile.Size = new System.Drawing.Size(100, 32);
             this.btnRefreshUserProfile.TabIndex = 85;
@@ -225,7 +235,7 @@
             // 
             this.btnFindProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFindProfile.Location = new System.Drawing.Point(724, 175);
-            this.btnFindProfile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnFindProfile.Margin = new System.Windows.Forms.Padding(2);
             this.btnFindProfile.Name = "btnFindProfile";
             this.btnFindProfile.Size = new System.Drawing.Size(100, 32);
             this.btnFindProfile.TabIndex = 80;
@@ -237,7 +247,7 @@
             // 
             this.txtFindProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFindProfile.Location = new System.Drawing.Point(373, 184);
-            this.txtFindProfile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtFindProfile.Margin = new System.Windows.Forms.Padding(2);
             this.txtFindProfile.Name = "txtFindProfile";
             this.txtFindProfile.Size = new System.Drawing.Size(348, 24);
             this.txtFindProfile.TabIndex = 79;
@@ -259,7 +269,7 @@
             this.clbUserProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clbUserProfile.FormattingEnabled = true;
             this.clbUserProfile.Location = new System.Drawing.Point(831, 46);
-            this.clbUserProfile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.clbUserProfile.Margin = new System.Windows.Forms.Padding(2);
             this.clbUserProfile.Name = "clbUserProfile";
             this.clbUserProfile.Size = new System.Drawing.Size(229, 99);
             this.clbUserProfile.TabIndex = 77;
@@ -281,7 +291,7 @@
             this.cbIdleTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbIdleTime.FormattingEnabled = true;
             this.cbIdleTime.Location = new System.Drawing.Point(588, 74);
-            this.cbIdleTime.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbIdleTime.Margin = new System.Windows.Forms.Padding(2);
             this.cbIdleTime.Name = "cbIdleTime";
             this.cbIdleTime.Size = new System.Drawing.Size(116, 25);
             this.cbIdleTime.TabIndex = 75;
@@ -291,7 +301,7 @@
             this.cbPasswordReuseMax.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbPasswordReuseMax.FormattingEnabled = true;
             this.cbPasswordReuseMax.Location = new System.Drawing.Point(922, 15);
-            this.cbPasswordReuseMax.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbPasswordReuseMax.Margin = new System.Windows.Forms.Padding(2);
             this.cbPasswordReuseMax.Name = "cbPasswordReuseMax";
             this.cbPasswordReuseMax.Size = new System.Drawing.Size(138, 25);
             this.cbPasswordReuseMax.TabIndex = 74;
@@ -337,7 +347,7 @@
             this.cbConnectTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbConnectTime.FormattingEnabled = true;
             this.cbConnectTime.Location = new System.Drawing.Point(588, 44);
-            this.cbConnectTime.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbConnectTime.Margin = new System.Windows.Forms.Padding(2);
             this.cbConnectTime.Name = "cbConnectTime";
             this.cbConnectTime.Size = new System.Drawing.Size(116, 25);
             this.cbConnectTime.TabIndex = 67;
@@ -347,7 +357,7 @@
             this.cbPasswordLifeTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbPasswordLifeTime.FormattingEnabled = true;
             this.cbPasswordLifeTime.Location = new System.Drawing.Point(210, 106);
-            this.cbPasswordLifeTime.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbPasswordLifeTime.Margin = new System.Windows.Forms.Padding(2);
             this.cbPasswordLifeTime.Name = "cbPasswordLifeTime";
             this.cbPasswordLifeTime.Size = new System.Drawing.Size(121, 25);
             this.cbPasswordLifeTime.TabIndex = 66;
@@ -357,7 +367,7 @@
             this.cbSessionsPerUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbSessionsPerUser.FormattingEnabled = true;
             this.cbSessionsPerUser.Location = new System.Drawing.Point(210, 74);
-            this.cbSessionsPerUser.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbSessionsPerUser.Margin = new System.Windows.Forms.Padding(2);
             this.cbSessionsPerUser.Name = "cbSessionsPerUser";
             this.cbSessionsPerUser.Size = new System.Drawing.Size(121, 25);
             this.cbSessionsPerUser.TabIndex = 65;
@@ -437,20 +447,17 @@
             // txtProfileName
             // 
             this.txtProfileName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProfileName.Location = new System.Drawing.Point(210, 15);
-            this.txtProfileName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtProfileName.Name = "txtProfileName";
-            this.txtProfileName.Size = new System.Drawing.Size(121, 24);
             this.txtProfileName.Location = new System.Drawing.Point(280, 18);
+            this.txtProfileName.Margin = new System.Windows.Forms.Padding(2);
             this.txtProfileName.Name = "txtProfileName";
-            this.txtProfileName.Size = new System.Drawing.Size(160, 28);
+            this.txtProfileName.Size = new System.Drawing.Size(160, 24);
             this.txtProfileName.TabIndex = 54;
             // 
             // btnUpdateProfile
             // 
             this.btnUpdateProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdateProfile.Location = new System.Drawing.Point(213, 175);
-            this.btnUpdateProfile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnUpdateProfile.Margin = new System.Windows.Forms.Padding(2);
             this.btnUpdateProfile.Name = "btnUpdateProfile";
             this.btnUpdateProfile.Size = new System.Drawing.Size(100, 32);
             this.btnUpdateProfile.TabIndex = 40;
@@ -462,7 +469,7 @@
             // 
             this.btnRevokeProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRevokeProfile.Location = new System.Drawing.Point(960, 175);
-            this.btnRevokeProfile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnRevokeProfile.Margin = new System.Windows.Forms.Padding(2);
             this.btnRevokeProfile.Name = "btnRevokeProfile";
             this.btnRevokeProfile.Size = new System.Drawing.Size(99, 32);
             this.btnRevokeProfile.TabIndex = 39;
@@ -474,7 +481,7 @@
             // 
             this.btnGrantProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGrantProfile.Location = new System.Drawing.Point(856, 175);
-            this.btnGrantProfile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnGrantProfile.Margin = new System.Windows.Forms.Padding(2);
             this.btnGrantProfile.Name = "btnGrantProfile";
             this.btnGrantProfile.Size = new System.Drawing.Size(99, 32);
             this.btnGrantProfile.TabIndex = 38;
@@ -486,7 +493,7 @@
             // 
             this.btnDeleteProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteProfile.Location = new System.Drawing.Point(109, 175);
-            this.btnDeleteProfile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDeleteProfile.Margin = new System.Windows.Forms.Padding(2);
             this.btnDeleteProfile.Name = "btnDeleteProfile";
             this.btnDeleteProfile.Size = new System.Drawing.Size(100, 32);
             this.btnDeleteProfile.TabIndex = 37;
@@ -498,7 +505,7 @@
             // 
             this.btnCreateProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCreateProfile.Location = new System.Drawing.Point(4, 175);
-            this.btnCreateProfile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCreateProfile.Margin = new System.Windows.Forms.Padding(2);
             this.btnCreateProfile.Name = "btnCreateProfile";
             this.btnCreateProfile.Size = new System.Drawing.Size(100, 32);
             this.btnCreateProfile.TabIndex = 36;
@@ -511,7 +518,7 @@
             this.dgvProfiles.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvProfiles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProfiles.Location = new System.Drawing.Point(4, 212);
-            this.dgvProfiles.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvProfiles.Margin = new System.Windows.Forms.Padding(2);
             this.dgvProfiles.Name = "dgvProfiles";
             this.dgvProfiles.RowHeadersWidth = 51;
             this.dgvProfiles.RowTemplate.Height = 24;
@@ -548,22 +555,30 @@
             this.tabUser.Controls.Add(this.btnDeleteUser);
             this.tabUser.Controls.Add(this.txtUsername);
             this.tabUser.Location = new System.Drawing.Point(4, 26);
-            this.tabUser.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabUser.Margin = new System.Windows.Forms.Padding(2);
             this.tabUser.Name = "tabUser";
-            this.tabUser.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabUser.Padding = new System.Windows.Forms.Padding(2);
             this.tabUser.Size = new System.Drawing.Size(1062, 531);
             this.tabUser.TabIndex = 1;
             this.tabUser.Text = "User";
             this.tabUser.UseVisualStyleBackColor = true;
             // 
+            // btnDetail
+            // 
+            this.btnDetail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDetail.Location = new System.Drawing.Point(6, 169);
+            this.btnDetail.Name = "btnDetail";
+            this.btnDetail.Size = new System.Drawing.Size(133, 40);
+            this.btnDetail.TabIndex = 87;
+            this.btnDetail.Text = "CHECK";
+            this.btnDetail.UseVisualStyleBackColor = true;
+            this.btnDetail.Click += new System.EventHandler(this.btnDetail_Click);
+            // 
             // btnRefreshProfileRole
             // 
             this.btnRefreshProfileRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRefreshProfileRole.Location = new System.Drawing.Point(724, 91);
-            this.btnRefreshProfileRole.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btnRefreshProfileRole.Name = "btnRefreshProfileRole";
-            this.btnRefreshProfileRole.Size = new System.Drawing.Size(100, 32);
             this.btnRefreshProfileRole.Location = new System.Drawing.Point(966, 112);
+            this.btnRefreshProfileRole.Margin = new System.Windows.Forms.Padding(2);
             this.btnRefreshProfileRole.Name = "btnRefreshProfileRole";
             this.btnRefreshProfileRole.Size = new System.Drawing.Size(133, 40);
             this.btnRefreshProfileRole.TabIndex = 86;
@@ -575,7 +590,7 @@
             // 
             this.btnFindUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFindUser.Location = new System.Drawing.Point(724, 175);
-            this.btnFindUser.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnFindUser.Margin = new System.Windows.Forms.Padding(2);
             this.btnFindUser.Name = "btnFindUser";
             this.btnFindUser.Size = new System.Drawing.Size(100, 32);
             this.btnFindUser.TabIndex = 56;
@@ -587,7 +602,7 @@
             // 
             this.txtFindUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFindUser.Location = new System.Drawing.Point(373, 184);
-            this.txtFindUser.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtFindUser.Margin = new System.Windows.Forms.Padding(2);
             this.txtFindUser.Name = "txtFindUser";
             this.txtFindUser.Size = new System.Drawing.Size(348, 24);
             this.txtFindUser.TabIndex = 55;
@@ -621,7 +636,7 @@
             this.clbRoles.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clbRoles.FormattingEnabled = true;
             this.clbRoles.Location = new System.Drawing.Point(829, 52);
-            this.clbRoles.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.clbRoles.Margin = new System.Windows.Forms.Padding(2);
             this.clbRoles.Name = "clbRoles";
             this.clbRoles.Size = new System.Drawing.Size(229, 137);
             this.clbRoles.TabIndex = 52;
@@ -631,7 +646,7 @@
             this.cbProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbProfile.FormattingEnabled = true;
             this.cbProfile.Location = new System.Drawing.Point(829, 15);
-            this.cbProfile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbProfile.Margin = new System.Windows.Forms.Padding(2);
             this.cbProfile.Name = "cbProfile";
             this.cbProfile.Size = new System.Drawing.Size(229, 25);
             this.cbProfile.TabIndex = 51;
@@ -644,7 +659,7 @@
             "UNLOCK",
             "LOCK"});
             this.cbStatus.Location = new System.Drawing.Point(574, 99);
-            this.cbStatus.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbStatus.Margin = new System.Windows.Forms.Padding(2);
             this.cbStatus.Name = "cbStatus";
             this.cbStatus.Size = new System.Drawing.Size(147, 25);
             this.cbStatus.TabIndex = 50;
@@ -654,7 +669,7 @@
             this.cbTempTS.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbTempTS.FormattingEnabled = true;
             this.cbTempTS.Location = new System.Drawing.Point(574, 15);
-            this.cbTempTS.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbTempTS.Margin = new System.Windows.Forms.Padding(2);
             this.cbTempTS.Name = "cbTempTS";
             this.cbTempTS.Size = new System.Drawing.Size(147, 25);
             this.cbTempTS.TabIndex = 49;
@@ -664,7 +679,7 @@
             this.cbDefaultTS.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbDefaultTS.FormattingEnabled = true;
             this.cbDefaultTS.Location = new System.Drawing.Point(194, 95);
-            this.cbDefaultTS.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbDefaultTS.Margin = new System.Windows.Forms.Padding(2);
             this.cbDefaultTS.Name = "cbDefaultTS";
             this.cbDefaultTS.Size = new System.Drawing.Size(154, 25);
             this.cbDefaultTS.TabIndex = 48;
@@ -673,7 +688,7 @@
             // 
             this.txtQuota.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtQuota.Location = new System.Drawing.Point(574, 54);
-            this.txtQuota.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtQuota.Margin = new System.Windows.Forms.Padding(2);
             this.txtQuota.Name = "txtQuota";
             this.txtQuota.Size = new System.Drawing.Size(147, 24);
             this.txtQuota.TabIndex = 47;
@@ -755,7 +770,7 @@
             this.dgvUsers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvUsers.Location = new System.Drawing.Point(4, 212);
-            this.dgvUsers.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvUsers.Margin = new System.Windows.Forms.Padding(2);
             this.dgvUsers.Name = "dgvUsers";
             this.dgvUsers.RowHeadersWidth = 51;
             this.dgvUsers.RowTemplate.Height = 24;
@@ -766,7 +781,7 @@
             // 
             this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdate.Location = new System.Drawing.Point(213, 175);
-            this.btnUpdate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(2);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(100, 32);
             this.btnUpdate.TabIndex = 38;
@@ -778,7 +793,7 @@
             // 
             this.btnCreateUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCreateUser.Location = new System.Drawing.Point(4, 175);
-            this.btnCreateUser.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCreateUser.Margin = new System.Windows.Forms.Padding(2);
             this.btnCreateUser.Name = "btnCreateUser";
             this.btnCreateUser.Size = new System.Drawing.Size(100, 32);
             this.btnCreateUser.TabIndex = 37;
@@ -790,7 +805,7 @@
             // 
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassword.Location = new System.Drawing.Point(194, 54);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(2);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(154, 24);
@@ -824,7 +839,7 @@
             // 
             this.btnDeleteUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteUser.Location = new System.Drawing.Point(109, 175);
-            this.btnDeleteUser.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDeleteUser.Margin = new System.Windows.Forms.Padding(2);
             this.btnDeleteUser.Name = "btnDeleteUser";
             this.btnDeleteUser.Size = new System.Drawing.Size(100, 32);
             this.btnDeleteUser.TabIndex = 33;
@@ -836,7 +851,7 @@
             // 
             this.txtUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsername.Location = new System.Drawing.Point(194, 15);
-            this.txtUsername.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtUsername.Margin = new System.Windows.Forms.Padding(2);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(154, 24);
             this.txtUsername.TabIndex = 32;
@@ -861,9 +876,9 @@
             this.tabRole.Controls.Add(this.btnCreateRole);
             this.tabRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabRole.Location = new System.Drawing.Point(4, 26);
-            this.tabRole.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabRole.Margin = new System.Windows.Forms.Padding(2);
             this.tabRole.Name = "tabRole";
-            this.tabRole.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabRole.Padding = new System.Windows.Forms.Padding(2);
             this.tabRole.Size = new System.Drawing.Size(1062, 531);
             this.tabRole.TabIndex = 2;
             this.tabRole.Text = "Role";
@@ -873,7 +888,7 @@
             // 
             this.btnRefreshUserRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRefreshUserRole.Location = new System.Drawing.Point(564, 50);
-            this.btnRefreshUserRole.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnRefreshUserRole.Margin = new System.Windows.Forms.Padding(2);
             this.btnRefreshUserRole.Name = "btnRefreshUserRole";
             this.btnRefreshUserRole.Size = new System.Drawing.Size(100, 32);
             this.btnRefreshUserRole.TabIndex = 84;
@@ -885,7 +900,7 @@
             // 
             this.btnFindRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFindRole.Location = new System.Drawing.Point(724, 175);
-            this.btnFindRole.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnFindRole.Margin = new System.Windows.Forms.Padding(2);
             this.btnFindRole.Name = "btnFindRole";
             this.btnFindRole.Size = new System.Drawing.Size(100, 32);
             this.btnFindRole.TabIndex = 83;
@@ -897,7 +912,7 @@
             // 
             this.txtFindRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFindRole.Location = new System.Drawing.Point(373, 184);
-            this.txtFindRole.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtFindRole.Margin = new System.Windows.Forms.Padding(2);
             this.txtFindRole.Name = "txtFindRole";
             this.txtFindRole.Size = new System.Drawing.Size(348, 24);
             this.txtFindRole.TabIndex = 82;
@@ -919,7 +934,7 @@
             this.clbUserRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clbUserRole.FormattingEnabled = true;
             this.clbUserRole.Location = new System.Drawing.Point(688, 17);
-            this.clbUserRole.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.clbUserRole.Margin = new System.Windows.Forms.Padding(2);
             this.clbUserRole.Name = "clbUserRole";
             this.clbUserRole.Size = new System.Drawing.Size(372, 137);
             this.clbUserRole.TabIndex = 61;
@@ -928,7 +943,7 @@
             // 
             this.btnUpdateRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdateRole.Location = new System.Drawing.Point(213, 175);
-            this.btnUpdateRole.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnUpdateRole.Margin = new System.Windows.Forms.Padding(2);
             this.btnUpdateRole.Name = "btnUpdateRole";
             this.btnUpdateRole.Size = new System.Drawing.Size(100, 32);
             this.btnUpdateRole.TabIndex = 35;
@@ -940,7 +955,7 @@
             // 
             this.btnRevoke.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRevoke.Location = new System.Drawing.Point(960, 175);
-            this.btnRevoke.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnRevoke.Margin = new System.Windows.Forms.Padding(2);
             this.btnRevoke.Name = "btnRevoke";
             this.btnRevoke.Size = new System.Drawing.Size(99, 32);
             this.btnRevoke.TabIndex = 34;
@@ -964,7 +979,7 @@
             // 
             this.txtRolePassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRolePassword.Location = new System.Drawing.Point(148, 54);
-            this.txtRolePassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtRolePassword.Margin = new System.Windows.Forms.Padding(2);
             this.txtRolePassword.Name = "txtRolePassword";
             this.txtRolePassword.Size = new System.Drawing.Size(259, 24);
             this.txtRolePassword.TabIndex = 32;
@@ -984,29 +999,9 @@
             // dgvRoles
             // 
             this.dgvRoles.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvRoles.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvRoles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-
-            this.dgvRoles.Location = new System.Drawing.Point(4, 212);
-            this.dgvRoles.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvRoles.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvRoles.Location = new System.Drawing.Point(6, 261);
-
+            this.dgvRoles.Margin = new System.Windows.Forms.Padding(2);
             this.dgvRoles.Name = "dgvRoles";
             this.dgvRoles.RowHeadersWidth = 51;
             this.dgvRoles.RowTemplate.Height = 24;
@@ -1018,9 +1013,8 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.label3.Location = new System.Drawing.Point(6, 17);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Location = new System.Drawing.Point(10, 21);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(96, 18);
             this.label3.TabIndex = 27;
@@ -1030,7 +1024,7 @@
             // 
             this.btnGrantRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGrantRole.Location = new System.Drawing.Point(856, 175);
-            this.btnGrantRole.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnGrantRole.Margin = new System.Windows.Forms.Padding(2);
             this.btnGrantRole.Name = "btnGrantRole";
             this.btnGrantRole.Size = new System.Drawing.Size(99, 32);
             this.btnGrantRole.TabIndex = 30;
@@ -1042,7 +1036,7 @@
             // 
             this.txtRoleName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRoleName.Location = new System.Drawing.Point(148, 15);
-            this.txtRoleName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtRoleName.Margin = new System.Windows.Forms.Padding(2);
             this.txtRoleName.Name = "txtRoleName";
             this.txtRoleName.Size = new System.Drawing.Size(259, 24);
             this.txtRoleName.TabIndex = 24;
@@ -1051,7 +1045,7 @@
             // 
             this.btnDeleteRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteRole.Location = new System.Drawing.Point(109, 175);
-            this.btnDeleteRole.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDeleteRole.Margin = new System.Windows.Forms.Padding(2);
             this.btnDeleteRole.Name = "btnDeleteRole";
             this.btnDeleteRole.Size = new System.Drawing.Size(100, 32);
             this.btnDeleteRole.TabIndex = 28;
@@ -1063,7 +1057,7 @@
             // 
             this.btnCreateRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCreateRole.Location = new System.Drawing.Point(4, 175);
-            this.btnCreateRole.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCreateRole.Margin = new System.Windows.Forms.Padding(2);
             this.btnCreateRole.Name = "btnCreateRole";
             this.btnCreateRole.Size = new System.Drawing.Size(100, 32);
             this.btnCreateRole.TabIndex = 25;
@@ -1071,17 +1065,186 @@
             this.btnCreateRole.UseVisualStyleBackColor = true;
             this.btnCreateRole.Click += new System.EventHandler(this.btnCreateRole_Click);
             // 
-
-            // btnDetail
+            // tabNhanVien
             // 
-            this.btnDetail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDetail.Location = new System.Drawing.Point(6, 169);
-            this.btnDetail.Name = "btnDetail";
-            this.btnDetail.Size = new System.Drawing.Size(133, 40);
-            this.btnDetail.TabIndex = 87;
-            this.btnDetail.Text = "CHECK";
-            this.btnDetail.UseVisualStyleBackColor = true;
-            this.btnDetail.Click += new System.EventHandler(this.btnDetail_Click);
+            this.tabNhanVien.Controls.Add(this.rdb_Nam);
+            this.tabNhanVien.Controls.Add(this.rdb_Nu);
+            this.tabNhanVien.Controls.Add(this.btn_save);
+            this.tabNhanVien.Controls.Add(this.userpassword);
+            this.tabNhanVien.Controls.Add(this.txt_username);
+            this.tabNhanVien.Controls.Add(this.txt_luongcoban);
+            this.tabNhanVien.Controls.Add(this.txt_hoten);
+            this.tabNhanVien.Controls.Add(this.txt_manv);
+            this.tabNhanVien.Controls.Add(this.dateTimePicker1);
+            this.tabNhanVien.Controls.Add(this.txt_machucvu);
+            this.tabNhanVien.Controls.Add(this.label32);
+            this.tabNhanVien.Controls.Add(this.label31);
+            this.tabNhanVien.Controls.Add(this.label30);
+            this.tabNhanVien.Controls.Add(this.label24);
+            this.tabNhanVien.Controls.Add(this.label29);
+            this.tabNhanVien.Controls.Add(this.label28);
+            this.tabNhanVien.Controls.Add(this.label27);
+            this.tabNhanVien.Controls.Add(this.lblMaNV);
+            this.tabNhanVien.Location = new System.Drawing.Point(4, 26);
+            this.tabNhanVien.Name = "tabNhanVien";
+            this.tabNhanVien.Size = new System.Drawing.Size(1062, 531);
+            this.tabNhanVien.TabIndex = 3;
+            this.tabNhanVien.Text = "Employer";
+            this.tabNhanVien.UseVisualStyleBackColor = true;
+            // 
+            // btn_save
+            // 
+            this.btn_save.Location = new System.Drawing.Point(667, 206);
+            this.btn_save.Name = "btn_save";
+            this.btn_save.Size = new System.Drawing.Size(125, 48);
+            this.btn_save.TabIndex = 5;
+            this.btn_save.Text = "Save";
+            this.btn_save.UseVisualStyleBackColor = true;
+            this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
+            // 
+            // userpassword
+            // 
+            this.userpassword.Location = new System.Drawing.Point(316, 393);
+            this.userpassword.Name = "userpassword";
+            this.userpassword.Size = new System.Drawing.Size(198, 24);
+            this.userpassword.TabIndex = 4;
+            // 
+            // txt_username
+            // 
+            this.txt_username.Location = new System.Drawing.Point(316, 334);
+            this.txt_username.Name = "txt_username";
+            this.txt_username.Size = new System.Drawing.Size(198, 24);
+            this.txt_username.TabIndex = 4;
+            // 
+            // txt_luongcoban
+            // 
+            this.txt_luongcoban.Location = new System.Drawing.Point(314, 263);
+            this.txt_luongcoban.Name = "txt_luongcoban";
+            this.txt_luongcoban.Size = new System.Drawing.Size(198, 24);
+            this.txt_luongcoban.TabIndex = 4;
+            // 
+            // txt_hoten
+            // 
+            this.txt_hoten.Location = new System.Drawing.Point(314, 77);
+            this.txt_hoten.Name = "txt_hoten";
+            this.txt_hoten.Size = new System.Drawing.Size(198, 24);
+            this.txt_hoten.TabIndex = 4;
+            // 
+            // txt_manv
+            // 
+            this.txt_manv.Location = new System.Drawing.Point(314, 20);
+            this.txt_manv.Name = "txt_manv";
+            this.txt_manv.Size = new System.Drawing.Size(198, 24);
+            this.txt_manv.TabIndex = 4;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(314, 121);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 24);
+            this.dateTimePicker1.TabIndex = 2;
+            // 
+            // txt_machucvu
+            // 
+            this.txt_machucvu.FormattingEnabled = true;
+            this.txt_machucvu.Location = new System.Drawing.Point(314, 219);
+            this.txt_machucvu.Name = "txt_machucvu";
+            this.txt_machucvu.Size = new System.Drawing.Size(200, 25);
+            this.txt_machucvu.TabIndex = 1;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(152, 399);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(75, 18);
+            this.label32.TabIndex = 0;
+            this.label32.Text = "Password";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(150, 340);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(81, 18);
+            this.label31.TabIndex = 0;
+            this.label31.Text = "User name";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(152, 266);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(98, 18);
+            this.label30.TabIndex = 0;
+            this.label30.Text = "Lương cơ bản";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(152, 219);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(84, 18);
+            this.label24.TabIndex = 0;
+            this.label24.Text = "mã chức vụ";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(152, 169);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(58, 18);
+            this.label29.TabIndex = 0;
+            this.label29.Text = "giới tính";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(152, 127);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(70, 18);
+            this.label28.TabIndex = 0;
+            this.label28.Text = "ngày sinh";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(150, 83);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(52, 18);
+            this.label27.TabIndex = 0;
+            this.label27.Text = "Họ tên";
+            // 
+            // lblMaNV
+            // 
+            this.lblMaNV.AutoSize = true;
+            this.lblMaNV.Location = new System.Drawing.Point(152, 26);
+            this.lblMaNV.Name = "lblMaNV";
+            this.lblMaNV.Size = new System.Drawing.Size(50, 18);
+            this.lblMaNV.TabIndex = 0;
+            this.lblMaNV.Text = "MANV";
+            // 
+            // rdb_Nu
+            // 
+            this.rdb_Nu.AutoSize = true;
+            this.rdb_Nu.Location = new System.Drawing.Point(314, 169);
+            this.rdb_Nu.Name = "rdb_Nu";
+            this.rdb_Nu.Size = new System.Drawing.Size(45, 22);
+            this.rdb_Nu.TabIndex = 6;
+            this.rdb_Nu.TabStop = true;
+            this.rdb_Nu.Text = "Nữ";
+            this.rdb_Nu.UseVisualStyleBackColor = true;
+            // 
+            // rdb_Nam
+            // 
+            this.rdb_Nam.AutoSize = true;
+            this.rdb_Nam.Location = new System.Drawing.Point(453, 169);
+            this.rdb_Nam.Name = "rdb_Nam";
+            this.rdb_Nam.Size = new System.Drawing.Size(58, 22);
+            this.rdb_Nam.TabIndex = 6;
+            this.rdb_Nam.TabStop = true;
+            this.rdb_Nam.Text = "Nam";
+            this.rdb_Nam.UseVisualStyleBackColor = true;
             // 
             // FSystemManager
             // 
@@ -1089,7 +1252,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1088, 580);
             this.Controls.Add(this.ManageTab);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FSystemManager";
             this.Text = "FSystemManager";
             this.Load += new System.EventHandler(this.FSystemManager_Load);
@@ -1103,6 +1266,8 @@
             this.tabRole.ResumeLayout(false);
             this.tabRole.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRoles)).EndInit();
+            this.tabNhanVien.ResumeLayout(false);
+            this.tabNhanVien.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1185,5 +1350,24 @@
         private System.Windows.Forms.TextBox txtProfileName;
         private System.Windows.Forms.Button btnRefreshProfileRole;
         private System.Windows.Forms.Button btnDetail;
+        private System.Windows.Forms.TabPage tabNhanVien;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label lblMaNV;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Button btn_save;
+        private System.Windows.Forms.TextBox txt_luongcoban;
+        private System.Windows.Forms.TextBox txt_hoten;
+        private System.Windows.Forms.TextBox txt_manv;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.ComboBox txt_machucvu;
+        private System.Windows.Forms.TextBox userpassword;
+        private System.Windows.Forms.TextBox txt_username;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.RadioButton rdb_Nam;
+        private System.Windows.Forms.RadioButton rdb_Nu;
     }
 }

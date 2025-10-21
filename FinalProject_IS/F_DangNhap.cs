@@ -82,7 +82,6 @@ namespace FinalProject_IS
                         }
                         this.Show();
 
-                        this.Show();
                     }
                 }
             }
