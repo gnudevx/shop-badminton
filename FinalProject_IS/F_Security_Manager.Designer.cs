@@ -35,42 +35,9 @@ namespace FinalProject_IS
             this.tabPrivileges = new System.Windows.Forms.TabPage();
             this.label24 = new System.Windows.Forms.Label();
             this.dgv_privilege = new System.Windows.Forms.DataGridView();
-            this.tabProfile = new System.Windows.Forms.TabPage();
-            this.lblProfileName = new System.Windows.Forms.Label();
-            this.cbPasswordReuseTime = new System.Windows.Forms.ComboBox();
-            this.cbPasswordGraceTime = new System.Windows.Forms.ComboBox();
-            this.cbFailedLoginAttempts = new System.Windows.Forms.ComboBox();
-            this.btnRefreshUserProfile = new System.Windows.Forms.Button();
-            this.btnFindProfile = new System.Windows.Forms.Button();
-            this.txtFindProfile = new System.Windows.Forms.TextBox();
-            this.label25 = new System.Windows.Forms.Label();
-            this.clbUserProfile = new System.Windows.Forms.CheckedListBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.cbIdleTime = new System.Windows.Forms.ComboBox();
-            this.cbPasswordReuseMax = new System.Windows.Forms.ComboBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.cbConnectTime = new System.Windows.Forms.ComboBox();
-            this.cbPasswordLifeTime = new System.Windows.Forms.ComboBox();
-            this.cbSessionsPerUser = new System.Windows.Forms.ComboBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.txtProfileName = new System.Windows.Forms.TextBox();
-            this.btnUpdateProfile = new System.Windows.Forms.Button();
-            this.btnRevokeProfile = new System.Windows.Forms.Button();
-            this.btnGrantProfile = new System.Windows.Forms.Button();
-            this.dgvProfiles = new System.Windows.Forms.DataGridView();
             this.tabRole = new System.Windows.Forms.TabPage();
             this.lblRoleName = new System.Windows.Forms.Label();
             this.btnRefreshUserRole = new System.Windows.Forms.Button();
-            this.btnFindRole = new System.Windows.Forms.Button();
-            this.txtFindRole = new System.Windows.Forms.TextBox();
-            this.label26 = new System.Windows.Forms.Label();
             this.clbUserRole = new System.Windows.Forms.CheckedListBox();
             this.btnRevoke = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -99,11 +66,36 @@ namespace FinalProject_IS
             this.cbObjectName = new System.Windows.Forms.ComboBox();
             this.cbObjectSchema = new System.Windows.Forms.ComboBox();
             this.dgvPolicy = new System.Windows.Forms.DataGridView();
+            this.dgvProfiles = new System.Windows.Forms.DataGridView();
+            this.btnGrantProfile = new System.Windows.Forms.Button();
+            this.btnRevokeProfile = new System.Windows.Forms.Button();
+            this.btnUpdateProfile = new System.Windows.Forms.Button();
+            this.txtProfileName = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.cbSessionsPerUser = new System.Windows.Forms.ComboBox();
+            this.cbPasswordLifeTime = new System.Windows.Forms.ComboBox();
+            this.cbConnectTime = new System.Windows.Forms.ComboBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.cbPasswordReuseMax = new System.Windows.Forms.ComboBox();
+            this.cbIdleTime = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.clbUserProfile = new System.Windows.Forms.CheckedListBox();
+            this.btnRefreshUserProfile = new System.Windows.Forms.Button();
+            this.cbFailedLoginAttempts = new System.Windows.Forms.ComboBox();
+            this.cbPasswordGraceTime = new System.Windows.Forms.ComboBox();
+            this.cbPasswordReuseTime = new System.Windows.Forms.ComboBox();
+            this.lblProfileName = new System.Windows.Forms.Label();
+            this.tabProfile = new System.Windows.Forms.TabPage();
             this.tabManager.SuspendLayout();
             this.tabPrivileges.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_privilege)).BeginInit();
-            this.tabProfile.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProfiles)).BeginInit();
             this.tabRole.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRoles)).BeginInit();
             this.tabPoliy.SuspendLayout();
@@ -111,6 +103,8 @@ namespace FinalProject_IS
             ((System.ComponentModel.ISupportInitialize)(this.dgvAppliedPolicies)).BeginInit();
             this.panel_applypolicy.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPolicy)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProfiles)).BeginInit();
+            this.tabProfile.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabManager
@@ -164,387 +158,10 @@ namespace FinalProject_IS
             this.dgv_privilege.Size = new System.Drawing.Size(1054, 315);
             this.dgv_privilege.TabIndex = 10;
             // 
-            // tabProfile
-            // 
-            this.tabProfile.Controls.Add(this.lblProfileName);
-            this.tabProfile.Controls.Add(this.cbPasswordReuseTime);
-            this.tabProfile.Controls.Add(this.cbPasswordGraceTime);
-            this.tabProfile.Controls.Add(this.cbFailedLoginAttempts);
-            this.tabProfile.Controls.Add(this.btnRefreshUserProfile);
-            this.tabProfile.Controls.Add(this.btnFindProfile);
-            this.tabProfile.Controls.Add(this.txtFindProfile);
-            this.tabProfile.Controls.Add(this.label25);
-            this.tabProfile.Controls.Add(this.clbUserProfile);
-            this.tabProfile.Controls.Add(this.label13);
-            this.tabProfile.Controls.Add(this.cbIdleTime);
-            this.tabProfile.Controls.Add(this.cbPasswordReuseMax);
-            this.tabProfile.Controls.Add(this.label18);
-            this.tabProfile.Controls.Add(this.label22);
-            this.tabProfile.Controls.Add(this.label23);
-            this.tabProfile.Controls.Add(this.cbConnectTime);
-            this.tabProfile.Controls.Add(this.cbPasswordLifeTime);
-            this.tabProfile.Controls.Add(this.cbSessionsPerUser);
-            this.tabProfile.Controls.Add(this.label15);
-            this.tabProfile.Controls.Add(this.label16);
-            this.tabProfile.Controls.Add(this.label17);
-            this.tabProfile.Controls.Add(this.label19);
-            this.tabProfile.Controls.Add(this.label20);
-            this.tabProfile.Controls.Add(this.label21);
-            this.tabProfile.Controls.Add(this.txtProfileName);
-            this.tabProfile.Controls.Add(this.btnUpdateProfile);
-            this.tabProfile.Controls.Add(this.btnRevokeProfile);
-            this.tabProfile.Controls.Add(this.btnGrantProfile);
-            this.tabProfile.Controls.Add(this.dgvProfiles);
-            this.tabProfile.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.tabProfile.Location = new System.Drawing.Point(4, 26);
-            this.tabProfile.Margin = new System.Windows.Forms.Padding(2);
-            this.tabProfile.Name = "tabProfile";
-            this.tabProfile.Padding = new System.Windows.Forms.Padding(2);
-            this.tabProfile.Size = new System.Drawing.Size(1215, 617);
-            this.tabProfile.TabIndex = 0;
-            this.tabProfile.Text = "Profile";
-            this.tabProfile.UseVisualStyleBackColor = true;
-            // 
-            // lblProfileName
-            // 
-            this.lblProfileName.AutoSize = true;
-            this.lblProfileName.Location = new System.Drawing.Point(1173, 597);
-            this.lblProfileName.Name = "lblProfileName";
-            this.lblProfileName.Size = new System.Drawing.Size(46, 18);
-            this.lblProfileName.TabIndex = 89;
-            this.lblProfileName.Text = "label1";
-            this.lblProfileName.Visible = false;
-            // 
-            // cbPasswordReuseTime
-            // 
-            this.cbPasswordReuseTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbPasswordReuseTime.FormattingEnabled = true;
-            this.cbPasswordReuseTime.Location = new System.Drawing.Point(588, 106);
-            this.cbPasswordReuseTime.Margin = new System.Windows.Forms.Padding(2);
-            this.cbPasswordReuseTime.Name = "cbPasswordReuseTime";
-            this.cbPasswordReuseTime.Size = new System.Drawing.Size(116, 25);
-            this.cbPasswordReuseTime.TabIndex = 88;
-            // 
-            // cbPasswordGraceTime
-            // 
-            this.cbPasswordGraceTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbPasswordGraceTime.FormattingEnabled = true;
-            this.cbPasswordGraceTime.Location = new System.Drawing.Point(588, 15);
-            this.cbPasswordGraceTime.Margin = new System.Windows.Forms.Padding(2);
-            this.cbPasswordGraceTime.Name = "cbPasswordGraceTime";
-            this.cbPasswordGraceTime.Size = new System.Drawing.Size(116, 25);
-            this.cbPasswordGraceTime.TabIndex = 87;
-            // 
-            // cbFailedLoginAttempts
-            // 
-            this.cbFailedLoginAttempts.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbFailedLoginAttempts.FormattingEnabled = true;
-            this.cbFailedLoginAttempts.Location = new System.Drawing.Point(210, 44);
-            this.cbFailedLoginAttempts.Margin = new System.Windows.Forms.Padding(2);
-            this.cbFailedLoginAttempts.Name = "cbFailedLoginAttempts";
-            this.cbFailedLoginAttempts.Size = new System.Drawing.Size(121, 25);
-            this.cbFailedLoginAttempts.TabIndex = 86;
-            // 
-            // btnRefreshUserProfile
-            // 
-            this.btnRefreshUserProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRefreshUserProfile.Location = new System.Drawing.Point(724, 91);
-            this.btnRefreshUserProfile.Margin = new System.Windows.Forms.Padding(2);
-            this.btnRefreshUserProfile.Name = "btnRefreshUserProfile";
-            this.btnRefreshUserProfile.Size = new System.Drawing.Size(100, 32);
-            this.btnRefreshUserProfile.TabIndex = 85;
-            this.btnRefreshUserProfile.Text = "REFRESH";
-            this.btnRefreshUserProfile.UseVisualStyleBackColor = true;
-            // 
-            // btnFindProfile
-            // 
-            this.btnFindProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFindProfile.Location = new System.Drawing.Point(724, 175);
-            this.btnFindProfile.Margin = new System.Windows.Forms.Padding(2);
-            this.btnFindProfile.Name = "btnFindProfile";
-            this.btnFindProfile.Size = new System.Drawing.Size(100, 32);
-            this.btnFindProfile.TabIndex = 80;
-            this.btnFindProfile.Text = "FIND";
-            this.btnFindProfile.UseVisualStyleBackColor = true;
-            // 
-            // txtFindProfile
-            // 
-            this.txtFindProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFindProfile.Location = new System.Drawing.Point(373, 180);
-            this.txtFindProfile.Margin = new System.Windows.Forms.Padding(2);
-            this.txtFindProfile.Name = "txtFindProfile";
-            this.txtFindProfile.Size = new System.Drawing.Size(348, 24);
-            this.txtFindProfile.TabIndex = 79;
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label25.Location = new System.Drawing.Point(370, 155);
-            this.label25.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(113, 18);
-            this.label25.TabIndex = 78;
-            this.label25.Text = "FIND PROFILE:";
-            // 
-            // clbUserProfile
-            // 
-            this.clbUserProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clbUserProfile.FormattingEnabled = true;
-            this.clbUserProfile.Location = new System.Drawing.Point(856, 44);
-            this.clbUserProfile.Margin = new System.Windows.Forms.Padding(2);
-            this.clbUserProfile.Name = "clbUserProfile";
-            this.clbUserProfile.Size = new System.Drawing.Size(229, 99);
-            this.clbUserProfile.TabIndex = 77;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label13.Location = new System.Drawing.Point(717, 46);
-            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(120, 18);
-            this.label13.TabIndex = 76;
-            this.label13.Text = "CHOOSE USER";
-            // 
-            // cbIdleTime
-            // 
-            this.cbIdleTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbIdleTime.FormattingEnabled = true;
-            this.cbIdleTime.Location = new System.Drawing.Point(588, 74);
-            this.cbIdleTime.Margin = new System.Windows.Forms.Padding(2);
-            this.cbIdleTime.Name = "cbIdleTime";
-            this.cbIdleTime.Size = new System.Drawing.Size(116, 25);
-            this.cbIdleTime.TabIndex = 75;
-            // 
-            // cbPasswordReuseMax
-            // 
-            this.cbPasswordReuseMax.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbPasswordReuseMax.FormattingEnabled = true;
-            this.cbPasswordReuseMax.Location = new System.Drawing.Point(922, 15);
-            this.cbPasswordReuseMax.Margin = new System.Windows.Forms.Padding(2);
-            this.cbPasswordReuseMax.Name = "cbPasswordReuseMax";
-            this.cbPasswordReuseMax.Size = new System.Drawing.Size(138, 25);
-            this.cbPasswordReuseMax.TabIndex = 74;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label18.Location = new System.Drawing.Point(338, 76);
-            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(138, 18);
-            this.label18.TabIndex = 71;
-            this.label18.Text = "IDLE_TIME (PHÚT)";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label22.Location = new System.Drawing.Point(338, 109);
-            this.label22.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(199, 18);
-            this.label22.TabIndex = 70;
-            this.label22.Text = "PASSWORD_REUSE_TIME";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label23.Location = new System.Drawing.Point(717, 17);
-            this.label23.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(200, 18);
-            this.label23.TabIndex = 69;
-            this.label23.Text = "PASSWORD_REUSE_MAX ";
-            // 
-            // cbConnectTime
-            // 
-            this.cbConnectTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbConnectTime.FormattingEnabled = true;
-            this.cbConnectTime.Location = new System.Drawing.Point(588, 44);
-            this.cbConnectTime.Margin = new System.Windows.Forms.Padding(2);
-            this.cbConnectTime.Name = "cbConnectTime";
-            this.cbConnectTime.Size = new System.Drawing.Size(116, 25);
-            this.cbConnectTime.TabIndex = 67;
-            // 
-            // cbPasswordLifeTime
-            // 
-            this.cbPasswordLifeTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbPasswordLifeTime.FormattingEnabled = true;
-            this.cbPasswordLifeTime.Location = new System.Drawing.Point(210, 106);
-            this.cbPasswordLifeTime.Margin = new System.Windows.Forms.Padding(2);
-            this.cbPasswordLifeTime.Name = "cbPasswordLifeTime";
-            this.cbPasswordLifeTime.Size = new System.Drawing.Size(121, 25);
-            this.cbPasswordLifeTime.TabIndex = 66;
-            // 
-            // cbSessionsPerUser
-            // 
-            this.cbSessionsPerUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbSessionsPerUser.FormattingEnabled = true;
-            this.cbSessionsPerUser.Location = new System.Drawing.Point(210, 74);
-            this.cbSessionsPerUser.Margin = new System.Windows.Forms.Padding(2);
-            this.cbSessionsPerUser.Name = "cbSessionsPerUser";
-            this.cbSessionsPerUser.Size = new System.Drawing.Size(121, 25);
-            this.cbSessionsPerUser.TabIndex = 65;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label15.Location = new System.Drawing.Point(6, 69);
-            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(177, 36);
-            this.label15.TabIndex = 62;
-            this.label15.Text = "SESSIONS_PER_USER \r\n(PHÚT)";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label16.Location = new System.Drawing.Point(6, 109);
-            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(177, 36);
-            this.label16.TabIndex = 61;
-            this.label16.Text = "PASSWORD_LIFE_TIME\r\n(PHÚT)";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label17.Location = new System.Drawing.Point(338, 11);
-            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(200, 36);
-            this.label17.TabIndex = 60;
-            this.label17.Text = "PASSWORD_GRACE_TIME\r\n(PHÚT)";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label19.Location = new System.Drawing.Point(338, 46);
-            this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(181, 18);
-            this.label19.TabIndex = 58;
-            this.label19.Text = "CONNECT_TIME (PHÚT)";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label20.Location = new System.Drawing.Point(6, 46);
-            this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(203, 18);
-            this.label20.TabIndex = 56;
-            this.label20.Text = "FAILED_LOGIN_ATTEMPTS ";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label21.Location = new System.Drawing.Point(6, 17);
-            this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(118, 18);
-            this.label21.TabIndex = 55;
-            this.label21.Text = "PROFILE NAME";
-            // 
-            // txtProfileName
-            // 
-            this.txtProfileName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProfileName.Location = new System.Drawing.Point(210, 15);
-            this.txtProfileName.Margin = new System.Windows.Forms.Padding(2);
-            this.txtProfileName.Name = "txtProfileName";
-            this.txtProfileName.Size = new System.Drawing.Size(121, 24);
-            this.txtProfileName.TabIndex = 54;
-            // 
-            // btnUpdateProfile
-            // 
-            this.btnUpdateProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdateProfile.Location = new System.Drawing.Point(97, 175);
-            this.btnUpdateProfile.Margin = new System.Windows.Forms.Padding(2);
-            this.btnUpdateProfile.Name = "btnUpdateProfile";
-            this.btnUpdateProfile.Size = new System.Drawing.Size(100, 32);
-            this.btnUpdateProfile.TabIndex = 40;
-            this.btnUpdateProfile.Text = "UPDATE";
-            this.btnUpdateProfile.UseVisualStyleBackColor = true;
-            this.btnUpdateProfile.Click += new System.EventHandler(this.btnUpdateProfile_Click);
-            // 
-            // btnRevokeProfile
-            // 
-            this.btnRevokeProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRevokeProfile.Location = new System.Drawing.Point(961, 172);
-            this.btnRevokeProfile.Margin = new System.Windows.Forms.Padding(2);
-            this.btnRevokeProfile.Name = "btnRevokeProfile";
-            this.btnRevokeProfile.Size = new System.Drawing.Size(99, 32);
-            this.btnRevokeProfile.TabIndex = 39;
-            this.btnRevokeProfile.Text = "REVOKE";
-            this.btnRevokeProfile.UseVisualStyleBackColor = true;
-            this.btnRevokeProfile.Click += new System.EventHandler(this.btnRevokeProfile_Click);
-            // 
-            // btnGrantProfile
-            // 
-            this.btnGrantProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGrantProfile.Location = new System.Drawing.Point(857, 172);
-            this.btnGrantProfile.Margin = new System.Windows.Forms.Padding(2);
-            this.btnGrantProfile.Name = "btnGrantProfile";
-            this.btnGrantProfile.Size = new System.Drawing.Size(99, 32);
-            this.btnGrantProfile.TabIndex = 38;
-            this.btnGrantProfile.Text = "GRANT";
-            this.btnGrantProfile.UseVisualStyleBackColor = true;
-            this.btnGrantProfile.Click += new System.EventHandler(this.btnGrantProfile_Click);
-            // 
-            // dgvProfiles
-            // 
-            this.dgvProfiles.AllowUserToAddRows = false;
-            this.dgvProfiles.AllowUserToDeleteRows = false;
-            this.dgvProfiles.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvProfiles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LightBlue;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvProfiles.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvProfiles.Location = new System.Drawing.Point(170, 228);
-            this.dgvProfiles.Margin = new System.Windows.Forms.Padding(2);
-            this.dgvProfiles.Name = "dgvProfiles";
-            this.dgvProfiles.ReadOnly = true;
-            this.dgvProfiles.RowHeadersWidth = 51;
-            this.dgvProfiles.RowTemplate.Height = 24;
-            this.dgvProfiles.Size = new System.Drawing.Size(796, 315);
-            this.dgvProfiles.TabIndex = 26;
-            this.dgvProfiles.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProfiles_CellClick);
-            this.dgvProfiles.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProfiles_CellContentDoubleClick);
-            // 
             // tabRole
             // 
             this.tabRole.Controls.Add(this.lblRoleName);
             this.tabRole.Controls.Add(this.btnRefreshUserRole);
-            this.tabRole.Controls.Add(this.btnFindRole);
-            this.tabRole.Controls.Add(this.txtFindRole);
-            this.tabRole.Controls.Add(this.label26);
             this.tabRole.Controls.Add(this.clbUserRole);
             this.tabRole.Controls.Add(this.btnRevoke);
             this.tabRole.Controls.Add(this.label5);
@@ -580,38 +197,6 @@ namespace FinalProject_IS
             this.btnRefreshUserRole.TabIndex = 84;
             this.btnRefreshUserRole.Text = "REFRESH";
             this.btnRefreshUserRole.UseVisualStyleBackColor = true;
-            // 
-            // btnFindRole
-            // 
-            this.btnFindRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFindRole.Location = new System.Drawing.Point(537, 184);
-            this.btnFindRole.Margin = new System.Windows.Forms.Padding(2);
-            this.btnFindRole.Name = "btnFindRole";
-            this.btnFindRole.Size = new System.Drawing.Size(85, 24);
-            this.btnFindRole.TabIndex = 83;
-            this.btnFindRole.Text = "FIND";
-            this.btnFindRole.UseVisualStyleBackColor = true;
-            // 
-            // txtFindRole
-            // 
-            this.txtFindRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFindRole.Location = new System.Drawing.Point(170, 184);
-            this.txtFindRole.Margin = new System.Windows.Forms.Padding(2);
-            this.txtFindRole.Name = "txtFindRole";
-            this.txtFindRole.Size = new System.Drawing.Size(348, 24);
-            this.txtFindRole.TabIndex = 82;
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.label26.Location = new System.Drawing.Point(167, 164);
-            this.label26.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(91, 18);
-            this.label26.TabIndex = 81;
-            this.label26.Text = "FIND ROLE:";
             // 
             // clbUserRole
             // 
@@ -906,6 +491,345 @@ namespace FinalProject_IS
             this.dgvPolicy.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPolicy_CellContentClick);
             this.dgvPolicy.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPolicy_CellContentDoubleClick);
             // 
+            // dgvProfiles
+            // 
+            this.dgvProfiles.AllowUserToAddRows = false;
+            this.dgvProfiles.AllowUserToDeleteRows = false;
+            this.dgvProfiles.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvProfiles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LightBlue;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvProfiles.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvProfiles.Location = new System.Drawing.Point(170, 228);
+            this.dgvProfiles.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvProfiles.Name = "dgvProfiles";
+            this.dgvProfiles.ReadOnly = true;
+            this.dgvProfiles.RowHeadersWidth = 51;
+            this.dgvProfiles.RowTemplate.Height = 24;
+            this.dgvProfiles.Size = new System.Drawing.Size(796, 315);
+            this.dgvProfiles.TabIndex = 26;
+            this.dgvProfiles.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProfiles_CellClick);
+            this.dgvProfiles.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProfiles_CellContentDoubleClick);
+            // 
+            // btnGrantProfile
+            // 
+            this.btnGrantProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGrantProfile.Location = new System.Drawing.Point(857, 172);
+            this.btnGrantProfile.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGrantProfile.Name = "btnGrantProfile";
+            this.btnGrantProfile.Size = new System.Drawing.Size(99, 32);
+            this.btnGrantProfile.TabIndex = 38;
+            this.btnGrantProfile.Text = "GRANT";
+            this.btnGrantProfile.UseVisualStyleBackColor = true;
+            this.btnGrantProfile.Click += new System.EventHandler(this.btnGrantProfile_Click);
+            // 
+            // btnRevokeProfile
+            // 
+            this.btnRevokeProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRevokeProfile.Location = new System.Drawing.Point(961, 172);
+            this.btnRevokeProfile.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRevokeProfile.Name = "btnRevokeProfile";
+            this.btnRevokeProfile.Size = new System.Drawing.Size(99, 32);
+            this.btnRevokeProfile.TabIndex = 39;
+            this.btnRevokeProfile.Text = "REVOKE";
+            this.btnRevokeProfile.UseVisualStyleBackColor = true;
+            this.btnRevokeProfile.Click += new System.EventHandler(this.btnRevokeProfile_Click);
+            // 
+            // btnUpdateProfile
+            // 
+            this.btnUpdateProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdateProfile.Location = new System.Drawing.Point(97, 175);
+            this.btnUpdateProfile.Margin = new System.Windows.Forms.Padding(2);
+            this.btnUpdateProfile.Name = "btnUpdateProfile";
+            this.btnUpdateProfile.Size = new System.Drawing.Size(100, 32);
+            this.btnUpdateProfile.TabIndex = 40;
+            this.btnUpdateProfile.Text = "UPDATE";
+            this.btnUpdateProfile.UseVisualStyleBackColor = true;
+            this.btnUpdateProfile.Click += new System.EventHandler(this.btnUpdateProfile_Click);
+            // 
+            // txtProfileName
+            // 
+            this.txtProfileName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProfileName.Location = new System.Drawing.Point(210, 15);
+            this.txtProfileName.Margin = new System.Windows.Forms.Padding(2);
+            this.txtProfileName.Name = "txtProfileName";
+            this.txtProfileName.Size = new System.Drawing.Size(121, 24);
+            this.txtProfileName.TabIndex = 54;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label21.Location = new System.Drawing.Point(6, 17);
+            this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(118, 18);
+            this.label21.TabIndex = 55;
+            this.label21.Text = "PROFILE NAME";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label20.Location = new System.Drawing.Point(6, 46);
+            this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(203, 18);
+            this.label20.TabIndex = 56;
+            this.label20.Text = "FAILED_LOGIN_ATTEMPTS ";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label19.Location = new System.Drawing.Point(338, 46);
+            this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(181, 18);
+            this.label19.TabIndex = 58;
+            this.label19.Text = "CONNECT_TIME (PHÚT)";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label17.Location = new System.Drawing.Point(338, 11);
+            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(200, 36);
+            this.label17.TabIndex = 60;
+            this.label17.Text = "PASSWORD_GRACE_TIME\r\n(PHÚT)";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label16.Location = new System.Drawing.Point(6, 109);
+            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(177, 36);
+            this.label16.TabIndex = 61;
+            this.label16.Text = "PASSWORD_LIFE_TIME\r\n(PHÚT)";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label15.Location = new System.Drawing.Point(6, 69);
+            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(177, 36);
+            this.label15.TabIndex = 62;
+            this.label15.Text = "SESSIONS_PER_USER \r\n(PHÚT)";
+            // 
+            // cbSessionsPerUser
+            // 
+            this.cbSessionsPerUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbSessionsPerUser.FormattingEnabled = true;
+            this.cbSessionsPerUser.Location = new System.Drawing.Point(210, 74);
+            this.cbSessionsPerUser.Margin = new System.Windows.Forms.Padding(2);
+            this.cbSessionsPerUser.Name = "cbSessionsPerUser";
+            this.cbSessionsPerUser.Size = new System.Drawing.Size(121, 25);
+            this.cbSessionsPerUser.TabIndex = 65;
+            // 
+            // cbPasswordLifeTime
+            // 
+            this.cbPasswordLifeTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbPasswordLifeTime.FormattingEnabled = true;
+            this.cbPasswordLifeTime.Location = new System.Drawing.Point(210, 106);
+            this.cbPasswordLifeTime.Margin = new System.Windows.Forms.Padding(2);
+            this.cbPasswordLifeTime.Name = "cbPasswordLifeTime";
+            this.cbPasswordLifeTime.Size = new System.Drawing.Size(121, 25);
+            this.cbPasswordLifeTime.TabIndex = 66;
+            // 
+            // cbConnectTime
+            // 
+            this.cbConnectTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbConnectTime.FormattingEnabled = true;
+            this.cbConnectTime.Location = new System.Drawing.Point(588, 44);
+            this.cbConnectTime.Margin = new System.Windows.Forms.Padding(2);
+            this.cbConnectTime.Name = "cbConnectTime";
+            this.cbConnectTime.Size = new System.Drawing.Size(116, 25);
+            this.cbConnectTime.TabIndex = 67;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label23.Location = new System.Drawing.Point(717, 17);
+            this.label23.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(200, 18);
+            this.label23.TabIndex = 69;
+            this.label23.Text = "PASSWORD_REUSE_MAX ";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label22.Location = new System.Drawing.Point(338, 109);
+            this.label22.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(199, 18);
+            this.label22.TabIndex = 70;
+            this.label22.Text = "PASSWORD_REUSE_TIME";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label18.Location = new System.Drawing.Point(338, 76);
+            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(138, 18);
+            this.label18.TabIndex = 71;
+            this.label18.Text = "IDLE_TIME (PHÚT)";
+            // 
+            // cbPasswordReuseMax
+            // 
+            this.cbPasswordReuseMax.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbPasswordReuseMax.FormattingEnabled = true;
+            this.cbPasswordReuseMax.Location = new System.Drawing.Point(922, 15);
+            this.cbPasswordReuseMax.Margin = new System.Windows.Forms.Padding(2);
+            this.cbPasswordReuseMax.Name = "cbPasswordReuseMax";
+            this.cbPasswordReuseMax.Size = new System.Drawing.Size(138, 25);
+            this.cbPasswordReuseMax.TabIndex = 74;
+            // 
+            // cbIdleTime
+            // 
+            this.cbIdleTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbIdleTime.FormattingEnabled = true;
+            this.cbIdleTime.Location = new System.Drawing.Point(588, 74);
+            this.cbIdleTime.Margin = new System.Windows.Forms.Padding(2);
+            this.cbIdleTime.Name = "cbIdleTime";
+            this.cbIdleTime.Size = new System.Drawing.Size(116, 25);
+            this.cbIdleTime.TabIndex = 75;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label13.Location = new System.Drawing.Point(717, 46);
+            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(120, 18);
+            this.label13.TabIndex = 76;
+            this.label13.Text = "CHOOSE USER";
+            // 
+            // clbUserProfile
+            // 
+            this.clbUserProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clbUserProfile.FormattingEnabled = true;
+            this.clbUserProfile.Location = new System.Drawing.Point(856, 44);
+            this.clbUserProfile.Margin = new System.Windows.Forms.Padding(2);
+            this.clbUserProfile.Name = "clbUserProfile";
+            this.clbUserProfile.Size = new System.Drawing.Size(229, 99);
+            this.clbUserProfile.TabIndex = 77;
+            // 
+            // btnRefreshUserProfile
+            // 
+            this.btnRefreshUserProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRefreshUserProfile.Location = new System.Drawing.Point(724, 91);
+            this.btnRefreshUserProfile.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRefreshUserProfile.Name = "btnRefreshUserProfile";
+            this.btnRefreshUserProfile.Size = new System.Drawing.Size(100, 32);
+            this.btnRefreshUserProfile.TabIndex = 85;
+            this.btnRefreshUserProfile.Text = "REFRESH";
+            this.btnRefreshUserProfile.UseVisualStyleBackColor = true;
+            // 
+            // cbFailedLoginAttempts
+            // 
+            this.cbFailedLoginAttempts.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbFailedLoginAttempts.FormattingEnabled = true;
+            this.cbFailedLoginAttempts.Location = new System.Drawing.Point(210, 44);
+            this.cbFailedLoginAttempts.Margin = new System.Windows.Forms.Padding(2);
+            this.cbFailedLoginAttempts.Name = "cbFailedLoginAttempts";
+            this.cbFailedLoginAttempts.Size = new System.Drawing.Size(121, 25);
+            this.cbFailedLoginAttempts.TabIndex = 86;
+            // 
+            // cbPasswordGraceTime
+            // 
+            this.cbPasswordGraceTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbPasswordGraceTime.FormattingEnabled = true;
+            this.cbPasswordGraceTime.Location = new System.Drawing.Point(588, 15);
+            this.cbPasswordGraceTime.Margin = new System.Windows.Forms.Padding(2);
+            this.cbPasswordGraceTime.Name = "cbPasswordGraceTime";
+            this.cbPasswordGraceTime.Size = new System.Drawing.Size(116, 25);
+            this.cbPasswordGraceTime.TabIndex = 87;
+            // 
+            // cbPasswordReuseTime
+            // 
+            this.cbPasswordReuseTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbPasswordReuseTime.FormattingEnabled = true;
+            this.cbPasswordReuseTime.Location = new System.Drawing.Point(588, 106);
+            this.cbPasswordReuseTime.Margin = new System.Windows.Forms.Padding(2);
+            this.cbPasswordReuseTime.Name = "cbPasswordReuseTime";
+            this.cbPasswordReuseTime.Size = new System.Drawing.Size(116, 25);
+            this.cbPasswordReuseTime.TabIndex = 88;
+            // 
+            // lblProfileName
+            // 
+            this.lblProfileName.AutoSize = true;
+            this.lblProfileName.Location = new System.Drawing.Point(1173, 597);
+            this.lblProfileName.Name = "lblProfileName";
+            this.lblProfileName.Size = new System.Drawing.Size(46, 18);
+            this.lblProfileName.TabIndex = 89;
+            this.lblProfileName.Text = "label1";
+            this.lblProfileName.Visible = false;
+            // 
+            // tabProfile
+            // 
+            this.tabProfile.Controls.Add(this.lblProfileName);
+            this.tabProfile.Controls.Add(this.cbPasswordReuseTime);
+            this.tabProfile.Controls.Add(this.cbPasswordGraceTime);
+            this.tabProfile.Controls.Add(this.cbFailedLoginAttempts);
+            this.tabProfile.Controls.Add(this.btnRefreshUserProfile);
+            this.tabProfile.Controls.Add(this.clbUserProfile);
+            this.tabProfile.Controls.Add(this.label13);
+            this.tabProfile.Controls.Add(this.cbIdleTime);
+            this.tabProfile.Controls.Add(this.cbPasswordReuseMax);
+            this.tabProfile.Controls.Add(this.label18);
+            this.tabProfile.Controls.Add(this.label22);
+            this.tabProfile.Controls.Add(this.label23);
+            this.tabProfile.Controls.Add(this.cbConnectTime);
+            this.tabProfile.Controls.Add(this.cbPasswordLifeTime);
+            this.tabProfile.Controls.Add(this.cbSessionsPerUser);
+            this.tabProfile.Controls.Add(this.label15);
+            this.tabProfile.Controls.Add(this.label16);
+            this.tabProfile.Controls.Add(this.label17);
+            this.tabProfile.Controls.Add(this.label19);
+            this.tabProfile.Controls.Add(this.label20);
+            this.tabProfile.Controls.Add(this.label21);
+            this.tabProfile.Controls.Add(this.txtProfileName);
+            this.tabProfile.Controls.Add(this.btnUpdateProfile);
+            this.tabProfile.Controls.Add(this.btnRevokeProfile);
+            this.tabProfile.Controls.Add(this.btnGrantProfile);
+            this.tabProfile.Controls.Add(this.dgvProfiles);
+            this.tabProfile.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.tabProfile.Location = new System.Drawing.Point(4, 26);
+            this.tabProfile.Margin = new System.Windows.Forms.Padding(2);
+            this.tabProfile.Name = "tabProfile";
+            this.tabProfile.Padding = new System.Windows.Forms.Padding(2);
+            this.tabProfile.Size = new System.Drawing.Size(1215, 617);
+            this.tabProfile.TabIndex = 0;
+            this.tabProfile.Text = "Profile";
+            this.tabProfile.UseVisualStyleBackColor = true;
+            // 
             // F_Security_Manager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -919,9 +843,6 @@ namespace FinalProject_IS
             this.tabManager.ResumeLayout(false);
             this.tabPrivileges.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_privilege)).EndInit();
-            this.tabProfile.ResumeLayout(false);
-            this.tabProfile.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProfiles)).EndInit();
             this.tabRole.ResumeLayout(false);
             this.tabRole.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRoles)).EndInit();
@@ -931,6 +852,9 @@ namespace FinalProject_IS
             this.panel_applypolicy.ResumeLayout(false);
             this.panel_applypolicy.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPolicy)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProfiles)).EndInit();
+            this.tabProfile.ResumeLayout(false);
+            this.tabProfile.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -938,40 +862,8 @@ namespace FinalProject_IS
         #endregion
 
         private System.Windows.Forms.TabControl tabManager;
-        private System.Windows.Forms.TabPage tabProfile;
-        private System.Windows.Forms.ComboBox cbPasswordReuseTime;
-        private System.Windows.Forms.ComboBox cbPasswordGraceTime;
-        private System.Windows.Forms.ComboBox cbFailedLoginAttempts;
-        private System.Windows.Forms.Button btnRefreshUserProfile;
-        private System.Windows.Forms.Button btnFindProfile;
-        private System.Windows.Forms.TextBox txtFindProfile;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.CheckedListBox clbUserProfile;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.ComboBox cbIdleTime;
-        private System.Windows.Forms.ComboBox cbPasswordReuseMax;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.ComboBox cbConnectTime;
-        private System.Windows.Forms.ComboBox cbPasswordLifeTime;
-        private System.Windows.Forms.ComboBox cbSessionsPerUser;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.TextBox txtProfileName;
-        private System.Windows.Forms.Button btnUpdateProfile;
-        private System.Windows.Forms.Button btnRevokeProfile;
-        private System.Windows.Forms.Button btnGrantProfile;
-        private System.Windows.Forms.DataGridView dgvProfiles;
         private System.Windows.Forms.TabPage tabRole;
         private System.Windows.Forms.Button btnRefreshUserRole;
-        private System.Windows.Forms.Button btnFindRole;
-        private System.Windows.Forms.TextBox txtFindRole;
-        private System.Windows.Forms.Label label26;
         private System.Windows.Forms.CheckedListBox clbUserRole;
         private System.Windows.Forms.Button btnRevoke;
         private System.Windows.Forms.Label label5;
@@ -1004,6 +896,32 @@ namespace FinalProject_IS
         private System.Windows.Forms.Button btn_hide_policy;
         private System.Windows.Forms.TextBox txt_policyFuntion;
         private System.Windows.Forms.Label lblRoleName;
+        private System.Windows.Forms.TabPage tabProfile;
         private System.Windows.Forms.Label lblProfileName;
+        private System.Windows.Forms.ComboBox cbPasswordReuseTime;
+        private System.Windows.Forms.ComboBox cbPasswordGraceTime;
+        private System.Windows.Forms.ComboBox cbFailedLoginAttempts;
+        private System.Windows.Forms.Button btnRefreshUserProfile;
+        private System.Windows.Forms.CheckedListBox clbUserProfile;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.ComboBox cbIdleTime;
+        private System.Windows.Forms.ComboBox cbPasswordReuseMax;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.ComboBox cbConnectTime;
+        private System.Windows.Forms.ComboBox cbPasswordLifeTime;
+        private System.Windows.Forms.ComboBox cbSessionsPerUser;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TextBox txtProfileName;
+        private System.Windows.Forms.Button btnUpdateProfile;
+        private System.Windows.Forms.Button btnRevokeProfile;
+        private System.Windows.Forms.Button btnGrantProfile;
+        private System.Windows.Forms.DataGridView dgvProfiles;
     }
 }
