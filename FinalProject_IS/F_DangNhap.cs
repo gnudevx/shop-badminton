@@ -76,6 +76,12 @@ namespace FinalProject_IS
                             SessionInfo.CurrentUsername = username;
                             new F_Security_Manager().ShowDialog();
                         }
+                        else if (roles.Contains("ROLE_SHOP_SUPERVISOR"))
+                        {
+                            SessionInfo.CurrentRole = "ROLE_SHOP_SUPERVISOR";
+                            SessionInfo.CurrentUsername = username;
+                            new Supervisor_Dashboard().ShowDialog();
+                        }
                         else
                         {
 
