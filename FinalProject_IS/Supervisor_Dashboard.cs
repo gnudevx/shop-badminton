@@ -109,7 +109,6 @@ namespace FinalProject_IS
                 query += $" AND EXTRACT(DAY FROM TIMESTAMP) = {day}";
             }
 
-            MessageBox.Show(query);
 
             // --- Execute ---
             DataTable dt = AuditDAO.FilterDataBaseOnQuery(query);
