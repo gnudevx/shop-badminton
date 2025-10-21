@@ -194,6 +194,7 @@ namespace FinalProject_IS
             {
                 clbRoles.DataSource = null;
                 cbProfile.DataSource = null;
+                dgvUsers.DataSource = UserDAO.GetAllUsers(SessionInfo.CurrentRole, SessionInfo.CurrentUsername);
                 cbProfile.DataSource = UserDAO.GetListUser("SELECT profile FROM dba_profiles GROUP BY profile");
                 clbRoles.DataSource = UserDAO.GetListUser("SELECT role FROM dba_roles");
             }
@@ -538,8 +539,6 @@ namespace FinalProject_IS
                 return;
             }
 
-            string ngaysinhStr = ngaysinh.ToString("yyyy-MM-dd"); // <200 ký tự
-
             if (username.Length > 50)
             {
                 MessageBox.Show("Username không được vượt quá 50 ký tự!");
@@ -570,7 +569,7 @@ namespace FinalProject_IS
                 using (var cmd = new OracleCommand(sql, conn))
                 {
                     cmd.Parameters.Add(":hoten", hoten);
-                    cmd.Parameters.Add(":ngaysinh", ngaysinhStr); // dạng string
+                    cmd.Parameters.Add(":ngaysinh", ngaysinh); // dạng string
                     cmd.Parameters.Add(":gioitinh", gioitinh);
                     cmd.Parameters.Add(":machucvu", (object)machucvuInt ?? DBNull.Value);
                     cmd.Parameters.Add(":luong", luong);
